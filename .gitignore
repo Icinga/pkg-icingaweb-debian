@@ -1,0 +1,13 @@
+*
+!.gitignore
+!debian*
+!debian/*
+!debian/*/*
+debian/*.log
+debian/*.substvars
+debian/*.debhelper
+debian/files
+debian/tmp
+debian/icinga-web/
+debian/icinga-web-plugin-pnp/
+*.swp
