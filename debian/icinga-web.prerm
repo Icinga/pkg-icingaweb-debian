@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e 
+
+# Remove cache dir
+if [ -x /var/lib/icinga-web/app/cache ]; then
+	rm -rf /var/lib/icinga-web/app/cache
+fi
+
+. /usr/share/debconf/confmodule
+. /usr/share/dbconfig-common/dpkg/prerm.mysql
+dbc_go icinga-web $@
+
+#DEBHELPER#

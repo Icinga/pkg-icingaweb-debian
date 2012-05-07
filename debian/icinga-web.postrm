@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+#set -x
+
+if [ -f /usr/share/debconf/confmodule ]; then
+        . /usr/share/debconf/confmodule
+fi
+if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
+        . /usr/share/dbconfig-common/dpkg/postrm.mysql
+        dbc_go icinga-web $@
+fi
+
+if [ "$1" = "purge" ]; then
+        rm -f /etc/icinga-web/conf.d/databases.xml
+        ucf --purge /etc/icinga-web/conf.d/databases.xml
+        db_purge
+fi
+
+#DEBHELPER#

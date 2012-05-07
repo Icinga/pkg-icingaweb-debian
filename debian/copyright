@@ -1,0 +1,66 @@
+This work was packaged for Debian by:
+
+    Markus Frosch <markus.frosch@netways.de>
+
+It was downloaded from:
+
+    <http://www.icinga.org>
+
+icinga-web
+
+    a new generation of interface for Icinga.
+
+    Copyright (c) 2009, Icinga Development Team
+    All rights reserved.
+
+    http://www.icinga.org
+
+    The icinga-web frontend is licensed under the terms of
+    the Open Source GPL 2 license.
+   
+Opensource License:
+
+    icinga-web, web2.0 frontend for the Icinga core
+    Copyright (C) 2009  Icinga Development Team
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the 
+    
+    Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+    A 02110-1301, USA.
+
+    http://www.gnu.org/licenses/gpl-2.0.html
+
+    For detailed information see the GPL file in this folder.
+
+Vendor and foreign components:
+
+    All trademarks and registered trademarks mentioned herein
+    are the property of their respective owners and their
+    chosen licenses.
+
+	Please see the following files for additional licensing information:
+	 * /usr/share/icinga-web/lib/agavi/LICENSE
+	 * /usr/share/icinga-web/lib/doctrine/LICENSE
+	 * /usr/share/icinga-web/lib/doctrine/lib/LICENSE
+	 * /usr/share/icinga-web/lib/ext3/license.txt
+	 * /usr/share/icinga-web/lib/ext3/examples/image-organizer/SWFUpload/plugins/SWFObject_License.txt
+	 * /usr/share/icinga-web/lib/ext3/examples/image-organizer/SWFUpload/swfupload_license.txt
+	 * /usr/share/icinga-web/lib/jsgettext/COPYING.LESSER
+
+The Debian packaging is:
+
+    Copyright (C) 2012 Markus Frosch <markus.frosch@netways.de>
+    and is licensed under the GPL version 3,
+    see "/usr/share/common-licenses/GPL-3".
+

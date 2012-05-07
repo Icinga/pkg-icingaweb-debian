@@ -1,0 +1,11 @@
+#binary-without-manpage
+script-not-executable
+extra-license-file usr/share/icinga-web/lib/agavi/LICENSE
+extra-license-file usr/share/icinga-web/lib/doctrine/LICENSE
+extra-license-file usr/share/icinga-web/lib/doctrine/lib/LICENSE
+extra-license-file usr/share/icinga-web/lib/ext3/examples/image-organizer/SWFUpload/plugins/SWFObject_License.txt
+extra-license-file usr/share/icinga-web/lib/ext3/examples/image-organizer/SWFUpload/swfupload_license.txt
+extra-license-file usr/share/icinga-web/lib/ext3/license.txt
+extra-license-file usr/share/icinga-web/lib/jsgettext/COPYING.LESSER
+
+

@@ -1,0 +1,60 @@
+#!/bin/bash
+
+set -e
+
+###
+# Install DB
+###
+. /usr/share/debconf/confmodule
+. /usr/share/dbconfig-common/dpkg/postinst.mysql
+dbc_generate_include='template:/etc/icinga-web/conf.d/databases.xml'
+dbc_generate_include_owner='www-data:www-data'
+dbc_generate_include_args='--ucf -o template_infile=/usr/share/icinga-web/tmpl/databases.xml-sample'
+dbc_go icinga-web $@
+
+###
+# Write Icinga IDO DSN
+###
+db_get icinga-web/icinga-ido-dsn
+dsn=$(echo ${RET} | sed 's#/#\\/#g')
+sed -i 's/\(<!--icinga_dsn--><ae:parameter name="dsn">\).*\(<\/ae:parameter>\)/\1'"$dsn"'\2/' /etc/icinga-web/conf.d/databases.xml
+
+###
+# Apache2
+###
+a2enmod rewrite
+invoke-rc.d apache2 reload
+
+###
+# Clear cache
+###
+if [ -x /usr/sbin/icinga-web-clearcache ]; then
+	icinga-web-clearcache
+fi
+
+###
+# Permissions
+###
+
+setperm() {
+    local user="$1"
+    local group="$2"
+    local mode="$3"
+    local file="$4"
+    shift 4
+    # only do something when no setting exists
+    if ! dpkg-statoverride --list "$file" >/dev/null 2>&1; then
+      chown "$user":"$group" "$file"
+      chmod "$mode" "$file"
+    fi
+}
+
+setperm www-data www-data 0770 /etc/icinga-web/
+setperm www-data www-data 0770 /etc/icinga-web/conf.d/
+setperm www-data www-data 0660 /etc/icinga-web/conf.d/*.xml
+
+setperm www-data adm 0770 /var/log/icinga-web/
+
+setperm www-data www-data 0770 /var/lib/icinga-web/app/cache/
+
+#DEBHELPER#

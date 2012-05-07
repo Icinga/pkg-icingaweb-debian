@@ -1,0 +1,59 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+b := $(shell pwd)/debian
+
+%:
+	dh $@ --buildsystem=autoconf
+
+override_dh_auto_configure:
+	./configure --prefix=/usr \
+	--bindir=/usr/lib/icinga-web/bin \
+	--sysconfdir=/etc/icinga-web \
+	--datarootdir=/usr/share/icinga-web \
+	--docdir=/usr/share/doc/icinga-web \
+	--libdir=/usr/lib/icinga-web \
+	--with-web-absolute-path=/usr/share/icinga-web/pub \
+	--with-web-apache-path="/etc/apache2/conf.d" \
+	--with-web-user="www-data" --with-web-group="www-data" \
+	--with-cache-dir=/var/lib/icinga-web/app/cache \
+	--with-log-dir=/var/log/icinga-web \
+	--with-conf-dir=/etc/icinga-web/conf.d \
+	--with-icinga-bin="/usr/sbin/icinga" \
+	--with-icinga-cfg="/etc/icinga/icinga.cfg" \
+	--with-icinga-objects-dir="/etc/icinga/objects" \
+	--with-api-cmd-file="/var/lib/icinga/rw/icinga.cmd"
+
+override_dh_auto_build:
+	echo "no build necessary..."
+
+override_dh_install:
+	# removed INSTALL for policy
+	rm ${b}/tmp/usr/doc/INSTALL
+	# License information in copyright
+	rm ${b}/tmp/usr/doc/LICENSE
+	# move default databases.xml
+	mv ${b}/tmp/etc/icinga-web/conf.d/databases.xml ${b}/tmp/usr/doc/databases.xml.example
+	# Rename binary
+	mv ${b}/tmp/usr/bin/clearcache.sh ${b}/tmp/usr/bin/icinga-web-clearcache
+	# Upstream CHANGELOG by debian policy
+	cat ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x > ${b}/tmp/usr/doc/changelog
+	rm ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x
+	# Install the rest
+	dh_install
+	# MySQL schema for dbconfig-common
+	cp ${b}/icinga-web/usr/share/icinga-web/database/mysql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/mysql
+	
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f config.status
+	rm -f config.log
+

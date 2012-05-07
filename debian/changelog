@@ -1,0 +1,12 @@
+icinga-web (1.6.2-1~netways2) unstable; urgency=low
+
+  * added PNP Plugin
+  * cleaned up maintainer scripts
+
+ -- Markus Frosch <markus.frosch@netways.de>  Wed, 07 May 2012 09:33:22 +0200
+
+icinga-web (1.6.2-1~netways1) unstable; urgency=low
+
+  * initial release and testing
+
+ -- Markus Frosch <markus.frosch@netways.de>  Wed, 02 May 2012 16:55:22 +0200
