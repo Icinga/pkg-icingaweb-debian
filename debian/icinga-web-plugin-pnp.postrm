@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+# Clear cache
+if [ -x /usr/sbin/icinga-web-clearcache ]; then
+	icinga-web-clearcache
+fi
+
+#DEBHELPER#
