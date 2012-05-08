@@ -12,18 +12,19 @@ Package: icinga-web
 Architecture: all
 Depends: icinga (>= 1.6.1), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${shlibs:Depends}, ${misc:Depends}
 Recommends: mysql-client
-Description: Icinga offers 2 web interfaces for users to view Icinga
- monitoring results and send commands to the Icinga Core. In both Icinga
- New and Classic Web, host and service status, history, notifications
- and status maps are available to keep a check on the health of your
- network in real-time. Both also support IPv4 as well as IPv6 addresses.
+Description: Icinga's new webinterface
+ Icinga offers 2 web interfaces for users to view Icinga monitoring
+ results and send commands to the Icinga Core. In both Icinga New and
+ Classic Web, host and service status, history, notifications and
+ status maps are available to keep a check on the health of your network
+ in real-time. Both also support IPv4 as well as IPv6 addresses.
 
-Package: icinga-web-plugin-pnp
+Package: icinga-web-pnp
 Architecture: all
 Depends: icinga-web (= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
-Description: This is only an adapter to integrate pnp graphs to your
- icinga-web interface, you must install pnp4nagios separately. After
- successful installation you should see a new icon in your host and
- services overview which display the pnp graphs for the host/service 
- when being clicked upon.
+Description: A plugin for icinga-web to integrate pnp4nagios in the
+ webinterface.
+ .
+ This only installs some xml files for the webinterface - no database
+ modification required.
 
