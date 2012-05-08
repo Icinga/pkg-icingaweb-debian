@@ -28,3 +28,12 @@ Description: A plugin for icinga-web to integrate pnp4nagios in the
  This only installs some xml files for the webinterface - no database
  modification required.
 
+Package: icinga-web-bp
+Architecture: all
+Depends: icinga-web (= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: A plugin for icinga-web to integrate the icinga business
+ process addon in the webinterface.
+ .
+ This only installs some xml files for the webinterface - no database
+ modification required.
+

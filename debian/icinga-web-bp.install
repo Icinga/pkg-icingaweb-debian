@@ -1,0 +1,7 @@
+contrib/businessprocess-icinga-cronk/BPAddon/* /usr/share/icinga-web/app/modules/BPAddon
+
+contrib/businessprocess-icinga-cronk/BPAddon/config/bp.xml /etc/icinga-web/BPAddon
+contrib/businessprocess-icinga-cronk/BPAddon/config/cronks.xml /etc/icinga-web/BPAddon
+
+contrib/businessprocess-icinga-cronk/doc/* usr/share/doc/icinga-web-bp
+

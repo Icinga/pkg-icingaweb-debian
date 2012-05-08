@@ -51,11 +51,23 @@ override_dh_install:
 	dh_install
 	# MySQL schema for dbconfig-common
 	cp ${b}/icinga-web/usr/share/icinga-web/database/mysql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/mysql
+	###
+	# PNP
+	###
 	# Remove CHANGELOG from icinga-web-pnp
 	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/CHANGELOG
 	# remove LICENSE files for packages - see debian/copyright
 	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/LICENSE
-	
+	###	
+	# Business Process
+	###
+	rm ${b}/icinga-web-bp/usr/share/icinga-web/app/modules/BPAddon/config/bp.xml
+	rm ${b}/icinga-web-bp/usr/share/icinga-web/app/modules/BPAddon/config/cronks.xml
+	rm ${b}/icinga-web-bp/usr/share/icinga-web/app/modules/BPAddon/config/module.xml
+	cp debian/bp-module.xml ${b}/icinga-web-bp/usr/share/icinga-web/app/modules/BPAddon/config/module.xml
+	rm ${b}/icinga-web-bp/usr/share/doc/icinga-web-bp/INSTALL
+	rm ${b}/icinga-web-bp/usr/share/doc/icinga-web-bp/LICENSE
+
 override_dh_auto_clean:
 	dh_auto_clean
 	rm -f config.status
