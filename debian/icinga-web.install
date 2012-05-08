@@ -4,6 +4,7 @@ etc/icinga-web/conf.d/* etc/icinga-web/conf.d/
 
 usr/app/* usr/share/icinga-web/app/
 usr/pub/* usr/share/icinga-web/pub/
+usr/pub/.htaccess usr/share/icinga-web/pub/
 
 usr/lib/agavi usr/share/icinga-web/lib/
 usr/lib/doctrine usr/share/icinga-web/lib/

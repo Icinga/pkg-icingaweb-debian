@@ -38,7 +38,7 @@ override_dh_auto_build:
 override_dh_install:
 	# removed INSTALL for policy
 	rm ${b}/tmp/usr/doc/INSTALL
-	# License information in copyright
+	# remove LICENSE files for packages - see debian/copyright
 	rm ${b}/tmp/usr/doc/LICENSE
 	# move default databases.xml
 	mv ${b}/tmp/etc/icinga-web/conf.d/databases.xml ${b}/tmp/usr/doc/databases.xml.example
@@ -51,6 +51,10 @@ override_dh_install:
 	dh_install
 	# MySQL schema for dbconfig-common
 	cp ${b}/icinga-web/usr/share/icinga-web/database/mysql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/mysql
+	# Remove CHANGELOG from icinga-web-pnp
+	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/CHANGELOG
+	# remove LICENSE files for packages - see debian/copyright
+	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/LICENSE
 	
 override_dh_auto_clean:
 	dh_auto_clean
