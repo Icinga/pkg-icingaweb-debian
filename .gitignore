@@ -9,6 +9,8 @@ debian/icinga-web-pnp/
 debian/icinga-web-bp/
 .pc/
 
+app/modules/Cronks/config/module.xml
+
 #-- the following ignores are from the original icinga-web git --
 .settings/org.eclipse.php.core.prefs
 .settings/org.eclipse.php.server.core.phpServersPrefs.prefs

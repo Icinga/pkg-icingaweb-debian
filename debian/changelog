@@ -1,9 +1,11 @@
 icinga-web (1.6.2-1~netways2) unstable; urgency=low
 
   * added PNP Plugin
+  * added BP plugin
+  * moved clearcache script TODO
   * cleaned up maintainer scripts
 
- -- Markus Frosch <markus.frosch@netways.de>  Wed, 07 May 2012 09:33:22 +0200
+ -- Markus Frosch <markus.frosch@netways.de>  Wed, 09 May 2012 17:12:52 +0200
 
 icinga-web (1.6.2-1~netways1) unstable; urgency=low
 

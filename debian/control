@@ -5,12 +5,12 @@ Maintainer: Markus Frosch <markus.frosch@netways.de>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev
 Standards-Version: 3.9.1
 Homepage: http://www.icinga.org
-#Vcs-Git: git://git.debian.org/collab-maint/icinga-web.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/icinga-web.git;a=summary
+Vcs-Git: git://git.netways.org/icinga.web-debian.git
+Vcs-Browser: https://git.netways.org/?p=icinga.web-debian.git;a=summary
 
 Package: icinga-web
 Architecture: all
-Depends: icinga (>= 1.6.1), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${shlibs:Depends}, ${misc:Depends}
+Depends: icinga (>= 1.6.1), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
 Recommends: mysql-client
 Description: Icinga's new webinterface
  Icinga offers 2 web interfaces for users to view Icinga monitoring
@@ -21,7 +21,7 @@ Description: Icinga's new webinterface
 
 Package: icinga-web-pnp
 Architecture: all
-Depends: icinga-web (= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: icinga-web (= ${source:Version}), ${misc:Depends}
 Description: A plugin for icinga-web to integrate pnp4nagios in the
  webinterface.
  .
@@ -30,7 +30,7 @@ Description: A plugin for icinga-web to integrate pnp4nagios in the
 
 Package: icinga-web-bp
 Architecture: all
-Depends: icinga-web (= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: icinga-web (= ${source:Version}), ${misc:Depends}
 Description: A plugin for icinga-web to integrate the icinga business
  process addon in the webinterface.
  .
