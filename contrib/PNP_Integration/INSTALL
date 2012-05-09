@@ -1,0 +1,8 @@
+************************
+* INSTALLATION
+************************
+
+To install this addon, simply copy both xml files under templateExtensions to 
+your icinga-webs app/modules/Cronks/data/xml/extensions folder and clear the app/cache/CronkTemplates folder
+
+To remove it, just delete the extension files and clear the cache folder again
