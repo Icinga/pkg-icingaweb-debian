@@ -3,8 +3,8 @@
 set -e
 
 # Clear cache
-if [ -x /usr/sbin/icinga-web-clearcache ]; then
-	icinga-web-clearcache
+if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
+	/usr/lib/icinga-web/bin/clearcache.sh
 fi
 
 #DEBHELPER#

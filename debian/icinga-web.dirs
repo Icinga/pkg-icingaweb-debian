@@ -9,10 +9,11 @@ usr/share/icinga-web/pub
 usr/share/icinga-web/lib
 usr/share/icinga-web/tmpl
 
+usr/lib/icinga-web/bin
+
 var/lib/icinga-web/app/cache
 
 var/log/icinga-web
 
 usr/share/doc/icinga-web
 
-usr/sbin

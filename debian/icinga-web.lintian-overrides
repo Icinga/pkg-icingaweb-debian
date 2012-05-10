@@ -7,5 +7,4 @@ extra-license-file usr/share/icinga-web/lib/ext3/examples/image-organizer/SWFUpl
 extra-license-file usr/share/icinga-web/lib/ext3/examples/image-organizer/SWFUpload/swfupload_license.txt
 extra-license-file usr/share/icinga-web/lib/ext3/license.txt
 extra-license-file usr/share/icinga-web/lib/jsgettext/COPYING.LESSER
-binary-without-manpage usr/sbin/icinga-web-clearcache
 
