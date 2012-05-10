@@ -1,4 +1,4 @@
-icinga-web (1.6.2-1~netways2) unstable; urgency=low
+icinga-web (1.6.2-2~netways) unstable; urgency=low
 
   * added PNP Plugin
   * added BP plugin
@@ -6,9 +6,9 @@ icinga-web (1.6.2-1~netways2) unstable; urgency=low
   * cleaned up maintainer scripts
   * modified package for git-buildpackage
 
- -- Markus Frosch <markus.frosch@netways.de>  Thu, 10 May 2012 10:43:08 +0200
+ -- Markus Frosch <markus.frosch@netways.de>  Thu, 10 May 2012 10:48:39 +0200
 
-icinga-web (1.6.2-1~netways1) unstable; urgency=low
+icinga-web (1.6.2-1~netways) unstable; urgency=low
 
   * initial release and testing
 
