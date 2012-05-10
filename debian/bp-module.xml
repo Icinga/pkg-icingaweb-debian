@@ -25,7 +25,7 @@
                     <ae:parameter>%core.module_dir%/BPAddon/config/css.xml</ae:parameter>
                 </setting>
                 <setting name="agavi.include.cronks">
-                    <ae:parameter>/etc/icinga-web/BPAddon/config/cronks.xml</ae:parameter>
+                    <ae:parameter>/etc/icinga-web/BPAddon/cronks.xml</ae:parameter>
                 </setting>
                 <setting name="agavi.include.routing">
                     <ae:parameter>%core.module_dir%/BPAddon/config/routing.xml</ae:parameter>
