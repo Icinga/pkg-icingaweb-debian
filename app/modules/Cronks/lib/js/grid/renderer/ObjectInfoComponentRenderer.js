@@ -1,3 +1,25 @@
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 Ext.ns('Cronk.grid');
 
 (function() {
@@ -12,7 +34,7 @@ Ext.ns('Cronk.grid');
         
         constructor : function() {
             this.addEvents({
-                "showobjectinfo" : true
+                "showobjectinfo": true
             });
             
             Ext.Window.prototype.constructor.call(this, {});
@@ -38,7 +60,8 @@ Ext.ns('Cronk.grid');
             
             Ext.iterate(this.tabItems, function(k, v) {
                 v.information = new Icinga.Cronks.Tackle.Information.Head({
-                    type: k
+                    type: k,
+                    connection: this.connection
                 });
                 
                 // We do not want to call this explicit
@@ -54,7 +77,10 @@ Ext.ns('Cronk.grid');
                 v.relation = new Icinga.Cronks.Tackle.Relation.Head({
                     type: k
                 });
-                
+                v.externalRefs = new Icinga.Cronks.Tackle.ExternalReferences.Head({
+                    type: k,
+                    connection: this.connection
+                });
                 Ext.iterate(v, function(k2, v2) {
                     this.tabs.add(v2)
                 }, this);
@@ -87,12 +113,12 @@ Ext.ns('Cronk.grid');
         },
         
        // Private
-        onShowObjectInfo : function(type, oid) {
+        onShowObjectInfo : function(type, oid,connection) {
             this.type = type;
             
             Ext.iterate(this.tabItems[type], function(k, object) {
                 if (!Ext.isEmpty(object.loadDataForObjectId)) {
-                  object.loadDataForObjectId(oid);
+                  object.loadDataForObjectId(oid,connection);
                 } else {
                     throw("WHOO, loadDataForObjectId is not implemented!");
                 }
@@ -102,8 +128,8 @@ Ext.ns('Cronk.grid');
             
         },
         
-        showObjectInfo : function(type, oid) {
-            this.fireEvent('showobjectinfo', type, oid);
+        showObjectInfo : function(type, oid,connection) {
+            this.fireEvent('showobjectinfo', type, oid,connection);
         },
         
         infoColumn : function(cfg) {
@@ -127,7 +153,7 @@ Ext.ns('Cronk.grid');
                     var id = data[cfg.object_id];
                     var type = cfg.type;
                     
-                    Cronk.grid.ObjectInfoComponentRenderer.showObjectInfo(type, id);
+                    Cronk.grid.ObjectInfoComponentRenderer.showObjectInfo(type, id,grid.selectedConnection);
                 }
             };
         }

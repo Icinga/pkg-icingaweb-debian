@@ -41,10 +41,11 @@ AC_ARG_VAR([PHP],[php cli binary])
 ACICINGA_CHECK_BIN([PHP], [php])
 
 # Check for mysql
-AC_ARG_VAR([MYSQL],[mysql client binary])
-ACICINGA_CHECK_BIN([MYSQL], [mysql])
+# We don't need the client anymore, so this is commented out
+# AC_ARG_VAR([MYSQL],[mysql client binary])
+# ACICINGA_CHECK_BIN([MYSQL], [mysql])
 
-# Check for phing
+# Check for phing - not required in normal non-dev installations
 AC_ARG_VAR([PHING],[phing build tool])
 ACICINGA_CHECK_BIN([PHING], [phing])
 
@@ -94,6 +95,12 @@ AC_ARG_WITH([web_apache_path],
     AS_HELP_STRING([--with-web-apache-path=PATH], [Include folder apache2 (default /etc/apache2/conf.d]),
     web_apache_path=$withval,
     web_apache_path=ACICINGA_PATH_GUESS([/etc/httpd/conf.d /etc/apache2/conf.d /etc/apache/conf.d], [web_apache_path], [/etc/apache2/conf.d])
+)
+
+AC_ARG_WITH([clearcache_path],
+    AS_HELP_STRING([--with-clearcache-path=PATH], [Path to install the clearcache script]),
+    clearcache_bin_path=$withval,
+    clearcache_bin_path=$prefix/bin
 )
 
 AC_ARG_WITH([bin_user],
@@ -280,7 +287,7 @@ AC_ARG_WITH([icinga_bin],
     icinga_bin=/usr/local/icinga/bin/icinga
 )
 
-ACICINGA_CHECK_BIN([icinga], [$icinga_bin])
+ACICINGA_RESOURCE_EXISTS([icinga], [$icinga_bin])
 
 AC_ARG_WITH([icinga_cfg],
     AS_HELP_STRING([--with-icinga-cfg=PATH], [Icinga core main configuration file]),
@@ -297,7 +304,7 @@ AC_ARG_WITH([phpunit],
     phpunit=phpunit
 )
 
-ACICINGA_CHECK_BIN([PHPUNIT], [$phpunit])
+#ACICINGA_CHECK_BIN([PHPUNIT], [$phpunit])
 
 AC_ARG_WITH([phpcs],
     AS_HELP_STRING([--with-phpcs=BINARY], [Path to phpcs script]),
@@ -305,7 +312,7 @@ AC_ARG_WITH([phpcs],
     phpcs=phpcs
 )
 
-ACICINGA_CHECK_BIN([PHPCS], [$phpcs])
+#ACICINGA_CHECK_BIN([PHPCS], [$phpcs])
 
 # Custom vars
 INSTALL_OPTS="-o $bin_user -g $bin_group"
@@ -326,6 +333,7 @@ AC_SUBST(web_group)
 AC_SUBST(web_path)
 AC_SUBST(web_absolute_path)
 AC_SUBST(web_apache_path)
+AC_SUBST(clearcache_bin_path)
 AC_SUBST(bin_user)
 AC_SUBST(bin_group)
 
@@ -378,6 +386,13 @@ AC_CONFIG_FILES([
     Makefile
     lib/Makefile
     lib/icingaScheduler/config.php
+    lib/icingaScheduler/Makefile
+    lib/jit/Makefile
+    lib/ext3/Makefile
+    lib/agavi/Makefile
+    lib/phpseclib/Makefile
+    lib/doctrine/Makefile
+    lib/jsgettext/Makefile
     pub/Makefile
     etc/Makefile
     bin/Makefile
@@ -394,7 +409,7 @@ AC_CONFIG_FILES([
     app/modules/Api/config/module.xml
     app/modules/AppKit/config/module.xml
     app/modules/AppKit/config/auth.xml
-    app/modules/Cronks/config/module.xml
+    app/modules/Config/config/module.xml
     app/modules/Reporting/config/module.xml
     app/modules/Web/config/module.xml
     etc/build.properties

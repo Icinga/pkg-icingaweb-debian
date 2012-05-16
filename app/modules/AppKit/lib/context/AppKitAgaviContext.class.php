@@ -1,12 +1,42 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 /**
  * The replacement agavi context to handle all bootstrap things
  * in that
  */
 class AppKitAgaviContext extends AgaviContext {
     
+    /**
+     * Static array of modules which are excluded if
+     * we're initializing the whole stack
+     * @var array
+     */
     private static $excludeModules = array (
-        'AppKit', 'TestDummy'
+        'AppKit',        // Base module, always included if we're here
+        'Config',        // Automatic inclusion at the end 
+                         // (to override settings)
+        'TestDummy'      // Example module you can safely ignore
     );
     
     /**
@@ -22,7 +52,8 @@ class AppKitAgaviContext extends AgaviContext {
          * Make our settings ready
          * before run agavi
          */
-        $this->buildVersionString();
+        self::buildVersionString();
+        
         $this->initializePhpSettings();
 
         $this->initializeModules();
@@ -50,6 +81,7 @@ class AppKitAgaviContext extends AgaviContext {
         $files = scandir($module_dir);
        
         AppKitAgaviUtil::initializeModule('AppKit');
+        
         foreach($files as $file) {
             if($file == '.' || $file == '..')
                 continue;
@@ -67,6 +99,8 @@ class AppKitAgaviContext extends AgaviContext {
             
             }
         }
+        
+        AppKitAgaviUtil::initializeModule('Config');
     }
 
 
@@ -87,8 +121,11 @@ class AppKitAgaviContext extends AgaviContext {
 
     /**
      * Glue our version string together
+     * 
+     * Method is static and public to call from outside 
+     * if no context is needed (e.g. Phing::Task)
      */
-    private function buildVersionString() {
+    public static function buildVersionString() {
         if (AgaviConfig::get('org.icinga.version.extension', false) == false) {
             $version_format = "%s/v%d.%d.%d";
         } else {

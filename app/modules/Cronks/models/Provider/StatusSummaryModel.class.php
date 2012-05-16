@@ -1,4 +1,26 @@
 <?php 
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 /**
  * Data provider model for summary status
@@ -188,7 +210,7 @@ class Cronks_Provider_StatusSummaryModel extends CronksBaseModel {
     
     protected function getDataForInstance() {
         $instances = IcingaDoctrine_Query::create()
-        ->select('p.programstatus_id, p.instance_id, p.last_command_check, i.instance_name')
+        ->select('p.programstatus_id, p.instance_id, p.status_update_time, i.instance_name')
         ->from('IcingaProgramstatus p')
         ->innerJoin('p.instance i')->execute();
     
@@ -202,7 +224,7 @@ class Cronks_Provider_StatusSummaryModel extends CronksBaseModel {
     
         foreach ($instances as $instance) {
     
-            $date = (int)strtotime($instance->last_command_check);
+            $date = (int)strtotime($instance->status_update_time);
             $diff = (time()-$date);
     
             if ($diff < $checkTime && $instance->is_currently_running) {
@@ -214,7 +236,7 @@ class Cronks_Provider_StatusSummaryModel extends CronksBaseModel {
             $out[] = array (
                         'instance' => $instance->instance->instance_name,
                         'status' => $status,
-                        'last_check' => $instance->last_command_check,
+                        'last_check' => $instance->status_update_time,
                         'start' => $instance->program_start_time,
                         'diff' => $diff,
                         'check' => $checkTime

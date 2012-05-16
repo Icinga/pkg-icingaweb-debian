@@ -1,9 +1,36 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 class Api_Relation_DataModelModel extends IcingaApiBaseModel {
-    
+    private $connection = "icinga";
     public function initialize(AgaviContext $context, array $parameters = array()) {
         parent::initialize($context, $parameters);
+        if(isset($parameters["connection"])) {
+            $this->connection = $parameters["connection"];
+        } else {
+            $this->connection = IcingaDoctrineDatabase::CONNECTION_ICINGA;
+        }
     }
     
     public function getRelationDataForObjectId($objectId) {
@@ -14,7 +41,6 @@ class Api_Relation_DataModelModel extends IcingaApiBaseModel {
         $data['customvariable'] = $this->getCustomVariables($objectId);
         $data['hostgroup'] = $this->getHostgroups($objectId);
         $data['servicegroup'] = $this->getServicegroups($objectId);
-        
         return $data;
     }
     
@@ -27,8 +53,9 @@ class Api_Relation_DataModelModel extends IcingaApiBaseModel {
         } elseif ($objecttypeId == IcingaConstants::TYPE_SERVICE) {
             $type = 'service';
         }
-        
-        $records = IcingaDoctrine_Query::create()
+        $DBALManager = $this->getContext()->getModel("DBALMetaManager","Api");
+        $DBALManager->switchIcingaDatabase($this->connection);
+        $records = IcingaDoctrine_Query::create($this->connection)
         ->select('c.contact_id, c.alias as contact_alias, co.name1 as contact_name, c.email_address as contact_email_address, co.object_id as contact_object_id, NULL as contactgroup_name, NULL as contactgroup_object_id')
         ->from('IcingaContacts c')
         ->innerJoin('c.object co')
@@ -39,7 +66,7 @@ class Api_Relation_DataModelModel extends IcingaApiBaseModel {
             $out = $records;
         }
         
-        $records = IcingaDoctrine_Query::create()
+        $records = IcingaDoctrine_Query::create($this->connection)
         ->select('c.contact_id, c.alias as contact_alias, co.name1 as contact_name, c.email_address as contact_email_address, co.object_id as contact_object_id,  cg.alias as contactgroup_name, cg.contactgroup_object_id as contactgroup_object_id')
         ->from('IcingaContacts c')
         ->innerJoin('c.object co')
@@ -50,7 +77,7 @@ class Api_Relation_DataModelModel extends IcingaApiBaseModel {
         if (count($records)) {
             $out = array_merge($out, $records);
         }
-        
+        $DBALManager->switchIcingaDatabase(IcingaDoctrineDatabase::CONNECTION_ICINGA);
         return $out;
     }
     
@@ -123,17 +150,18 @@ class Api_Relation_DataModelModel extends IcingaApiBaseModel {
     
     public function getHostgroups($objectId) {
         $records = IcingaDoctrine_Query::create()
-        ->select('hg.alias as alias, o.name1 as name, o.object_id as hostgroup_object_id')
+        ->select('hg.hostgroup_id, hg.alias as alias, o.name1 as name, o.object_id as hostgroup_object_id')
         ->from('IcingaHostgroups hg')
         ->innerJoin('hg.object o')
-        ->innerJoin('hg.members m with m.host_object_id=?', $objectId);
+        ->innerJoin('hg.members m')
+        ->where("m.host_object_id = ?",$objectId);
         
         return $records->execute(null, Doctrine::HYDRATE_ARRAY);
     }
     
     public function getServicegroups($objectId) {
         $records = IcingaDoctrine_Query::create()
-        ->select('sg.alias as alias, o.name1 as name, o.object_id as servicegroup_object_id')
+        ->select('sg.servicegroup_id, sg.alias as alias, o.name1 as name, o.object_id as servicegroup_object_id')
         ->from('IcingaServicegroups sg')
         ->innerJoin('sg.object o')
         ->innerJoin('sg.members m with m.service_object_id = ?', $objectId);

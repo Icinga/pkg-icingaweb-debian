@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ae:configurations
-	xmlns="http://agavi.org/agavi/config/parts/validators/1.0"
-	xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
-	parent="%core.module_dir%/Cronks/config/validators.xml"
+    xmlns="http://agavi.org/agavi/config/parts/validators/1.0"
+    xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
+    parent="%core.module_dir%/Cronks/config/validators.xml"
 >
-	
-	<ae:configuration>
-		
-		<validators>
+    
+    <ae:configuration>
+        
+        <validators>
             <validator class="number" name="type">
                 <argument>type</argument>
                 
@@ -23,8 +23,16 @@
                     <error>Parameter oids is not a comma seperated string</error>
                 </errors>
             </validator>
-		</validators>
-		
-	</ae:configuration>
-	
+
+            <validator class="string" name="connection">
+                <argument>connection</argument>
+
+                <errors>
+                    <error></error>
+                </errors>
+            </validator>
+        </validators>
+        
+    </ae:configuration>
+    
 </ae:configurations>
