@@ -2,8 +2,9 @@ icinga-web (1.7.0-1~netways) unstable; urgency=low
 
   * merged upstream version 1.7.0
   * patch "pnp-hosts-url" was fixed in upstream
+  * removed icinga-web-bp from this source package
 
- -- Markus Frosch <markus.frosch@netways.de>  Wed, 16 May 2012 13:17:05 +0200
+ -- Markus Frosch <markus.frosch@netways.de>  Wed, 16 May 2012 13:23:50 +0200
 
 icinga-web (1.6.2-2~netways) unstable; urgency=low
 
