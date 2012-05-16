@@ -10,7 +10,7 @@ Vcs-Browser: https://git.netways.org/?p=icinga.web-debian.git;a=summary
 
 Package: icinga-web
 Architecture: all
-Depends: icinga (>= 1.6.1), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
+Depends: icinga (>= 1.7.0), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
 Recommends: mysql-client
 Description: Icinga's new webinterface
  Icinga offers 2 web interfaces for users to view Icinga monitoring
