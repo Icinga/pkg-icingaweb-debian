@@ -1,3 +1,25 @@
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 // ---
 // KEEP THIS LINE
 // ---
@@ -108,7 +130,7 @@ IcingaCommandHandler.prototype = {
             width: 200,
             allowBlank: (o.fieldRequired == true) ? false : true
         };
-
+        
         var form = o.form;
 
         switch (o.fieldType) {
@@ -225,7 +247,7 @@ IcingaCommandHandler.prototype = {
                     }
                 }, {
                     xtype: 'label',
-                    text: ':'
+                    text: _('hours')
                 }, {
                     xtype: 'numberfield',
                     name: o.fieldName + '-minute',
@@ -237,7 +259,7 @@ IcingaCommandHandler.prototype = {
                     }
                 }, {
                     xtype: 'label',
-                    text: _('(hh:ii)')
+                    text: _('minutes')
                 }, {
                     xtype: 'numberfield',
                     name: o.fieldName,
@@ -345,6 +367,7 @@ IcingaCommandHandler.prototype = {
 
                 var oWin = new Ext.Window({
                     title: String.format(_('{0} ({1} items)'), title, this.grid.getSelectionModel().getCount()),
+                    width: 380,
                     autoDestroy: true,
                     autoHeight: true,
                     closable: true,
@@ -454,7 +477,7 @@ IcingaCommandHandler.prototype = {
                         fieldLabel: item,
                         fieldName: item,
                         fieldType: o.types[item].type,
-                        fieldValue: this.command_options.predefined[item] || '',
+                        fieldValue: this.command_options.predefined[item] || o.types[item].defaultValue || "",
                         fieldRequired: o.types[item].required || false,
                         form: oForm
                     });

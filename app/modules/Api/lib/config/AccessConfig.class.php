@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 /**
 * Gives access to the access.xml values. 
 * Please make sure to not use the AgaviConfig base class for static access, as php < 5.3 does not
@@ -68,8 +90,9 @@ final class AccessConfig {
         foreach($hosts as $host) {
             if(isset($host["r"][$file]) || isset($host["rw"][$file]))
                 continue;
+            $basedir = preg_replace("/([^\\\]) .*/","$1",$file);
             if(in_array($file,$host["r"]) || in_array($file,$host["rw"])
-                || in_array(dirname($file)."/*",$host["r"]) || in_array(dirname($file)."/*",$host["rw"]))
+                || in_array(dirname($basedir)."/*",$host["r"]) || in_array(dirname($basedir)."/*",$host["rw"]))
                 continue;
             return false;
         }
@@ -84,8 +107,9 @@ final class AccessConfig {
         foreach($hosts as $host) {
             if(isset($host["w"][$file]) || isset($host["rw"][$file]))
                 continue;
+            $basedir = preg_replace("/([^\\\]) .*/","$1",$file);
             if (in_array($file,$host["w"]) || in_array($file,$host["rw"])
-                || in_array(dirname($file)."/*",$host["w"]) || in_array(dirname($file)."/*",$host["rw"]))
+                || in_array(dirname($basedir)."/*",$host["w"]) || in_array(dirname($basedir)."/*",$host["rw"]))
                 continue;
             return false;
         }
@@ -99,7 +123,8 @@ final class AccessConfig {
         foreach($hosts as $host) {
             if(isset($host["x"][$file]))
                 continue;
-            if(in_array($file,$host["x"]) || in_array(dirname($file)."/*",$host["x"]))
+            $basedir = preg_replace("/([^\\\]) .*/","$1",$file);            
+            if(in_array($file,$host["x"]) || in_array(dirname($basedir)."/*",$host["x"]))
                 continue;
             return false;
         }

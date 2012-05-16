@@ -1,4 +1,26 @@
 <?php
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 
 class Api_Store_LegacyLayer_TargetModifierModel extends IcingaStoreTargetModifierModel {
     public function resolveColumnAlias($alias) {
@@ -170,12 +192,6 @@ class Api_Store_LegacyLayer_TargetModifierModel extends IcingaStoreTargetModifie
             'HOST_SCHEDULED_DOWNTIME_DEPTH'        =>'hs.scheduled_downtime_depth',
             'HOST_SHOULD_BE_SCHEDULED'         =>     'hs.should_be_scheduled',
             'HOST_STATUS_UPDATE_TIME'          =>    'hs.status_update_time',
-            'HOST_EXECUTION_TIME_MIN'          =>    'min(hs.execution_time)',
-            'HOST_EXECUTION_TIME_AVG'          =>    'avg(hs.execution_time)',
-            'HOST_EXECUTION_TIME_MAX'        =>    'max(hs.execution_time)',
-            'HOST_LATENCY_MIN'               =>    'min(hs.latency)',
-            'HOST_LATENCY_AVG'               =>    'avg(hs.latency)',
-            'HOST_LATENCY_MAX'               =>    'max(hs.latency)',
             'HOST_ALL'                       =>    'h.*',
             'HOST_STATUS_ALL'                =>      'hs.*',
             'HOST_STATE'                     =>    'hs.current_state',
@@ -234,12 +250,6 @@ class Api_Store_LegacyLayer_TargetModifierModel extends IcingaStoreTargetModifie
             'SERVICE_SCHEDULED_DOWNTIME_DEPTH' =>        'ss.scheduled_downtime_depth',
             'SERVICE_SHOULD_BE_SCHEDULED'=> 'ss.should_be_scheduled',
             'SERVICE_STATUS_UPDATE_TIME'=>  'ss.status_update_time',
-            'SERVICE_EXECUTION_TIME_MIN' => 'min(ss.execution_time)',
-            'SERVICE_EXECUTION_TIME_AVG' => 'avg(ss.execution_time)',
-            'SERVICE_EXECUTION_TIME_MAX' => 'max(ss.execution_time)',
-            'SERVICE_LATENCY_MIN'        => 'min(ss.latency)',
-            'SERVICE_LATENCY_AVG'        => 'avg(ss.latency)',
-            'SERVICE_LATENCY_MAX'        => 'max(ss.latency)',
             'SERVICE_ALL'               =>  's.*',
             'SERVICE_STATUS_ALL'        =>  'ss.*',
             'SERVICE_CUSTOMVARIABLE_NAME'=> 'cvss.varname',
@@ -598,7 +608,7 @@ class Api_Store_LegacyLayer_TargetModifierModel extends IcingaStoreTargetModifie
                 $this->additionalSelects["COUNT"] = "count(DISTINCT h.host_object_id)";
                 $this->ignoreIds = true;
                 $this->forceGroup[] = "hs.current_state";
-                $this->forceGroup[] = "(hs.has_been_checked-hs.should_be_scheduled)*-1";
+                $this->forceGroup[] = "hs.has_been_checked";
                 $this->retainedAlias = "h";
                 $this->aliasDefs = array(
                         "hs"  => array("src" => "h", "relation" => "status","type"=>"inner","alwaysJoin"=>true),
@@ -625,7 +635,7 @@ class Api_Store_LegacyLayer_TargetModifierModel extends IcingaStoreTargetModifie
                 $this->additionalSelects["COUNT"] = "count(DISTINCT s.service_object_id)";
                 $this->retainedAlias = "s";
                 $this->forceGroup[] = "ss.current_state";
-                $this->forceGroup[] = "(ss.has_been_checked-ss.should_be_scheduled)*-1";
+                $this->forceGroup[] = "ss.has_been_checked";
                 $this->aliasDefs = array(
                         "s"  => array("src" => "ss", "relation" => "service", "alwaysJoin" => true, "type"=>"inner"),
                         "os" => array("src" => "ss", "relation" => "serviceobject", "alwaysJoin" => true, "with"=>"os.is_active=1"),

@@ -1,53 +1,75 @@
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 /*global Ext: false, Icinga: false, AppKit: false, _: false, Cronk: false */
 Ext.ns('Icinga.Cronks.System.MonitorPerformance');
 
 (function() {
-	"use strict";
-	
-	Icinga.Cronks.System.MonitorPerformance.Cronk = Ext.extend(Ext.Panel, {
-		layout: 'column',
-		
-		hostThreshold: 0,
-		serviceThreshold: 0,
-		refreshInterval: 60,
-		dataProvider: null,
-		storeId: 'overall-status-store',
-		task: {},
-		
-		constructor: function(c) {
-			Icinga.Cronks.System.StatusOverall.Cronk.superclass.constructor.call(this, c);
-		},
-		
-		initComponent: function() {
-			
-			Icinga.Cronks.System.StatusOverall.Cronk.superclass.initComponent.call(this);
-			
-			this.initDataView();
-			
-			this.initRefreshButton();
-			
-			this.task = {
+    "use strict";
+    
+    Icinga.Cronks.System.MonitorPerformance.Cronk = Ext.extend(Ext.Panel, {
+        layout: 'column',
+        
+        hostThreshold: 0,
+        serviceThreshold: 0,
+        refreshInterval: 60,
+        dataProvider: null,
+        storeId: 'overall-status-store',
+        task: {},
+        
+        constructor: function(c) {
+            Icinga.Cronks.System.StatusOverall.Cronk.superclass.constructor.call(this, c);
+        },
+        
+        initComponent: function() {
+            
+            Icinga.Cronks.System.StatusOverall.Cronk.superclass.initComponent.call(this);
+            
+            this.initDataView();
+            
+            this.initRefreshButton();
+            
+            this.task = {
                 run: this.refresh,
                 interval: (this.refreshInterval*1000),
                 scope: this
             };
-			
-			if (this.refreshInterval) {
-				this.startRefreshTask();
-			} else {
-				throw("No interval was set!");
-			}
-		},
-		
-		startRefreshTask: function() {
-			AppKit.getTr().start(this.task);
-		},
-		
-		refresh: function() {
-			this.store.reload();
-		},
-		
-		initDataView: function() {
+            
+            if (this.refreshInterval) {
+                this.startRefreshTask();
+            } else {
+                throw("No interval was set!");
+            }
+        },
+        
+        startRefreshTask: function() {
+            AppKit.getTr().start(this.task);
+        },
+        
+        refresh: function() {
+            this.store.reload();
+        },
+        
+        initDataView: function() {
             this.viewTemplate = new Ext.XTemplate(
             '<tpl for=".">',
 
@@ -62,15 +84,16 @@ Ext.ns('Icinga.Cronks.System.MonitorPerformance');
 
                 '<div class="clearfix icinga-monitor-performance-container">',
                     '<div title="' + _('Host execution time (min/avg/max)') + '" class="key icinga-icon-execution-time"></div>',
-                    '<div class="value">{host_execution_time_min} / {host_execution_time_avg} / {host_execution_time_max}</div>',
+                    '<div class="value">{host_execution_time_min} / {host_execution_time_max} / {host_execution_time_avg}</div>',
                 '</div>',
 
                 '<div class="clearfix icinga-monitor-performance-container">',
                     '<div title="' + _('Host latency (min/avg/max)') + '" class="key icinga-icon-latency"></div>',
                     '<div class="value">{host_latency_min} / ',
+                    '{host_latency_max} / ',
                     '<tpl if="host_latency_avg &gt; '+this.hostThreshold+'"><span style="color:red" ext:qtip="Threshold reached"> {host_latency_avg} </span></tpl>',
                     '<tpl if="host_latency_avg &lt;= '+this.hostThreshold+'">{host_latency_avg} </tpl>',
-                    ' / {host_latency_max}</div>',
+                    '</div>',
                 '</div>',
 
             '</div>',
@@ -84,15 +107,15 @@ Ext.ns('Icinga.Cronks.System.MonitorPerformance');
 
                 '<div class="clearfix icinga-monitor-performance-container">',
                     '<div title="' + _('Service execution (min/avg/max)') + '" class="key icinga-icon-execution-time"></div>',
-                    '<div class="value">{service_execution_time_min} / {service_execution_time_avg} / {service_execution_time_max}</div>',
+                    '<div class="value">{service_execution_time_min} / {service_execution_time_max} / {service_execution_time_avg}</div>',
                 '</div>',
 
                 '<div class="clearfix icinga-monitor-performance-container">',
                     '<div title="' + _('Service latency (min/avg/max)') + '" class="key icinga-icon-latency"></div>',
-                    '<div class="value">{service_latency_min} / ',
+                    '<div class="value">{service_latency_min} / {service_latency_max} /',
                     '<tpl if="service_latency_avg &gt; '+this.serviceThreshold+'"><span style="color:red" ext:qtip="Threshold reached"> {service_latency_avg} </span></tpl>',
                     '<tpl if="service_latency_avg &lt;= '+this.serviceThreshold+'">{service_latency_avg} </tpl>',
-                    ' / {service_latency_avg}</div>',
+                    '</div>',
                 '</div>',
 
             '</div>',
@@ -115,9 +138,9 @@ Ext.ns('Icinga.Cronks.System.MonitorPerformance');
             });
             
             this.add(this.view);
-		},
-		
-		initRefreshButton: function() {
+        },
+        
+        initRefreshButton: function() {
             this.refreshButton = new Ext.Button({
                 iconCls: 'icinga-action-refresh',
                 handler: function(b, e) {
@@ -146,7 +169,7 @@ Ext.ns('Icinga.Cronks.System.MonitorPerformance');
                 },
                 items : this.refreshButton
             });
-		}
-		
-	});
+        }
+        
+    });
 })();

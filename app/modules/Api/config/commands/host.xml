@@ -135,7 +135,7 @@
         </ic:parameters>
     </ic:command>
     <ic:command name="ACKNOWLEDGE_HOST_PROBLEM_EXPIRE">
-        <ic:definition>ACKNOWLEDGE_SVC_PROBLEM_EXPIRE</ic:definition>
+        <ic:definition>ACKNOWLEDGE_HOST_PROBLEM_EXPIRE</ic:definition>
         <ic:type>host</ic:type>
         <ic:iconCls>icinga-icon-bricks</ic:iconCls>
         <ic:label>Acknowledge problem (expiration)</ic:label>
@@ -155,7 +155,7 @@
         <ic:iconCls>icinga-icon-bricks</ic:iconCls>
         <ic:label>Remove acknowledgement</ic:label>
         <ic:parameters>
-        	<ic:parameter ref="COMMAND_HOST" />
+            <ic:parameter ref="COMMAND_HOST" />
         </ic:parameters>
     </ic:command>
     <ic:command name="ADD_HOST_COMMENT">

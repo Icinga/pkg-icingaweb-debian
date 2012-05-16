@@ -1,3 +1,25 @@
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
 /*global Ext: false, Icinga: false, AppKit: false, _: false, Cronk: false */
 Ext.ns('Icinga.Cronks.System');
 
@@ -28,7 +50,7 @@ Ext.ns('Icinga.Cronks.System');
 
         initComponent: function () {
             Icinga.Cronks.System.CategoryEditorForm.superclass.initComponent.call(this);
-
+            
             this.addButton({
                 iconCls: 'icinga-action-icon-ok',
                 text: _('OK'),
@@ -417,6 +439,11 @@ Ext.ns('Icinga.Cronks.System');
                 var store = CLP.stores[storeid];
 
                 store.loadData(data);
+                
+                // Building a collection of all cronks available
+                Ext.iterate(data.rows, function(val, key) {
+                    Cronk.Inventory.add(val.cronkid, val);
+                });
             };
 
         var createView = function (storeid, title) {
@@ -551,6 +578,8 @@ Ext.ns('Icinga.Cronks.System');
             hideCollapseTool: true,
             fill: true
         },
+        
+        customCronkCredential: false,
 
         autoScroll: true,
         border: false,
@@ -613,6 +642,10 @@ Ext.ns('Icinga.Cronks.System');
             }]
         }],
 
+        initComponent: function() {
+            Icinga.Cronks.System.CronkListingPanel.superclass.initComponent.call(this);
+        },
+        
         applyState: function (state) {
             if (!Ext.isEmpty(state.active_tab) && state.active_tab >= 0) {
                 this.active_tab = state.active_tab;
@@ -747,7 +780,8 @@ Ext.ns('Icinga.Cronks.System');
 
             if (!Ext.isDefined(this.contextmenu)) {
                 var ctxMenu = new Ext.menu.Menu({
-
+                    customCronkCredential: this.customCronkCredential, // Copy attribute because scope is changing
+                
                     setItemData: function (view, index, node) {
                         this.ctxView = view;
                         this.ctxIndex = index;
@@ -824,12 +858,17 @@ Ext.ns('Icinga.Cronks.System');
 
                     listeners: {
                         show: function (ctxm) {
-                            if (this.getItemData().system === true || this.getItemData().owner === false) {
+                            if (this.customCronkCredential === true) {
+                                if (this.getItemData().system === true || this.getItemData().owner === false) {
+                                    this.items.get(idPrefix + '-button-edit').setDisabled(true);
+                                    this.items.get(idPrefix + '-button-delete').setDisabled(true);
+                                } else {
+                                    this.items.get(idPrefix + '-button-edit').setDisabled(false);
+                                    this.items.get(idPrefix + '-button-delete').setDisabled(false);
+                                }
+                            } else {
                                 this.items.get(idPrefix + '-button-edit').setDisabled(true);
                                 this.items.get(idPrefix + '-button-delete').setDisabled(true);
-                            } else {
-                                this.items.get(idPrefix + '-button-edit').setDisabled(false);
-                                this.items.get(idPrefix + '-button-delete').setDisabled(false);
                             }
                         }
                     }

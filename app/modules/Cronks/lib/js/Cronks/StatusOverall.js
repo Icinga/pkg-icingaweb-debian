@@ -1,4 +1,26 @@
-/*global Ext: false, Icinga: false, AppKit: false, _: false, Cronk: false */
+// {{{ICINGA_LICENSE_CODE}}}
+// -----------------------------------------------------------------------------
+// This file is part of icinga-web.
+// 
+// Copyright (c) 2009-2012 Icinga Developer Team.
+// All rights reserved.
+// 
+// icinga-web is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// icinga-web is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+// {{{ICINGA_LICENSE_CODE}}}
+
+/asglobal Ext: false, Icinga: false, AppKit: false, _: false, Cronk: false */
 Ext.ns('Icinga.Cronks.System.StatusOverall');
 
 (function () {
@@ -10,7 +32,13 @@ Ext.ns('Icinga.Cronks.System.StatusOverall');
                 '{count}',
             "</tpl>",
             '<tpl if="state == 100">',
+                '<tpl if="type == \'service\'">',
                 "<span ext:qtip='All problem services / all services '>",
+                '</tpl>',
+                '<tpl if="type == \'host\'">',
+                "<span ext:qtip='All problem hosts / all hosts '>",
+                '</tpl>',
+
                     "{allProblems} / {count}",
                 "</span>",
             "</tpl>",
@@ -180,9 +208,9 @@ Ext.ns('Icinga.Cronks.System.StatusOverall');
                 prepareData: Icinga.Cronks.System.StatusOverall.renderer.prepareInstanceData,
 
                 tpl: new Ext.XTemplate(
-                    '<div style="margin-left: 5px;">',
+                    '<div style="margin-left: 5px;">', 
                     '<tpl for=".">', 
-                    '<div style="overflow: auto;">', 
+                    '<div>', 
                     '<tpl if="id==0">', 
                     '<div class="icinga-overall-status-icon-instance icinga-icon-application" ext:qtip="Instances running"></div>', 
                     '</tpl>', 
@@ -263,15 +291,15 @@ Ext.ns('Icinga.Cronks.System.StatusOverall');
                             filter['f[' + d.type + '_status-value]'] = d.state_org;
                             filter['f[' + d.type + '_status-operator]'] = 50;
                             // not pending
-                            filter['f[' + d.type + '_is_pending-value]'] = 0;
-                            filter['f[' + d.type + '_is_pending-operator]'] = 80;
+                            filter['f[' + d.type + '_has_been_checked-value]'] = 1;
+                            filter['f[' + d.type + '_has_been_checked-operator]'] = 50;
                         } else if (d.state_org === 99) { // check pending
                             // state ok
                             filter['f[' + d.type + '_status-value]'] = 0;
                             filter['f[' + d.type + '_status-operator]'] = 50;
                             // pending
-                            filter['f[' + d.type + '_is_pending-value]'] = 0;
-                            filter['f[' + d.type + '_is_pending-operator]'] = 71;
+                            filter['f[' + d.type + '_has_been_checked-value]'] = 0;
+                            filter['f[' + d.type + '_has_been_checked-operator]'] = 50;
                         }
 
                         var id = 'status-overall-grid' + d.type + '-' + d.state_org;
@@ -279,11 +307,12 @@ Ext.ns('Icinga.Cronks.System.StatusOverall');
                         var cronk = {
                             parentid: id,
                             id: id + '-frame',
-                            stateuid: id + '-persistent',
+                            
                             title: String.format('{0}s {1}', d.type, Icinga.StatusData.simpleText(d.type, d.state_org).toLowerCase()),
                             crname: 'gridProc',
                             closable: true,
-                            params: params
+                            params: params,
+                            replace:true
                         };
 
                         dview.openCronkFn.delay(0, null, null, [cronk, filter]);

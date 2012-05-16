@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <template>
+    <type>DQL</type>
     <meta>
         <parameter name="name">Default instance template</parameter>
         <parameter name="description">Shows instance summary</parameter>
@@ -111,12 +112,8 @@
         </parameter>
     </option>
     <datasource>
-        <parameter name="target">IcingaApiConstants::TARGET_INSTANCE</parameter>
-        <parameter name="id">instance_id</parameter>
-        <parameter name="countmode">none</parameter>
-        <parameter name="countfields">
-            <parameter>INSTANCE_ID</parameter>
-        </parameter>
+        <parameter name="target">TARGET_INSTANCE</parameter>  
+        <parameter name="countmode">field</parameter>  
     </datasource>
     <pager>
         <parameter name="enabled">true</parameter>
@@ -189,7 +186,7 @@
                     <parameter name="arguments">
                         <parameter name="TrueImageClass">icinga-icon-accept</parameter>
                         <parameter name="FalseImageClass">icinga-icon-cancel</parameter>
-                        <parameter name="ext:qtip">Instance running</parameter>
+                        <parameter name="qtip">Instance running</parameter>
                     </parameter>
                 </parameter>
             </display>
@@ -305,7 +302,7 @@
         
         <field name="instance_update_duration">
             <datasource>
-                <parameter name="field">PROGRAMSTATUS_LAST_COMMAND_CHECK</parameter>
+                <parameter name="field">PROGRAMSTATUS_STATUS_UPDATE_TIME</parameter>
             </datasource>
             <display>
                 <parameter name="visible">true</parameter>
