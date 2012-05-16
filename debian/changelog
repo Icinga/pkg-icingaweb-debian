@@ -1,3 +1,9 @@
+icinga-web (1.6.2-3~netways) unstable; urgency=low
+
+  * removed icinga-web-bp from this source package
+
+ -- Markus Frosch <markus.frosch@netways.de>  Wed, 16 May 2012 13:23:50 +0200
+
 icinga-web (1.6.2-2~netways) unstable; urgency=low
 
   * added PNP Plugin
