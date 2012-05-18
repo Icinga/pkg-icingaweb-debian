@@ -1,4 +1,5 @@
 usr/share/dbconfig-common/data/icinga-web/install
+usr/share/dbconfig-common/data/icinga-web/upgrade/mysql
 
 etc/icinga-web/conf.d
 
