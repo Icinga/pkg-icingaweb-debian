@@ -1,3 +1,9 @@
+icinga-web (1.7.0-1~netwaysx0) unstable; urgency=low
+
+  * fixed cache dir removal by prerm script
+
+ -- Markus Frosch <markus.frosch@netways.de>  Fri, 18 May 2012 18:13:26 +0200
+
 icinga-web (1.7.0-1~netways) unstable; urgency=low
 
   * merged upstream version 1.7.0

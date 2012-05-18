@@ -5,8 +5,8 @@ set -e
 ###
 # Clear cache
 ###
-if [ -x /var/lib/icinga-web/app/cache ]; then
-	rm -rf /var/lib/icinga-web/app/cache
+if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
+	/usr/lib/icinga-web/bin/clearcache.sh
 fi
 
 . /usr/share/debconf/confmodule
