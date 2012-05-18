@@ -2,6 +2,10 @@ debian/apache2.conf /etc/icinga-web
 
 etc/icinga-web/conf.d/* etc/icinga-web/conf.d
 
+debian/cronks.xml etc/icinga-web/conf.d
+debian/module_reporting.xml etc/icinga-web/conf.d
+
+
 usr/app/* usr/share/icinga-web/app
 usr/pub/* usr/share/icinga-web/pub
 usr/pub/.htaccess usr/share/icinga-web/pub
@@ -19,5 +23,7 @@ usr/etc/schema/* usr/share/icinga-web/database
 
 usr/doc/* usr/share/doc/icinga-web
 
-debian/databases.xml.tmpl usr/share/icinga-web/tmpl
+debian/databases.xml etc/icinga-web/conf.d
+debian/database-web.xml.tmpl usr/share/icinga-web/tmpl
+debian/database-ido.xml.tmpl usr/share/icinga-web/tmpl
 

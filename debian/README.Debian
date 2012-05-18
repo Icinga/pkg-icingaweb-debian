@@ -1,0 +1,17 @@
+icinga-web Debian package
+----------------------------------------------
+
+Notes:
+
+  * Jasper Reporting is disabled by default
+    to activate it you have to edit:
+      
+      /etc/icinga-web/conf.d/cronks.xml
+        comment out the xml node <cronk name="icingaReportingDefault">
+      
+      /etc/icinga-web/conf.d/module_reporting.xml
+        set <module enabled="true">
+        and change the url and user/pass to fit your jasper instance
+
+ -- Markus Frosch <markus.frosch@netways.de>  Fri, 18 May 2012 10:59:22 +0200
+

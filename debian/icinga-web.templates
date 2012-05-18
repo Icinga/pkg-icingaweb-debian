@@ -1,5 +1,0 @@
-Template: icinga-web/icinga-ido-dsn
-Type: string
-Description: Enter the DSN of the Icinga IDO database:
- Example: mysql://icinga:XXXX@localhost/icinga
-
