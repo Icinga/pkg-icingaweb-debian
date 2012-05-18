@@ -1,8 +1,13 @@
 icinga-web (1.6.2-3~netways) unstable; urgency=low
 
   * removed icinga-web-bp from this source package
+  * Jasper Reporting is now disabled by default
+  * idoutils database connection is now on autoconfiguration
+    depending on the icinga-idoutils package
+  * better configuration files for the database connections
+  * better dependencies on other packages
 
- -- Markus Frosch <markus.frosch@netways.de>  Wed, 16 May 2012 13:23:50 +0200
+ -- Markus Frosch <markus.frosch@netways.de>  Fri, 18 May 2012 11:07:41 +0200
 
 icinga-web (1.6.2-2~netways) unstable; urgency=low
 

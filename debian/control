@@ -10,7 +10,7 @@ Vcs-Browser: https://git.netways.org/?p=icinga.web-debian.git;a=summary
 
 Package: icinga-web
 Architecture: all
-Depends: icinga (>= 1.6.1), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
+Depends: icinga-core (>= 1.6.1), icinga-idoutils (>= 1.6.1), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
 Recommends: mysql-client
 Description: Icinga's new webinterface
  Icinga offers 2 web interfaces for users to view Icinga monitoring
@@ -21,7 +21,7 @@ Description: Icinga's new webinterface
 
 Package: icinga-web-pnp
 Architecture: all
-Depends: icinga-web (= ${source:Version}), ${misc:Depends}
+Depends: pnp4nagios, icinga-web (= ${source:Version}), ${misc:Depends}
 Description: A plugin for icinga-web to integrate pnp4nagios in the
  webinterface.
  .
