@@ -12,9 +12,9 @@ if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
 fi
 
 if [ "$1" = "purge" ]; then
-        rm -f /etc/icinga-web/conf.d/databases-web.xml
+        rm -f /etc/icinga-web/conf.d/database-web.xml
         ucf --purge /etc/icinga-web/conf.d/database-web.xml
-        rm -f /etc/icinga-web/conf.d/databases-ido.xml
+        rm -f /etc/icinga-web/conf.d/database-ido.xml
         ucf --purge /etc/icinga-web/conf.d/database-ido.xml
 	rm -rf /var/lib/icinga-web/app/cache
         db_purge
