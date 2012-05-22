@@ -1,7 +1,13 @@
-icinga-web Debian package
-----------------------------------------------
+icinga-web for Debian
+=====================
 
 Notes:
+
+  * Please use debconf to configure the database credentials for
+    the database which stores the internal data for icinga-web.
+  
+  * Access to the idoutils database is configured automatically
+    depending on the icinga-idoutils package.
 
   * Jasper Reporting is disabled by default
     to activate it you have to edit:
@@ -13,5 +19,5 @@ Notes:
         set <module enabled="true">
         and change the url and user/pass to fit your jasper instance
 
- -- Markus Frosch <markus.frosch@netways.de>  Fri, 18 May 2012 10:59:22 +0200
+ -- Markus Frosch <markus.frosch@netways.de>  Tue, 22 May 2012 13:35:58 +0200
 

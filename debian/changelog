@@ -1,3 +1,10 @@
+icinga-web (1.7.0-1~netwaysx1) unstable; urgency=low
+
+  * new descriptions for the control file
+  * updated README.Debian
+
+ -- Markus Frosch <markus.frosch@netways.de>  Tue, 22 May 2012 13:37:09 +0200
+
 icinga-web (1.7.0-1~netwaysx0) unstable; urgency=low
 
   * fixed cache dir removal by prerm script

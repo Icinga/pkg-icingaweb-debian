@@ -12,19 +12,46 @@ Package: icinga-web
 Architecture: all
 Depends: icinga-core (>= 1.7.0), icinga-idoutils (>= 1.7.0), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
 Recommends: mysql-client
-Description: Icinga's new webinterface
- Icinga offers 2 web interfaces for users to view Icinga monitoring
- results and send commands to the Icinga Core. In both Icinga New and
- Classic Web, host and service status, history, notifications and
- status maps are available to keep a check on the health of your network
- in real-time. Both also support IPv4 as well as IPv6 addresses.
+Description: host and network monitoring system - modern web interface
+ Icinga is a modular monitoring framework for hosts, services, and
+ networks, based on the Nagios project. It is designed to be easy to
+ understand and modify to fit any need.
+ .
+ Features include:
+  * monitoring of network services via ping, SMTP, POP3, HTTP, NNTP, or
+    TCP port;
+  * plugin interface to allow for user-developed service checks;
+  * contact notifications when problems occur and get resolved (via
+    email, pager, or user-defined method)
+  * support for proactive problem resolution (handlers can be defined to
+    be run during service or host events);
+  * web output: current status, notifications, problem history, log
+    file, etc.
+ .
+ This package provides the new webinterface to view Icinga monitoring
+ results and send commands to the Icinga Core. Host and service status,
+ history, notifications and status maps are available to keep a check on
+ the health of your network in real-time.
 
 Package: icinga-web-pnp
 Architecture: all
 Depends: pnp4nagios, icinga-web (= ${source:Version}), ${misc:Depends}
-Description: A plugin for icinga-web to integrate pnp4nagios in the
- webinterface.
+Description: host and network monitoring system - modern web interface plugin for pnp4nagios
+ Icinga is a modular monitoring framework for hosts, services, and
+ networks, based on the Nagios project. It is designed to be easy to
+ understand and modify to fit any need.
  .
- This only installs some xml files for the webinterface - no database
- modification required.
+ Features include:
+  * monitoring of network services via ping, SMTP, POP3, HTTP, NNTP, or
+    TCP port;
+  * plugin interface to allow for user-developed service checks;
+  * contact notifications when problems occur and get resolved (via
+    email, pager, or user-defined method)
+  * support for proactive problem resolution (handlers can be defined to
+    be run during service or host events);
+  * web output: current status, notifications, problem history, log
+    file, etc.
+ .
+ This package provides a plugin for Icinga new webinterface integrating
+ pnp4nagios into the interface for accessing the pnp4nagio data directly.
 
