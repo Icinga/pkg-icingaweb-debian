@@ -3,11 +3,22 @@ icinga-web for Debian
 
 Notes:
 
-  * Please use debconf to configure the database credentials for
-    the database which stores the internal data for icinga-web.
-  
-  * Access to the idoutils database is configured automatically
-    depending on the icinga-idoutils package.
+  * Icinga Web uses two database connections
+
+    1) IDO database, which is configured with by a dependency
+       on the icinga-idoutils packet
+ 
+       generated file: /etc/icinga-web/conf.d/database-ido.xml
+
+    2) Icinga Web database, which stores users and settings and
+       is configured by using the dbconfig-common system and debconf
+
+       generated file: /etc/icinga-web/conf.d/database-web.xml
+
+  * If you want to to use different database connection settings
+    modify the file
+      /etc/icinga-web/conf.d/databases.xml
+    and comment the includes of the auto generated xml files
 
   * Jasper Reporting is disabled by default
     to activate it you have to edit:
@@ -18,6 +29,8 @@ Notes:
       /etc/icinga-web/conf.d/module_reporting.xml
         set <module enabled="true">
         and change the url and user/pass to fit your jasper instance
+
+     Please see the Icinga Wiki for more information.
 
  -- Markus Frosch <markus@lazyfrosch.de>  Tue, 06 Jun 2012 19:04:58 +0200
 
