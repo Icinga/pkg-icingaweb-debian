@@ -2,8 +2,9 @@ icinga-web (1.7.0-1~netwaysx1) unstable; urgency=low
 
   * new descriptions for the control file
   * updated README.Debian
+  * changed maintainer mail address
 
- -- Markus Frosch <markus.frosch@netways.de>  Tue, 22 May 2012 13:37:09 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 06 Jun 2012 19:01:48 +0200
 
 icinga-web (1.7.0-1~netwaysx0) unstable; urgency=low
 

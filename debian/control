@@ -1,12 +1,12 @@
 Source: icinga-web
 Section: php
 Priority: extra
-Maintainer: Markus Frosch <markus.frosch@netways.de>
+Maintainer: Markus Frosch <markus@lazyfrosch.de>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev, quilt (>= 0.46-7~)
 Standards-Version: 3.9.1
 Homepage: http://www.icinga.org
-Vcs-Git: git://git.netways.org/icinga.web-debian.git
-Vcs-Browser: https://git.netways.org/?p=icinga.web-debian.git;a=summary
+#Vcs-Git: git://git.netways.org/icinga.web-debian.git
+#Vcs-Browser: https://git.netways.org/?p=icinga.web-debian.git;a=summary
 
 Package: icinga-web
 Architecture: all

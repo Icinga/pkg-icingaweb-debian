@@ -1,6 +1,6 @@
 This work was packaged for Debian by:
 
-    Markus Frosch <markus.frosch@netways.de>
+    Markus Frosch <markus@lazyfrosch.de>
 
 It was downloaded from:
 
@@ -60,7 +60,7 @@ Vendor and foreign components:
 
 The Debian packaging is:
 
-    Copyright (C) 2012 Markus Frosch <markus.frosch@netways.de>
+    Copyright (C) 2012 Markus Frosch <markus@lazyfrosch.de>
     and is licensed under the GPL version 3,
     see "/usr/share/common-licenses/GPL-3".
 
