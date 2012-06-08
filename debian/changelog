@@ -1,5 +1,6 @@
-icinga-web (1.7.0-1~netwaysx1) unstable; urgency=low
+icinga-web (1.7.0-2) unstable; urgency=low
 
+  * first release for official Debian (Closes: #618807)
   * new descriptions for the control file
   * added config system for root password (of Icinga Web)
   * added config select for webserver configuration
@@ -8,7 +9,7 @@ icinga-web (1.7.0-1~netwaysx1) unstable; urgency=low
   * updated database auto configuration to support special chars in password
   * changed file permission settings for config files
 
- -- Markus Frosch <markus@lazyfrosch.de>  Fri, 08 Jun 2012 16:58:30 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Fri, 08 Jun 2012 17:09:46 +0200
 
 icinga-web (1.7.0-1~netwaysx0) unstable; urgency=low
 
