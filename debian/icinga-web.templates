@@ -1,0 +1,23 @@
+Template: icinga-web/rootpassword
+Type: password
+Description: Icinga new web administrative password:
+ Please provide the password for the user "root" in the webinterface.
+ .
+ This is password you need to access the webinterface with the
+ default administrative user. After login you will be able
+ to create new users and set permissions for the users.
+ .
+ Please be aware that the password will be reset to this password
+ after each run of the postinstall process.
+
+Template: icinga-web/rootpassword-repeat
+Type: password
+Description: Please re-enter the password:
+ Please enter the same user password again to verify you have typed it
+ correctly.
+
+Template: icinga-web/rootpassword-mismatch
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+

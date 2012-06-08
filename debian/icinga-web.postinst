@@ -73,6 +73,45 @@ generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
 [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
 
 ###
+# Set root password in database
+###
+setpassword() {
+    password="$1"
+    
+    # gen new salt
+    salt=$(php5 -r 'echo hash("sha256", uniqid("root_", mt_rand()));')
+    
+    # gen new pw hash
+    export SALT="$salt"
+    export PW="$password"
+    pwhash=$(php5 -r 'echo hash_hmac("sha256", getenv("PW"), getenv("SALT"));')
+
+    # load database connection info
+    source /etc/dbconfig-common/icinga-web.conf
+
+    if [ "$dbc_dbtype" = "mysql" ]; then
+        # query the database to update
+        salt_e=${salt/\'/\\\'}
+        pwhash_e=${pwhash/\'/\\\'}
+        
+        export MYSQL_PWD="$dbc_dbpass"
+        echo "UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""' WHERE user_name = 'root';" \
+           | mysql -h "${dbc_dbhost:=localhost}" -u "$dbc_dbuser" "$dbc_dbname"
+        echo "root password updated in database!"
+    else
+        echo "db type '$dbc_dbtype' not implemented!" >&2
+    fi
+}
+
+db_get icinga-web/rootpassword || true
+password="$RET"
+if [ "$password" != "" ]; then
+    setpassword $password
+else
+    echo "no password configured - root password for Icinga Web will not be set!"
+fi
+
+###
 # Clear cache
 ###
 if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
