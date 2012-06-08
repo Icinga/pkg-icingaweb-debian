@@ -2,15 +2,15 @@
 
 set -e 
 
+. /usr/share/debconf/confmodule
+. /usr/share/dbconfig-common/dpkg/prerm.mysql
+dbc_go icinga-web $@
+
 ###
 # Clear cache
 ###
 if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
 	/usr/lib/icinga-web/bin/clearcache.sh
 fi
-
-. /usr/share/debconf/confmodule
-. /usr/share/dbconfig-common/dpkg/prerm.mysql
-dbc_go icinga-web $@
 
 #DEBHELPER#

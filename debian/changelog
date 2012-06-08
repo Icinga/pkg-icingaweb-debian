@@ -3,8 +3,9 @@ icinga-web (1.7.0-1~netwaysx1) unstable; urgency=low
   * new descriptions for the control file
   * updated README.Debian
   * changed maintainer mail address
+  * updated database auto configuration to support special chars in password
 
- -- Markus Frosch <markus@lazyfrosch.de>  Wed, 06 Jun 2012 19:01:48 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Fri, 08 Jun 2012 07:19:10 +0200
 
 icinga-web (1.7.0-1~netwaysx0) unstable; urgency=low
 

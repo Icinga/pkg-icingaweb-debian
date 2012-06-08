@@ -7,15 +7,64 @@ set -e
 ###
 . /usr/share/debconf/confmodule
 . /usr/share/dbconfig-common/dpkg/postinst.mysql
-dbc_generate_include='template:/etc/icinga-web/conf.d/database-web.xml'
-dbc_generate_include_owner='www-data:www-data'
-dbc_generate_include_args='--ucf -o template_infile=/usr/share/icinga-web/tmpl/database-web.xml.tmpl'
 dbc_go icinga-web $@
 
 ###
-# Write Icinga IDO Connection
+# Database connection files
 ###
-dbconfig-generate-include -a -f "template" --ucf -o "template_infile=/usr/share/icinga-web/tmpl/database-ido.xml.tmpl" -O "www-data:www-data" -m "0640" -U "/etc/dbconfig-common/icinga-idoutils.conf" "/etc/icinga-web/conf.d/database-ido.xml"
+uriescape() {
+    echo "$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$1")"
+}
+
+generate_dbxml() {
+    local file="$1"
+    local template="$2"
+    local dbconfig="$3"
+
+    # load dbconfig file
+    if [ -f "$dbconfig" ]; then
+        source $dbconfig
+    else
+        echo "database config failed: file $dbconfig does not exist" >&2
+        return 1
+    fi
+
+    # leave when dbconfig not enabled
+    if [ "$dbc_install" != "true" ]; then
+        echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!" 
+        return 1
+    fi
+
+    # create tempfile
+    local tempfile=$(tempfile -m 600 -p "$(basename $file)")
+
+    # add a colon to port
+    [ "$dbc_dbport" != "" ] && dbc_dbport=":$dbc_dbport"
+    dbc_edbuser=$(uriescape $dbc_dbuser)
+    dbc_edbpass=$(uriescape $dbc_dbpass)
+    dbc_edbname=$(uriescape $dbc_dbname)
+
+    # uri escape the vars
+    # build the dsn
+    local dsn="$dbc_dbtype://$dbc_edbuser:$dbc_edbpass@${dbc_server:=localhost}$dbc_dbport/$dbc_edbname"
+
+    # write xml to temp
+    cat $template | sed "s|_DBDSN_|$dsn|" > $tempfile
+
+    # replace the file with ucf
+    ucf --debconf-ok $tempfile $file
+    
+    echo "database config successful: $file"
+    rm -f $tempfile 
+}
+
+generate_dbxml /etc/icinga-web/conf.d/database-web.xml \
+               /usr/share/icinga-web/tmpl/database-web.xml.tmpl \
+               /etc/dbconfig-common/icinga-web.conf
+
+generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
+               /usr/share/icinga-web/tmpl/database-ido.xml.tmpl \
+               /etc/dbconfig-common/icinga-idoutils.conf
 
 ###
 # Apache2
