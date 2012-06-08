@@ -67,10 +67,42 @@ generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
                /etc/dbconfig-common/icinga-idoutils.conf
 
 ###
-# Apache2
+# webservers (currently only Apache2)
 ###
-[ -f /etc/apache2/mods-enabled/rewrite.load ] || a2enmod rewrite
-[ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
+
+# get the list of selected servers
+db_get icinga-web/httpd
+servers=$(echo $RET | sed -e 's/,/ /g')
+
+# check for activated servers
+for server in $servers; do
+    if [ "$server" = "apache2" ]; then
+        echo "enabling config for webserver $server..."
+
+        # enable mod rewrite
+        [ -f /etc/apache2/mods-enabled/rewrite.load ] || a2enmod rewrite
+        
+        # create symlink if not existing
+        [ -f /etc/apache2/conf.d/icinga-web.conf ] || ln -vs ../../icinga-web/apache2.conf /etc/apache2/conf.d/icinga-web.conf
+        
+        # reload webserver
+        [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
+    else
+        echo "warning: webserver $server is not supported!"
+    fi
+done
+
+# check for not wanted servers
+if ! echo $servers | grep -q "apache2"; then
+    # remove link if exists
+    if [ -L /etc/apache2/conf.d/icinga-web.conf ]; then
+        echo "removing config for webserver apache2"
+        rm -f /etc/apache2/conf.d/icinga-web.conf
+        
+        # reload webserver
+        [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
+    fi
+fi
 
 ###
 # Set root password in database

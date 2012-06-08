@@ -4,21 +4,24 @@ set -e
 #set -x
 
 if [ -f /usr/share/debconf/confmodule ]; then
-        . /usr/share/debconf/confmodule
+    . /usr/share/debconf/confmodule
 fi
 if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
-        . /usr/share/dbconfig-common/dpkg/postrm.mysql
-        dbc_go icinga-web $@
+    . /usr/share/dbconfig-common/dpkg/postrm.mysql
+    dbc_go icinga-web $@
 fi
 
 if [ "$1" = "purge" ]; then
-        rm -f /etc/icinga-web/conf.d/database-web.xml
-        ucf --purge /etc/icinga-web/conf.d/database-web.xml
-        rm -f /etc/icinga-web/conf.d/database-ido.xml
-        ucf --purge /etc/icinga-web/conf.d/database-ido.xml
+    # removing webserver link
+    [ -L /etc/apache2/conf.d/icinga-web.conf ] && rm -f /etc/apache2/conf.d/icinga-web.conf
+
+    rm -f /etc/icinga-web/conf.d/database-web.xml
+    ucf --purge /etc/icinga-web/conf.d/database-web.xml
+    rm -f /etc/icinga-web/conf.d/database-ido.xml
+    ucf --purge /etc/icinga-web/conf.d/database-ido.xml
 	rm -rf /var/lib/icinga-web/app/cache
 	rm -rf /var/log/icinga-web
-        db_purge
+    db_purge
 fi
 
 #DEBHELPER#

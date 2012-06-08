@@ -11,7 +11,7 @@ Homepage: http://www.icinga.org
 Package: icinga-web
 Architecture: all
 Depends: icinga-core (>= 1.7.0), icinga-idoutils (>= 1.7.0), ucf, dbconfig-common, php5-cli, php5, php5-gd, php5-xsl, php5-mysql, ${misc:Depends}
-Recommends: mysql-client
+Recommends: mysql-client, apache2 | httpd
 Description: host and network monitoring system - modern web interface
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to

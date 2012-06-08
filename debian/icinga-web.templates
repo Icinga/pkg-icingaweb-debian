@@ -1,3 +1,13 @@
+Template: icinga-web/httpd
+Type: multiselect
+Choices: apache2
+Default: apache2
+Description: Apache servers to configure for icinga:
+ Please select which Apache servers should be configured for icinga.
+ .
+ If you would prefer to perform configuration manually, leave all
+ servers unselected.
+
 Template: icinga-web/rootpassword
 Type: password
 Description: Icinga new web administrative password:
