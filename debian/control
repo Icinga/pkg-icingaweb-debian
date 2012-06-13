@@ -5,8 +5,8 @@ Maintainer: Markus Frosch <markus@lazyfrosch.de>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev, quilt (>= 0.46-7~)
 Standards-Version: 3.9.1
 Homepage: http://www.icinga.org
-#Vcs-Git: git://git.netways.org/icinga.web-debian.git
-#Vcs-Browser: https://git.netways.org/?p=icinga.web-debian.git;a=summary
+Vcs-Git: git://git.debian.org/git/pkg-nagios/pkg-icinga-web.git
+Vcs-Browser: http://git.debian.org/?p=pkg-nagios/pkg-icinga-web.git;a=summary
 
 Package: icinga-web
 Architecture: all
