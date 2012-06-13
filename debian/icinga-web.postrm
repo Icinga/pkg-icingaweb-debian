@@ -1,8 +1,10 @@
 #!/bin/sh
 
 set -e
-#set -x
 
+###
+# Database
+###
 if [ -f /usr/share/debconf/confmodule ]; then
     . /usr/share/debconf/confmodule
 fi
@@ -11,10 +13,23 @@ if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
     dbc_go icinga-web $@
 fi
 
-if [ "$1" = "purge" ]; then
-    # removing webserver link
-    [ -L /etc/apache2/conf.d/icinga-web.conf ] && rm -f /etc/apache2/conf.d/icinga-web.conf
+###
+# Webserver
+###
 
+# Apache2
+if [ -L /etc/apache2/conf.d/icinga-web.conf ]; then
+    echo "removing link /etc/apache2/conf.d/icinga-web.conf ..."
+    # remove link to config
+    rm -f /etc/apache2/conf.d/icinga-web.conf
+    # reload webserver
+    [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload || true
+fi
+
+###
+# Delete Configs and other stuff on purge
+###
+if [ "$1" = "purge" ]; then
     rm -f /etc/icinga-web/conf.d/database-web.xml
     ucf --purge /etc/icinga-web/conf.d/database-web.xml
     rm -f /etc/icinga-web/conf.d/database-ido.xml
