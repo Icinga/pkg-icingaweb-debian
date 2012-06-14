@@ -2,7 +2,7 @@ Template: icinga-web/httpd
 Type: multiselect
 Choices: apache2
 Default: apache2
-Description: Apache servers to configure for icinga:
+_Description: Apache servers to configure for icinga:
  Please select which Apache servers should be configured for icinga.
  .
  If you would prefer to perform configuration manually, leave all
@@ -10,7 +10,7 @@ Description: Apache servers to configure for icinga:
 
 Template: icinga-web/rootpassword
 Type: password
-Description: Icinga new web administrative password:
+_Description: Icinga new web administrative password:
  Please provide the password for the user "root" in the webinterface.
  .
  This is password you need to access the webinterface with the
@@ -22,12 +22,12 @@ Description: Icinga new web administrative password:
 
 Template: icinga-web/rootpassword-repeat
 Type: password
-Description: Please re-enter the password:
+_Description: Please re-enter the password:
  Please enter the same user password again to verify you have typed it
  correctly.
 
 Template: icinga-web/rootpassword-mismatch
 Type: error
-Description: Password input error
+_Description: Password input error
  The two passwords you entered were not the same. Please try again.
 

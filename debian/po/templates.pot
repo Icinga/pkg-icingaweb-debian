@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: icinga-web\n"
+"Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
+"POT-Creation-Date: 2012-06-14 18:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: multiselect
+#. Description
+#: ../icinga-web.templates:1001
+msgid "Apache servers to configure for icinga:"
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../icinga-web.templates:1001
+msgid "Please select which Apache servers should be configured for icinga."
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../icinga-web.templates:1001
+msgid ""
+"If you would prefer to perform configuration manually, leave all servers "
+"unselected."
+msgstr ""
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid "Icinga new web administrative password:"
+msgstr ""
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid "Please provide the password for the user \"root\" in the webinterface."
+msgstr ""
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid ""
+"This is password you need to access the webinterface with the default "
+"administrative user. After login you will be able to create new users and "
+"set permissions for the users."
+msgstr ""
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid ""
+"Please be aware that the password will be reset to this password after each "
+"run of the postinstall process."
+msgstr ""
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid "Please re-enter the password:"
+msgstr ""
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid ""
+"Please enter the same user password again to verify you have typed it "
+"correctly."
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:4001
+msgid "Password input error"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:4001
+msgid "The two passwords you entered were not the same. Please try again."
+msgstr ""
