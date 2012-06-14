@@ -58,9 +58,6 @@ override_dh_install:
 	# remove LICENSE files for packages - see debian/copyright
 	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/LICENSE
 
-override_dh_auto_clean:
-	dh_auto_clean
-
 override_dh_clean:
 	dh_clean
 	rm -f config.status
