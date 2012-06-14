@@ -1,3 +1,3 @@
-contrib/PNP_Integration/templateExtensions/* /usr/share/icinga-web/app/modules/Cronks/data/xml/extensions
-contrib/PNP_Integration/doc/* usr/share/doc/icinga-web-pnp
 contrib/PNP_Integration/README usr/share/doc/icinga-web-pnp
+contrib/PNP_Integration/doc/* usr/share/doc/icinga-web-pnp
+contrib/PNP_Integration/templateExtensions/* /usr/share/icinga-web/app/modules/Cronks/data/xml/extensions

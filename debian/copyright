@@ -16,7 +16,7 @@ License: GPL-3
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program; if not, write to the 
+ along with this program; if not, write to the
  .
  Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
  A 02110-1301, USA.
@@ -39,7 +39,7 @@ License: GPL-3
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program; if not, write to the 
+ along with this program; if not, write to the
  .
  Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
  A 02110-1301, USA.
@@ -73,20 +73,20 @@ License: LGPL-2.1+
 Files: lib/agavi/src/config/schematron/*
 Copyright: Copyright (c) 2000-2010 Rick Jelliffe and Academia Sinica Computing Center, Taiwan
 License: BSD
- This software is provided 'as-is', without any express or implied warranty. 
- In no event will the authors be held liable for any damages arising from 
+ This software is provided 'as-is', without any express or implied warranty.
+ In no event will the authors be held liable for any damages arising from
  the use of this software.
  .
- Permission is granted to anyone to use this software for any purpose, 
+ Permission is granted to anyone to use this software for any purpose,
  including commercial applications, and to alter it and redistribute it freely,
  subject to the following restrictions:
  .
  1. The origin of this software must not be misrepresented; you must not claim
- that you wrote the original software. If you use this software in a product, 
- an acknowledgment in the product documentation would be appreciated but is 
+ that you wrote the original software. If you use this software in a product,
+ an acknowledgment in the product documentation would be appreciated but is
  not required.
  .
- 2. Altered source versions must be plainly marked as such, and must not be 
+ 2. Altered source versions must be plainly marked as such, and must not be
  misrepresented as being the original software.
  .
  3. This notice may not be removed or altered from any source distribution.
@@ -143,7 +143,7 @@ License: BSD
  Unicode and the Unicode logo are trademarks of Unicode, Inc., and may be registered in some
  jurisdictions. All other trademarks and registered trademarks mentioned herein are the property
  of their respective owners.
- 
+
 Files: lib/doctrine/*
 Copyright: 2006-2009 Jonathan H. Wage <jonwage@gmail.com>
            2005-2007 Konsta Vesterinen <kvesteri@cc.hut.fi>
@@ -159,7 +159,7 @@ License: LGPL-2.1
  Lesser General Public License for more details.
  .
  You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software 
+ License along with this library; if not, write to the Free Software
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
  MA 02110-1301, USA.
  .
@@ -221,15 +221,15 @@ License: BSD
  .
      * Redistributions of source code must retain the above copyright notice,
        this list of conditions and the following disclaimer.
- . 
+ .
      * Redistributions in binary form must reproduce the above copyright notice,
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
- . 
+ .
      * Neither the name of Zend Technologies USA, Inc. nor the names of its
        contributors may be used to endorse or promote products derived from this
        software without specific prior written permission.
- . 
+ .
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -255,7 +255,7 @@ License: GPL-3
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program; if not, write to the 
+ along with this program; if not, write to the
  .
  Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
  A 02110-1301, USA.
@@ -358,7 +358,7 @@ License: GPL-3
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program; if not, write to the 
+ along with this program; if not, write to the
  .
  Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
  A 02110-1301, USA.
@@ -366,4 +366,3 @@ License: GPL-3
  On Debian systems, the full text of the GNU General Public
  License version 3 can be found in the file
  `/usr/share/common-licenses/GPL-3'.
-
