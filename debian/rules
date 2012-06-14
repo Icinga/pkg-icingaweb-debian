@@ -12,7 +12,7 @@
 b := $(shell pwd)/debian
 
 %:
-	dh --with quilt --buildsystem=autoconf $@
+	dh --buildsystem=autoconf $@
 
 override_dh_auto_configure:
 	./configure --prefix=/usr \
