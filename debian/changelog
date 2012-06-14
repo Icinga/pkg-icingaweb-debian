@@ -1,6 +1,7 @@
 icinga-web (1.7.0-2) unstable; urgency=low
 
   * first release for official Debian (Closes: #618807)
+  * added support for PostgreSQL in auto configuration
   * new descriptions for the control file
   * added config system for root password (of Icinga Web)
   * added config select for webserver configuration

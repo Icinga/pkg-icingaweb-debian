@@ -1,5 +1,6 @@
 usr/share/dbconfig-common/data/icinga-web/install
 usr/share/dbconfig-common/data/icinga-web/upgrade/mysql
+usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql
 
 etc/icinga-web/conf.d
 

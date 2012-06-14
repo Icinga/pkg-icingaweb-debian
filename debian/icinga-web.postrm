@@ -8,8 +8,8 @@ set -e
 if [ -f /usr/share/debconf/confmodule ]; then
     . /usr/share/debconf/confmodule
 fi
-if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
-    . /usr/share/dbconfig-common/dpkg/postrm.mysql
+if [ -f /usr/share/dbconfig-common/dpkg/postrm ]; then
+    . /usr/share/dbconfig-common/dpkg/postrm
     dbc_go icinga-web $@
 fi
 

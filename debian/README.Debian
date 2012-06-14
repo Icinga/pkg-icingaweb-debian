@@ -3,6 +3,8 @@ icinga-web for Debian
 
 Notes:
 
+  * Supported databases are: MySQL and PostgreSQL (by auto configuration)
+
   * Icinga Web uses two database connections
 
     1) IDO database, which is configured with by a dependency
