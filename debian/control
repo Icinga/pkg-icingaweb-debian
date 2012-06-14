@@ -3,7 +3,7 @@ Section: php
 Priority: extra
 Maintainer: Markus Frosch <markus@lazyfrosch.de>
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev, quilt (>= 0.46-7~)
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 Homepage: http://www.icinga.org
 Vcs-Git: git://git.debian.org/git/pkg-nagios/pkg-icinga-web.git
 Vcs-Browser: http://git.debian.org/?p=pkg-nagios/pkg-icinga-web.git;a=summary
