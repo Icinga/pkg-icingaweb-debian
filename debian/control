@@ -1,7 +1,8 @@
 Source: icinga-web
 Section: php
 Priority: extra
-Maintainer: Markus Frosch <markus@lazyfrosch.de>
+Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
+Uploaders: Markus Frosch <markus@lazyfrosch.de>, Alexander Wirt <formorer@debian.org>
 Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf
 Standards-Version: 3.9.3
 Homepage: http://www.icinga.org
