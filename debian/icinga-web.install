@@ -1,20 +1,11 @@
-
-
-
-
-
-
-
-
-
-
 debian/apache2.conf /etc/icinga-web
-debian/cronks.xml etc/icinga-web/conf.d
+etc/icinga-web/conf.d/* etc/icinga-web/conf.d
 debian/database-ido.xml.tmpl usr/share/icinga-web/tmpl
 debian/database-web.xml.tmpl usr/share/icinga-web/tmpl
 debian/databases.xml etc/icinga-web/conf.d
+debian/cronks.xml etc/icinga-web/conf.d
 debian/module_reporting.xml etc/icinga-web/conf.d
-etc/icinga-web/conf.d/* etc/icinga-web/conf.d
+
 usr/app/* usr/share/icinga-web/app
 usr/bin/clearcache.sh usr/lib/icinga-web/bin
 usr/doc/* usr/share/doc/icinga-web
