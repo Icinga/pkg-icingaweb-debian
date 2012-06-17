@@ -127,7 +127,7 @@ setpassword() {
         pwhash_e=${pwhash/\'/\\\'}
         
         export MYSQL_PWD="$dbc_dbpass"
-        echo "UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""' WHERE user_name = 'root';" \
+        echo "UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""', user_modified = NOW() WHERE user_name = 'root';" \
            | mysql -h "${dbc_dbhost:=localhost}" -u "$dbc_dbuser" "$dbc_dbname"
         echo "root password updated in database!"
     elif [ "$dbc_dbtype" = "pgsql" ]; then
@@ -135,7 +135,7 @@ setpassword() {
         salt_e=${salt/\'/\\\'}
         pwhash_e=${pwhash/\'/\\\'}
         
-        su -c "echo \"UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""' WHERE user_name = 'root';\" | psql '$dbc_dbname'" postgres >/dev/null
+        su -c "echo \"UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""', user_modified = NOW() WHERE user_name = 'root';\" | psql '$dbc_dbname'" postgres >/dev/null
         echo "root password updated in database!"
     else
         echo "db type '$dbc_dbtype' not implemented for setting root password!" >&2
