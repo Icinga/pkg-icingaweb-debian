@@ -40,8 +40,6 @@ override_dh_install:
 	rm ${b}/tmp/usr/doc/INSTALL
 	# remove LICENSE files for packages - see debian/copyright
 	rm ${b}/tmp/usr/doc/LICENSE
-	# move default databases.xml
-	mv ${b}/tmp/etc/icinga-web/conf.d/databases.xml ${b}/tmp/usr/doc/databases.xml.example
 	# Upstream CHANGELOG by debian policy
 	cat ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x > ${b}/tmp/usr/doc/changelog
 	rm ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x
