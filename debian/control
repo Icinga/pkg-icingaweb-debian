@@ -38,15 +38,15 @@ Description: host and network monitoring system - modern web interface
   * web output: current status, notifications, problem history, log
     file, etc.
  .
- This package provides the new webinterface to view Icinga monitoring
+ This package provides the new web interface to view Icinga monitoring
  results and send commands to the Icinga Core. Host and service status,
  history, notifications and status maps are available to keep a check on
- the health of your network in real-time.
+ the health of your network in real time.
 
 Package: icinga-web-pnp
 Architecture: all
 Depends: icinga-web (= ${source:Version}), pnp4nagios, ${misc:Depends}
-Description: host and network monitoring system - modern web interface plugin for pnp4nagios
+Description: host and network monitoring system - PNP4Nagios web plugin
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to
  understand and modify to fit any need.
@@ -62,5 +62,6 @@ Description: host and network monitoring system - modern web interface plugin fo
   * web output: current status, notifications, problem history, log
     file, etc.
  .
- This package provides a plugin for Icinga new webinterface integrating
- pnp4nagios into the interface for accessing the pnp4nagio data directly.
+ This package provides a plugin for Icinga's new web interface,
+ integrating PNP4Nagios to provide direct access to its data.
+
