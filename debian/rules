@@ -51,7 +51,7 @@ override_dh_install:
 	cp etc/schema/updates/mysql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.1-1
 	# PGSQL schema for dbconfig-common
 	cp ${b}/icinga-web/usr/share/icinga-web/database/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
-	cp etc/schema/updates/pgsql-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
+	cp etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
 	###
 	# PNP
 	###
