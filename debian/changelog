@@ -1,3 +1,16 @@
+icinga-web (1.7.1-1) UNRELEASED; urgency=low
+
+  [ Markus Frosch ]
+  * [69c7ff2] fixed overwrite of some default configs
+  * [f5f08e9] now updating user_modified when setting user password
+  * [79b2588] Imported Upstream version 1.7.1
+  * [c41e91f/670ce5b] pgsql install script and db upgrade to 1.7.1
+  * [ac6187c] added patch 10_db_version_fix for fixing database version string in updates
+  * [4b12ae9] fixed root password update bug when /root/.my.cnf
+              exists and contains credentials (Closes: #677844)
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 19 Jun 2012 08:22:31 +0200
+
 icinga-web (1.7.0-2) unstable; urgency=low
 
   [ Alexander Wirt ]
