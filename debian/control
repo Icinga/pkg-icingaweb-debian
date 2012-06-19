@@ -3,7 +3,7 @@ Section: php
 Priority: extra
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Uploaders: Markus Frosch <markus@lazyfrosch.de>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
-Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf
+Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, quilt
 Standards-Version: 3.9.3
 Homepage: http://www.icinga.org
 Vcs-Git: git://git.debian.org/git/pkg-nagios/pkg-icinga-web.git

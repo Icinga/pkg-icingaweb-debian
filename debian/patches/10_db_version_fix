@@ -1,0 +1,29 @@
+Description: Fixed database version string
+ version string is 1.7.0 instead of 1.7.1
+ .
+Author: Markus Frosch <markus@lazyfrosch.de>
+Origin: other
+Forwarded: https://dev.icinga.org/issues/2694
+Last-Update: 2012-06-19
+
+--- icinga-web-1.7.1.orig/etc/schema/updates/oracle_v1-7-0_to_v1-7-1.sql
++++ icinga-web-1.7.1/etc/schema/updates/oracle_v1-7-0_to_v1-7-1.sql
+@@ -1,2 +1,2 @@
+ DELETE FROM nsm_db_version;
+-INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
++INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+--- icinga-web-1.7.1.orig/etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql
++++ icinga-web-1.7.1/etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql
+@@ -1,4 +1,4 @@
+ DELETE FROM nsm_db_version;
+-INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.0', NOW(), NOW());
++INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.1', NOW(), NOW());
+ 
+ SELECT setval('nsm_target_target_id_seq','21');
+\ No newline at end of file
+--- icinga-web-1.7.1.orig/etc/schema/updates/mysql_v1-7-0_to_v1-7-1.sql
++++ icinga-web-1.7.1/etc/schema/updates/mysql_v1-7-0_to_v1-7-1.sql
+@@ -1,2 +1,2 @@
+ DELETE FROM nsm_db_version;
+-INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.0', NOW(), NOW());
++INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.1', NOW(), NOW());
