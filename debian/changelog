@@ -9,8 +9,10 @@ icinga-web (1.7.1-1) unstable; urgency=low
               version string in updates
   * [4b12ae9] fixed root password update bug when /root/.my.cnf
               exists and contains credentials (Closes: #677844)
-  * [8253475] added partial update for l10n recommendations (Updates: #677843)
-  * [ddc313f] fixed URI escape so URI::Escape is no longer needed (Closes: #678266)
+  * [8253475] added partial update for l10n recommendations
+              (Updates: #677843)
+  * [ddc313f] fixed URI escape so URI::Escape is no longer needed
+              (Closes: #678266)
   * [fd36c40] changed patch 10_db_version_fix - only update pgsql to 1.7.1
   * [4094863] removed extra installation of database schemas
 
