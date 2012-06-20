@@ -6,7 +6,6 @@ etc/icinga-web/conf.d
 
 usr/share/icinga-web
 usr/share/icinga-web/app
-usr/share/icinga-web/database
 usr/share/icinga-web/pub
 usr/share/icinga-web/lib
 usr/share/icinga-web/tmpl
