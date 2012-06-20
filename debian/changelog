@@ -1,15 +1,20 @@
-icinga-web (1.7.1-1) UNRELEASED; urgency=low
+icinga-web (1.7.1-1) unstable; urgency=low
 
   [ Markus Frosch ]
   * [69c7ff2] fixed overwrite of some default configs
   * [f5f08e9] now updating user_modified when setting user password
   * [79b2588] Imported Upstream version 1.7.1
   * [c41e91f/670ce5b] pgsql install script and db upgrade to 1.7.1
-  * [ac6187c] added patch 10_db_version_fix for fixing database version string in updates
+  * [ac6187c] added patch 10_db_version_fix for fixing database
+              version string in updates
   * [4b12ae9] fixed root password update bug when /root/.my.cnf
               exists and contains credentials (Closes: #677844)
+  * [8253475] added partial update for l10n recommendations (Updates: #677843)
+  * [ddc313f] fixed URI escape so URI::Escape is no longer needed (Closes: #678266)
+  * [fd36c40] changed patch 10_db_version_fix - only update pgsql to 1.7.1
+  * [4094863] removed extra installation of database schemas
 
- -- Markus Frosch <markus@lazyfrosch.de>  Mon, 19 Jun 2012 08:22:31 +0200
+ -- Alexander Wirt <formorer@debian.org>  Wed, 20 Jun 2012 23:45:15 +0200
 
 icinga-web (1.7.0-2) unstable; urgency=low
 
