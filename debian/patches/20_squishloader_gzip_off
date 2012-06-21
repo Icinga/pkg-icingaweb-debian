@@ -1,0 +1,90 @@
+Description: Disable squishloader for javascript by default
+ It was enabled before that all the JS code was compressed by Squishloader
+ to lower traffic.
+ .
+ This caused problems with some browser and produced long loading times
+ of the interface.
+Author: Marius Hein <marius.hein@netways.de>
+Origin: upstream
+Bug: https://dev.icinga.org/issues/2660
+Applied-Upstream: e36f2378905c9259602637014a833bb086afb0ad
+Reviewed-by: Markus Frosch <markus@lazyfrosch.de>
+Last-Update: 2012-06-21
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: icinga-web/app/modules/AppKit/config/module.xml.in
+===================================================================
+--- icinga-web.orig/app/modules/AppKit/config/module.xml.in	2012-06-21 15:27:00.121834325 +0200
++++ icinga-web/app/modules/AppKit/config/module.xml.in	2012-06-21 15:31:57.581830982 +0200
+@@ -29,6 +29,8 @@
+                 <setting name="squishloader">
+                     <ae:parameter name="cache_dir">%core.cache_dir%/Squished</ae:parameter>
+                     <ae:parameter name="use_caching">@flag_caching@</ae:parameter>
++                    <ae:parameter name="use_gzcompress">false</ae:parameter>
++                    <ae:parameter name="gzcompress_level">2</ae:parameter>
+                 </setting>
+ 
+                 <setting name="user_preferences_default">
+Index: icinga-web/app/modules/AppKit/validate/Widgets/SquishLoader.xml
+===================================================================
+--- icinga-web.orig/app/modules/AppKit/validate/Widgets/SquishLoader.xml	2012-06-21 15:27:00.865834315 +0200
++++ icinga-web/app/modules/AppKit/validate/Widgets/SquishLoader.xml	2012-06-21 15:31:57.589830981 +0200
+@@ -5,12 +5,18 @@
+     parent="%core.module_dir%/AppKit/config/validators.xml"
+ >
+     <ae:configuration>
+-        
+         <validators>
+            <validator class="string" name="IfNoneMatch" source="headers" required="false">
+                 <argument>IF_NONE_MATCH</argument>
+             </validator> 
+-         
++
++            <validator class="string" name="accept_encoding" source="headers" required="true">
++                <argument>ACCEPT_ENCODING</argument>                                    
++                                                                                
++                <errors>                                                        
++                    <error>Could not validate HTTP_REFERER</error>              
++                </errors>                                                       
++            </validator> 
+         </validators>
+     </ae:configuration>
+ </ae:configurations>
+Index: icinga-web/app/modules/AppKit/views/Widgets/SquishLoaderSuccessView.class.php
+===================================================================
+--- icinga-web.orig/app/modules/AppKit/views/Widgets/SquishLoaderSuccessView.class.php	2012-06-21 15:27:01.133834313 +0200
++++ icinga-web/app/modules/AppKit/views/Widgets/SquishLoaderSuccessView.class.php	2012-06-21 15:31:57.593830982 +0200
+@@ -45,8 +45,31 @@
+                 return "";
+             }
+             
+-            ob_start("ob_gzhandler");
+-
++            $options = AgaviConfig::get('modules.appkit.squishloader', array());
++            $gz_level = isset($options['gzcompress_level']) ? 
++                (integer)$options['gzcompress_level'] : 3;
++            $gz_use = isset($options['use_gzcompress']) ?
++                (boolean)$options['use_gzcompress'] : false;  
++            
++            if ($gz_use === true) {
++                
++                $encoding = $rd->getHeader('ACCEPT_ENCODING', false);
++                
++                if (strpos($encoding, 'gzip') !== false) {
++                    $encoding = 'gzip';
++                } elseif(strpos($encoding, 'x-gzip') !== false) {
++                    $encoding = 'x-gzip';
++                }
++                
++                if ($encoding !== false) {
++                    header('Content-Encoding: '. $encoding);
++                    $l = strlen($content);
++                    $content = gzcompress($content, 4);
++                    $content = substr($content, 0, $l);
++                    return "\x1f\x8b\x08\x00\x00\x00\x00\x00". $content;
++                }
++            }
++            
+             return $content;
+         }
+     }
