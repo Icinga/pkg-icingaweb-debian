@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-06-19 08:54+0200\n"
+"POT-Creation-Date: 2012-06-26 08:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,4 +97,31 @@ msgstr ""
 #. Description
 #: ../icinga-web.templates:4001
 msgid "The two passwords you entered were not the same. Please try again."
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:5001
+msgid "Database configuration missing"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:5001
+msgid "The database configuration for Icinga Web is missing."
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:5001
+msgid ""
+"Your root password for the web interface can not be configured automatically."
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:5001
+msgid ""
+"The default password, which is included in the database schema is \"password"
+"\"."
 msgstr ""

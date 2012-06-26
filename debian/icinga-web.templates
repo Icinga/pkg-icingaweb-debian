@@ -31,3 +31,12 @@ Type: error
 _Description: Password input error
  The two passwords you entered were not the same. Please try again.
 
+Template: icinga-web/rootpassword-dbconfig-missing
+Type: error
+_Description: Database configuration missing
+ The database configuration for Icinga Web is missing.
+ .
+ Your root password for the web interface can not be configured automatically.
+ .
+ The default password, which is included in the database schema is "password".
+
