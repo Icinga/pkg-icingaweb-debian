@@ -26,13 +26,13 @@ generate_dbxml() {
         source $dbconfig
     else
         echo "database config failed: file $dbconfig does not exist" >&2
-        return 1
+        return
     fi
 
     # leave when dbconfig not enabled
     if [ "$dbc_install" != "true" ]; then
         echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!" 
-        return 1
+        return
     fi
 
     # create tempfile
@@ -110,6 +110,12 @@ fi
 setpassword() {
     password="$1"
     
+    # load database connection info
+    if [ ! -f /etc/dbconfig-common/icinga-web.conf ]; then
+        return
+    fi
+    source /etc/dbconfig-common/icinga-web.conf
+
     # gen new salt
     salt=$(php5 -r 'echo hash("sha256", uniqid("root_", mt_rand()));')
     
@@ -117,9 +123,6 @@ setpassword() {
     export SALT="$salt"
     export PW="$password"
     pwhash=$(php5 -r 'echo hash_hmac("sha256", getenv("PW"), getenv("SALT"));')
-
-    # load database connection info
-    source /etc/dbconfig-common/icinga-web.conf
 
     if [ "$dbc_dbtype" = "mysql" ]; then
         # query the database to update
@@ -177,8 +180,12 @@ setperm() {
 setperm root www-data 0640 /etc/icinga-web/conf.d/access.xml
 setperm root www-data 0640 /etc/icinga-web/conf.d/auth.xml
 setperm root www-data 0640 /etc/icinga-web/conf.d/databases.xml
-setperm root www-data 0640 /etc/icinga-web/conf.d/database-web.xml
-setperm root www-data 0640 /etc/icinga-web/conf.d/database-ido.xml
+if [ -f /etc/icinga-web/conf.d/database-web.xml ]; then
+    setperm root www-data 0640 /etc/icinga-web/conf.d/database-web.xml
+fi
+if [ -f /etc/icinga-web/conf.d/database-ido.xml ]; then
+    setperm root www-data 0640 /etc/icinga-web/conf.d/database-ido.xml
+fi
 setperm root www-data 0640 /etc/icinga-web/conf.d/module_reporting.xml
 
 setperm www-data adm 0770 /var/log/icinga-web
