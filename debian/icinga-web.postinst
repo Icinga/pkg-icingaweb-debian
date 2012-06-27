@@ -161,10 +161,14 @@ setpassword() {
 
 db_get icinga-web/rootpassword || true
 password="$RET"
-if [ "$password" != "" ]; then
-    setpassword $password
-else
-    echo "no password configured - root password for Icinga Web will not be set!"
+db_get icinga-web/dbconfig-install || true
+dbinstall="$RET"
+if [ "$dbinstall" = "true" ]; then
+    if [ "$password" != "" ]; then
+        setpassword $password
+    else
+        echo "no password configured - root password for Icinga Web will not be set!"
+    fi
 fi
 
 ###
