@@ -5,6 +5,18 @@ Notes:
 
   * Supported databases are: MySQL and PostgreSQL (by auto configuration)
 
+  * PostgreSQL with ident authentication:
+    
+     This is not really supported, just because icinga-web runs as www-data
+     per default. You will have to do some configuration stuff to run
+     icinga-web with ident. But you'll have to do this on your own.
+    
+     Though the maintainer scripts will create you a config for the
+     socket connection.
+    
+     Every access rights the maintainer script changes is checked
+     against dpkg-statoverride - so make sure to use it.
+     
   * Icinga Web uses two database connections
 
     1) IDO database, which is configured with by a dependency
