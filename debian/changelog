@@ -1,3 +1,18 @@
+icinga-web (1.7.1-2) UNRELEASED; urgency=low
+
+  * [3fa4d46] added patch 20_squishloader_gzip_off
+              upstream patch for problems with long loading
+              times caused by Squishloader
+  * [3a64851] updated postinst to avoid breaking due to errors
+  * [728bbcc] now using dbconfig-common functions for updating
+              the root password - better database support
+  * [d345062] disabled root password stuff when dbconfig is not chosen
+  * [0f9867a] added kind of support for PostgreSQL socket
+              connections with ident (Closes: #678221)
+              Please see README.Debian for more information!
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 23 Jun 2012 20:20:00 +0200
+
 icinga-web (1.7.1-1) unstable; urgency=low
 
   [ Markus Frosch ]
