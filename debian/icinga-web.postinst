@@ -112,8 +112,6 @@ setpassword() {
     
     # load database connection info
     if [ ! -f /etc/dbconfig-common/icinga-web.conf ]; then
-        db_fset icinga-web/rootpassword-dbconfig-missing seen false || true
-        db_input high icinga-web/rootpassword-dbconfig-missing || true
         return
     fi
     source /etc/dbconfig-common/icinga-web.conf
