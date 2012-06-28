@@ -1,0 +1,2 @@
+etc/icinga-web/htaccess usr/share/icinga-web/pub/.htaccess
+etc/icinga-web/htaccess-soap usr/share/icinga-web/pub/soap/.htaccess
