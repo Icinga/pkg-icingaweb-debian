@@ -51,9 +51,6 @@ override_dh_install:
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
 	cp etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
-	# htaccess files to /etc
-	cp ${b}/tmp/usr/pub/.htaccess ${b}/icinga-web/etc/icinga-web/htaccess
-	cp ${b}/tmp/usr/pub/soap/.htaccess ${b}/icinga-web/etc/icinga-web/htaccess-soap
 	###
 	# PNP
 	###

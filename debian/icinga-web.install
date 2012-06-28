@@ -15,6 +15,5 @@ usr/lib/ext3 usr/share/icinga-web/lib
 usr/lib/jit usr/share/icinga-web/lib
 usr/lib/jsgettext usr/share/icinga-web/lib
 usr/lib/phpseclib usr/share/icinga-web/lib
-
-usr/pub/index.php usr/pub/api/ usr/pub/images/ usr/pub/styles/ usr/share/icinga-web/pub
-usr/pub/soap/* usr/share/icinga-web/pub/soap
+usr/pub/* usr/share/icinga-web/pub
+usr/pub/.htaccess usr/share/icinga-web/pub
