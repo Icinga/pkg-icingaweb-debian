@@ -34,7 +34,7 @@ if [ "$1" = "purge" ]; then
     ucf --purge /etc/icinga-web/conf.d/database-web.xml
     rm -f /etc/icinga-web/conf.d/database-ido.xml
     ucf --purge /etc/icinga-web/conf.d/database-ido.xml
-	rm -rf /var/lib/icinga-web/app/cache
+	rm -rf /var/cache/icinga-web
 	rm -rf /var/log/icinga-web
     db_purge
 fi

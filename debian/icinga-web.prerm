@@ -13,4 +13,9 @@ if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
 	/usr/lib/icinga-web/bin/clearcache.sh
 fi
 
+# remove old cache dir (versions before 1.7.1-2)
+rm -rf /var/lib/icinga-web/app/cache
+[ -d /var/lib/icinga-web/app ] && rmdir /var/lib/icinga-web/app || true
+[ -d /var/lib/icinga-web ] && rmdir /var/lib/icinga-web || true
+
 #DEBHELPER#

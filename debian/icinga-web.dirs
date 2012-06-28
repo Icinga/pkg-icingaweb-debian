@@ -12,7 +12,7 @@ usr/share/icinga-web/tmpl
 
 usr/lib/icinga-web/bin
 
-var/lib/icinga-web/app/cache
+var/cache/icinga-web
 
 var/log/icinga-web
 

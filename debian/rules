@@ -24,7 +24,7 @@ override_dh_auto_configure:
 	--with-web-absolute-path=/usr/share/icinga-web/pub \
 	--with-web-apache-path="/etc/apache2/conf.d" \
 	--with-web-user="www-data" --with-web-group="www-data" \
-	--with-cache-dir=/var/lib/icinga-web/app/cache \
+	--with-cache-dir=/var/cache/icinga-web \
 	--with-log-dir=/var/log/icinga-web \
 	--with-conf-dir=/etc/icinga-web/conf.d \
 	--with-icinga-bin="/usr/sbin/icinga" \
