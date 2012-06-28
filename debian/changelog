@@ -1,5 +1,6 @@
 icinga-web (1.7.1-2) UNRELEASED; urgency=low
 
+  [ Markus Frosch ]
   * [3fa4d46] added patch 20_squishloader_gzip_off
               upstream patch for problems with long loading
               times caused by Squishloader
@@ -10,8 +11,13 @@ icinga-web (1.7.1-2) UNRELEASED; urgency=low
   * [0f9867a] added kind of support for PostgreSQL socket
               connections with ident (Closes: #678221)(Closes: #679338)
               Please see README.Debian for more information!
+  * [a58845a] included htaccess stuff into apache2.conf
+              and some further tuning (Closes: #679340)
+  * [e4a41f0] updated README.Debian with info about clearcache
+  * [f4a2881] moved cache dir to /var/cache/icinga-web
+              and some safe cleanup for the old (Closes: #679341)
 
- -- Markus Frosch <markus@lazyfrosch.de>  Thu, 28 Jun 2012 09:03:00 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 28 Jun 2012 19:24:00 +0200
 
 icinga-web (1.7.1-1) unstable; urgency=low
 
