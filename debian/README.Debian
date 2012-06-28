@@ -46,5 +46,11 @@ Notes:
 
      Please see the Icinga Wiki for more information.
 
- -- Markus Frosch <markus@lazyfrosch.de>  Tue, 06 Jun 2012 19:04:58 +0200
+  * If you change any configuration or code file of Icinga Web
+    it is necessary to clear the cache.
+
+    To achieve this run this command as root:
+      /usr/lib/icinga-web/bin/clearcache.sh
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Tue, 28 Jun 2012 18:47:58 +0200
 
