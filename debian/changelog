@@ -1,4 +1,4 @@
-icinga-web (1.7.1-2) UNRELEASED; urgency=low
+icinga-web (1.7.1-2) unstable; urgency=low
 
   [ Markus Frosch ]
   * [3fa4d46] added patch 20_squishloader_gzip_off
@@ -17,7 +17,7 @@ icinga-web (1.7.1-2) UNRELEASED; urgency=low
   * [f4a2881] moved cache dir to /var/cache/icinga-web
               and some safe cleanup for the old (Closes: #679341)
 
- -- Markus Frosch <markus@lazyfrosch.de>  Thu, 28 Jun 2012 19:24:00 +0200
+ -- Alexander Wirt <formorer@debian.org>  Fri, 29 Jun 2012 22:49:22 +0200
 
 icinga-web (1.7.1-1) unstable; urgency=low
 
