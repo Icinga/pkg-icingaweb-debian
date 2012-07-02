@@ -1,7 +1,16 @@
+# These templates have been reviewed by the debian-l10n-english
+# team
+#
+# If modifications/additions/rewording are needed, please ask
+# debian-l10n-english@lists.debian.org for advice.
+#
+# Even minor modifications require translation updates and such
+# changes should be coordinated with translators and reviewers.
+
 Template: icinga-web/httpd
 Type: multiselect
-Choices: apache2
-__Default: apache2
+__Choices: apache2
+Default: apache2
 _Description: Apache servers to configure for Icinga:
  Please select which Apache servers should be configured for Icinga.
  .

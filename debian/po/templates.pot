@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-06-19 08:54+0200\n"
+"POT-Creation-Date: 2012-07-02 15:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,26 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: multiselect
-#. Default
-#: ../icinga-web.templates:1001
+#. Choices
+#: ../icinga-web.templates:2001
 msgid "apache2"
 msgstr ""
 
 #. Type: multiselect
 #. Description
-#: ../icinga-web.templates:1002
+#: ../icinga-web.templates:2002
 msgid "Apache servers to configure for Icinga:"
 msgstr ""
 
 #. Type: multiselect
 #. Description
-#: ../icinga-web.templates:1002
+#: ../icinga-web.templates:2002
 msgid "Please select which Apache servers should be configured for Icinga."
 msgstr ""
 
 #. Type: multiselect
 #. Description
-#: ../icinga-web.templates:1002
+#: ../icinga-web.templates:2002
 msgid ""
 "If you would prefer to perform configuration manually, leave all servers "
 "unselected."
@@ -45,20 +45,20 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:2001
+#: ../icinga-web.templates:3001
 msgid "Icinga new web administrative password:"
 msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:2001
+#: ../icinga-web.templates:3001
 msgid ""
 "Please provide the password for the user \"root\" in Icinga's web interface."
 msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:2001
+#: ../icinga-web.templates:3001
 msgid ""
 "This is the password you need to access the web interface with the default "
 "administrative user. After login, you will be able to create new users and "
@@ -67,7 +67,7 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:2001
+#: ../icinga-web.templates:3001
 msgid ""
 "Please be aware that the password will be reset to this value each time the "
 "package is upgraded."
@@ -75,13 +75,13 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
+#: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
 msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
+#: ../icinga-web.templates:4001
 msgid ""
 "Please enter the same root password again to verify that you have typed it "
 "correctly."
@@ -89,12 +89,12 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../icinga-web.templates:4001
+#: ../icinga-web.templates:5001
 msgid "Password input error"
 msgstr ""
 
 #. Type: error
 #. Description
-#: ../icinga-web.templates:4001
+#: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr ""
