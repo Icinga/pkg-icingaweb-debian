@@ -3,8 +3,26 @@ icinga-web (1.7.1-3) UNRELEASED; urgency=low
   [ Markus Frosch ]
   * [ef153cc] optimized apache2.conf - some regexp stuff,
               cleanup and comments
+  [ language updates by the languages teams ]
+  * [b32e4c0] Debconf templates and debian/control reviewed by the
+              debian-l10n-english team as part of the Smith review
+              project. Closes: #677843
+  * [79894b9] Debconf translation updates
+    * Spanish; (Jathan).  Closes: #679598, #680319
+    * Danish (Joe Hansen).  Closes: #679609
+    * Russian (Yuri Kozlov).  Closes: #679610
+    * Czech (Michal Simunek).  Closes: #679702
+    * Slovak (Ivan Masár).  Closes: #679807
+    * Portuguese (Pedro Ribeiro).  Closes: #680127
+    * French (Steve Petruzzello).  Closes: #680338
+    * German (Martin Eberhard Schauer).  Closes: #680501
+    * Polish (Michał Kułach).  Closes: #680525
+    * Swedish (Martin Bagge / brother).  Closes: #680559
+    * Italian (Beatrice Torracca).  Closes: #680570
+    * Spanish; (Jonathan Bustillos).  Closes: #680575
+  * Big thanks to the language teams!
 
- -- Markus Frosch <markus@lazyfrosch.de>  Mon, 02 Jul 2012 14:43:41 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 10 Jul 2012 12:04:41 +0200
 
 icinga-web (1.7.1-2) unstable; urgency=low
 
