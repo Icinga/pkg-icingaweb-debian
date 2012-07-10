@@ -1,39 +1,39 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Italian translation of icinga-web debconf messages
+# Copyright (C) 2012, icinga-web package copyright holder
+# This file is distributed under the same license as the icinga-web package.
+# Beatrice Torracca <beatricet@libero.it>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
 "POT-Creation-Date: 2012-06-30 07:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-07-06 22:25+0200\n"
+"Last-Translator: Beatrice Torracca <beatricet@libero.it>\n"
+"Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. Type: multiselect
 #. Choices
 #: ../icinga-web.templates:2001
 msgid "apache2"
-msgstr ""
+msgstr "apache2"
 
 #. Type: multiselect
 #. Description
 #: ../icinga-web.templates:2002
 msgid "Apache servers to configure for Icinga:"
-msgstr ""
+msgstr "Server Apache da configurare per Icinga:"
 
 #. Type: multiselect
 #. Description
 #: ../icinga-web.templates:2002
 msgid "Please select which Apache servers should be configured for Icinga."
-msgstr ""
+msgstr "Selezionare quali server Apache devono essere configurati per Icinga."
 
 #. Type: multiselect
 #. Description
@@ -42,12 +42,14 @@ msgid ""
 "If you would prefer to perform configuration manually, leave all servers "
 "unselected."
 msgstr ""
+"Se si preferisce fare la configurazione a mano, lasciare tutti i server non "
+"selezionati."
 
 #. Type: password
 #. Description
 #: ../icinga-web.templates:3001
 msgid "Icinga new web administrative password:"
-msgstr ""
+msgstr "Nuova password di amministrazione web di Icinga:"
 
 #. Type: password
 #. Description
@@ -55,6 +57,7 @@ msgstr ""
 msgid ""
 "Please provide the password for the user \"root\" in Icinga's web interface."
 msgstr ""
+"Inserire la password dell'utente \"root\" dell'interfaccia web di Icinga."
 
 #. Type: password
 #. Description
@@ -64,6 +67,9 @@ msgid ""
 "administrative user. After login, you will be able to create new users and "
 "set their permissions."
 msgstr ""
+"Questa è la password necessaria per accedere all'interfaccia web con "
+"l'utente di amministrazione predefinito. Dopo il login, sarà possibile "
+"creare nuovi utenti e impostare i loro permessi."
 
 #. Type: password
 #. Description
@@ -72,12 +78,14 @@ msgid ""
 "Please be aware that the password will be reset to this value each time the "
 "package is upgraded."
 msgstr ""
+"Si tenga a mente che la password verrà reimpostata a questo valore ogni "
+"volta che il pacchetto verrà aggiornato."
 
 #. Type: password
 #. Description
 #: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
-msgstr ""
+msgstr "Inserire nuovamente la password per verifica:"
 
 #. Type: password
 #. Description
@@ -86,15 +94,17 @@ msgid ""
 "Please enter the same root password again to verify that you have typed it "
 "correctly."
 msgstr ""
+"Inserire nuovamente la stessa password di root per verificare che sia stata "
+"digitata correttamente."
 
 #. Type: error
 #. Description
 #: ../icinga-web.templates:5001
 msgid "Password input error"
-msgstr ""
+msgstr "Errore nell'inserimento della password"
 
 #. Type: error
 #. Description
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
-msgstr ""
+msgstr "Le due password inserite non sono uguali; riprovare."

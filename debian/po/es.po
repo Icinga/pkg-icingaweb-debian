@@ -1,0 +1,134 @@
+# icinga-web po-debconf translation to Spanish.
+# Copyright (C) 2012 Software in the Public Interest
+# This file is distributed under the same license as the icinga-web package.
+#
+# Changes:
+# - Initial translation
+# Jathan <jathanblackred@gmail.com>, 2012.
+#
+# - Updates
+#
+# Traductores, si no conocen el formato PO, merece la pena leer la
+# documentación de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+#
+# Equipo de traducción al español, por favor lean antes de traducir
+# los siguientes documentos:
+#
+# - El proyecto de traducción de Debian al español
+# http://www.debian.org/intl/spanish/
+# especialmente las notas y normas de traducción en
+# http://www.debian.org/intl/spanish/notas
+#
+# - La guía de traducción de po's de debconf:
+# /usr/share/doc/po-debconf/README-trans
+# o http://www.debian.org/intl/l10n/po-debconf/README-trans
+msgid ""
+msgstr ""
+"Project-Id-Version: icinga-web\n"
+"Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
+"POT-Creation-Date: 2012-06-30 07:30+0200\n"
+"PO-Revision-Date: 2012-07-04 18:11-0500\n"
+"Last-Translator: Jonathan Bustillos <jathanblackred@gmail.com>\n"
+"Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Type: multiselect
+#. Choices
+#: ../icinga-web.templates:2001
+msgid "apache2"
+msgstr "apache2"
+
+#. Type: multiselect
+#. Description
+#: ../icinga-web.templates:2002
+msgid "Apache servers to configure for Icinga:"
+msgstr "Servidores Apache que serán configurados para Icinga:"
+
+#. Type: multiselect
+#. Description
+#: ../icinga-web.templates:2002
+msgid "Please select which Apache servers should be configured for Icinga."
+msgstr ""
+"Seleccione los servidores Apache que deben ser configurados para Icinga."
+
+#. Type: multiselect
+#. Description
+#: ../icinga-web.templates:2002
+msgid ""
+"If you would prefer to perform configuration manually, leave all servers "
+"unselected."
+msgstr ""
+"Si prefiere realizar la configuración manualmente, deje todos los servidores "
+"sin marcar."
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid "Icinga new web administrative password:"
+msgstr "Nueva contraseña web administrativa para Icinga:"
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid ""
+"Please provide the password for the user \"root\" in Icinga's web interface."
+msgstr ""
+"Introduzca la contraseña para el usuario «root» en la interfaz web de Icinga."
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid ""
+"This is the password you need to access the web interface with the default "
+"administrative user. After login, you will be able to create new users and "
+"set their permissions."
+msgstr ""
+"Esta es la contraseña que necesita para acceder a la interfaz web con el "
+"usuario administrativo predeterminado. Después de iniciar sesión, usted será "
+"capaz de crear nuevos usuarios y establecer sus permisos."
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid ""
+"Please be aware that the password will be reset to this value each time the "
+"package is upgraded."
+msgstr ""
+"Tenga en cuenta que la contraseña se restablecerá a este valor cada vez que "
+"se actualice el paquete."
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:4001
+msgid "Re-enter password to verify:"
+msgstr "Vuelva a introducir la contraseña para verificar:"
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:4001
+msgid ""
+"Please enter the same root password again to verify that you have typed it "
+"correctly."
+msgstr ""
+"Introduzca la contraseña de root otra vez para verificar que la ha escrito "
+"adecuadamente."
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:5001
+msgid "Password input error"
+msgstr "Error al introducir la contraseña"
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:5001
+msgid "The two passwords you entered were not the same. Please try again."
+msgstr ""
+"Las dos contraseñas que ha introducido son diferentes. Inténtelo de nuevo."
