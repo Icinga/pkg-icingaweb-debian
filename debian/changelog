@@ -1,8 +1,5 @@
 icinga-web (1.7.1-3) UNRELEASED; urgency=low
 
-  [ Markus Frosch ]
-  * [ef153cc] optimized apache2.conf - some regexp stuff,
-              cleanup and comments
   [ language updates by the languages teams ]
   * [b32e4c0] Debconf templates and debian/control reviewed by the
               debian-l10n-english team as part of the Smith review
