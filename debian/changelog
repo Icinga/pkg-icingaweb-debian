@@ -1,4 +1,4 @@
-icinga-web (1.7.1-3) UNRELEASED; urgency=low
+icinga-web (1.7.1-3) unstable; urgency=low
 
   [ language updates by the languages teams ]
   * [b32e4c0] Debconf templates and debian/control reviewed by the
@@ -19,7 +19,7 @@ icinga-web (1.7.1-3) UNRELEASED; urgency=low
     * Spanish; (Jonathan Bustillos).  Closes: #680575
   * Big thanks to the language teams!
 
- -- Markus Frosch <markus@lazyfrosch.de>  Mon, 10 Jul 2012 12:04:41 +0200
+ -- Alexander Wirt <formorer@debian.org>  Wed, 01 Aug 2012 20:40:28 +0200
 
 icinga-web (1.7.1-2) unstable; urgency=low
 
