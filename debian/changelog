@@ -1,4 +1,4 @@
-icinga-web (1.7.1-4) UNRELEASED; urgency=low
+icinga-web (1.7.1-4) unstable; urgency=low
 
   * [3b184da] fixed postrm to avoid breaking on
               non installed ucf dependency Closes: #683650
