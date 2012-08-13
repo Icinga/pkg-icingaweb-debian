@@ -1,0 +1,50 @@
+Description: pgsql statusquery fix
+ With the query inside the 1.7.2 release PostgreSQL
+ drops an exception due to an invalid timestamp
+ used in the SELECT.
+ .
+ The change was tested to work with MySQL and PgSQL.
+Author: Markus Frosch <markus@lazyfrosch.de>
+Forwarded: https://dev.icinga.org/issues/2978
+Last-Update: 2012-08-13
+
+--- a/app/modules/Api/config/views/host.xml
++++ b/app/modules/Api/config/views/host.xml
+@@ -14,7 +14,7 @@
+                 h.alias AS HOST_ALIAS,
+                 h.display_name AS HOST_DISPLAY_NAME,
+                 hs.current_state AS HOST_CURRENT_STATE,
+-                (CASE WHEN hs.last_state_change='0000-00-00 00:00:00' THEN ps.program_start_time ELSE hs.last_state_change END) as DURATION_START,
++                (CASE WHEN hs.last_state_change<='1970-01-01 00:00:00' THEN ps.program_start_time ELSE hs.last_state_change END) as DURATION_START,
+                 hs.last_check AS HOST_LAST_CHECK,
+                 hs.next_check AS HOST_NEXT_CHECK,
+                 ps.program_start_time AS HOST_PROGRAM_START_TIME,
+@@ -106,7 +106,7 @@
+                 h.display_name AS HOST_DISPLAY_NAME,
+                 hs.current_state AS HOST_CURRENT_STATE,
+                 hs.process_performance_data AS HOST_PROCESS_PERFORMANCE_DATA,
+-                (CASE WHEN hs.last_state_change='0000-00-00 00:00:00' THEN ps.program_start_time ELSE hs.last_state_change END) as DURATION_START,
++                (CASE WHEN hs.last_state_change<='1970-01-01 00:00:00' THEN ps.program_start_time ELSE hs.last_state_change END) as DURATION_START,
+                 hs.last_check AS HOST_LAST_CHECK,
+                 hs.next_check AS HOST_NEXT_CHECK,
+                 ps.program_start_time AS HOST_PROGRAM_START_TIME,
+--- a/app/modules/Api/config/views/service.xml
++++ b/app/modules/Api/config/views/service.xml
+@@ -18,7 +18,7 @@
+                 s.display_name AS SERVICE_DISPLAY_NAME,
+                 ss.process_performance_data AS SERVICE_PROCESS_PERFORMANCE_DATA,
+                 ss.current_state AS SERVICE_CURRENT_STATE,
+-                (CASE WHEN ss.last_state_change='0000-00-00 00:00:00' THEN ps.program_start_time ELSE ss.last_state_change END) as DURATION_START,
++                (CASE WHEN ss.last_state_change<='1970-01-01 00:00:00' THEN ps.program_start_time ELSE ss.last_state_change END) as DURATION_START,
+                 ps.program_start_time AS SERVICE_PROGRAM_START_TIME,
+                 ss.last_check AS SERVICE_LAST_CHECK,
+                 ss.next_check AS SERVICE_NEXT_CHECK,
+@@ -133,7 +133,7 @@
+                 os.name2 AS SERVICE_NAME,
+                 s.display_name AS SERVICE_DISPLAY_NAME,
+                 ss.current_state AS SERVICE_CURRENT_STATE,
+-                (CASE WHEN ss.last_state_change='0000-00-00 00:00:00' THEN ps.program_start_time ELSE ss.last_state_change END) as DURATION_START,
++                (CASE WHEN ss.last_state_change<='1970-01-01 00:00:00' THEN ps.program_start_time ELSE ss.last_state_change END) as DURATION_START,
+                 ss.process_performance_data AS SERVICE_PROCESS_PERFORMANCE_DATA,
+                 ss.last_check AS SERVICE_LAST_CHECK,
+                 ss.next_check AS SERVICE_NEXT_CHECK,
