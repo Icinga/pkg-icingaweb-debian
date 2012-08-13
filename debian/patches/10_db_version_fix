@@ -1,24 +1,17 @@
 Description: Fixed database version string
- using db version 1.7.0 for MySQL
- and 1.7.1 for PgSQL (only this schema changed)
+ to reflect the real version of the database schemas.
+ .
+ MySQL is on 1.7.0
+ PgSQL is on 1.7.1 due to a sequence update
  .
 Author: Markus Frosch <markus@lazyfrosch.de>
 Origin: other
 Forwarded: https://dev.icinga.org/issues/2694
-Last-Update: 2012-06-20
+Last-Update: 2012-08-13
 
---- icinga-web-1.7.1.orig/etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql
-+++ icinga-web-1.7.1/etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql
-@@ -1,4 +1,4 @@
- DELETE FROM nsm_db_version;
--INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.0', NOW(), NOW());
-+INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.1', NOW(), NOW());
- 
- SELECT setval('nsm_target_target_id_seq','21');
-\ No newline at end of file
---- icinga-web-1.7.1.orig/etc/schema/mysql.sql
-+++ icinga-web-1.7.1/etc/schema/mysql.sql
-@@ -39,7 +39,7 @@ ALTER TABLE nsm_user_role ADD CONSTRAINT nsm_user_role_usro_role_id_nsm_role_rol
+--- a/etc/schema/mysql.sql
++++ b/etc/schema/mysql.sql
+@@ -39,7 +39,7 @@
  /*          Initial data import              */
   
  INSERT INTO nsm_user (user_id,user_account,user_name,user_firstname,user_lastname,user_password,user_salt,user_authsrc,user_email,user_disabled) VALUES ('1','0','root','Enoch','Root','42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1','0c099ae4627b144f3a7eaa763ba43b10fd5d1caa8738a98f11bb973bebc52ccd','internal','root@localhost.local','0');
