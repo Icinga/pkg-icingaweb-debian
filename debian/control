@@ -22,6 +22,7 @@ Depends: dbconfig-common,
          ucf,
          ${misc:Depends}
 Recommends: apache2 | httpd, mysql-client | postgresql-client
+Suggests: icinga-doc
 Description: host and network monitoring system - modern web interface
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to
