@@ -7,16 +7,5 @@ TODOs (not for wheezy!)
    add question to change password on request, not update
    it everytime postinst runs
 
- * re-commit ef153ccc1c0d08f86394399fad69d68944b34af6
-   for comming unstable releases
-   ( optimized apache2.conf - some regexp stuff, cleanup and comments )
-   
- * add some minimalistic tunes to apache2.conf from
-   http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=683126
-   
- * make docs available without icinga-cgi
-   see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=682358
-
-
- -- Markus Frosch <markus@lazyfrosch.de>  Thu, 02 Aug 2012 09:58:04 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 13 Aug 2012 14:41:04 +0200
 
