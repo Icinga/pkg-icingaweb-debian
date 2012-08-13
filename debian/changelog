@@ -1,3 +1,13 @@
+icinga-web (1.7.2-1) UNRELEASED; urgency=low
+
+  * [acc4449] optimized apache2.conf
+              some regexp stuff, cleanup and comments
+  * [45f3cb4] Imported Upstream version 1.7.2
+  * [f5b5dcc] removed patch 20_squishloader_gzip_off
+              now upstream in 1.7.2
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 13 Aug 2012 13:21:05 +0200
+
 icinga-web (1.7.1-4) unstable; urgency=low
 
   * [3b184da] fixed postrm to avoid breaking on
