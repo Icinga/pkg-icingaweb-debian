@@ -30,7 +30,8 @@ override_dh_auto_configure:
 	--with-icinga-bin="/usr/sbin/icinga" \
 	--with-icinga-cfg="/etc/icinga/icinga.cfg" \
 	--with-icinga-objects-dir="/etc/icinga/objects" \
-	--with-api-cmd-file="/var/lib/icinga/rw/icinga.cmd"
+	--with-api-cmd-file="/var/lib/icinga/rw/icinga.cmd" \
+	--with-reporting_tmp_dir="/var/cache/icinga-web/reporting"
 
 override_dh_auto_build:
 	echo "no build necessary..."

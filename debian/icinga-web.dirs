@@ -13,6 +13,7 @@ usr/share/icinga-web/tmpl
 usr/lib/icinga-web/bin
 
 var/cache/icinga-web
+var/cache/icinga-web/reporting
 
 var/log/icinga-web
 

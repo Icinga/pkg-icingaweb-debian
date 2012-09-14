@@ -210,5 +210,6 @@ setperm root www-data 0640 /etc/icinga-web/conf.d/module_reporting.xml
 setperm www-data adm 0770 /var/log/icinga-web
 
 setperm www-data www-data 0770 /var/cache/icinga-web
+setperm www-data www-data 0770 /var/cache/icinga-web/reporting
 
 #DEBHELPER#
