@@ -1,4 +1,4 @@
-icinga-web (1.7.2-1~pre+1) UNRELEASED; urgency=low
+icinga-web (1.7.2-1) experimental; urgency=low
 
   * [acc4449] optimized apache2.conf
               some regexp stuff, cleanup and comments
@@ -10,8 +10,15 @@ icinga-web (1.7.2-1~pre+1) UNRELEASED; urgency=low
               (Closes: #683126)
   * [380ebed] integrating icinga-doc as suggested package
               (Closes: #692358)
+  * [1647481] added patch 20_pgsql_statusquery_fix
+  * [1c7099f] added a cache path for reporting.
+              Thanks to Oskar Liljeblad for suggesting it
+              (Closes: 686336)
+  * [a4a206f] integrated nagios-images, via symlinks and suggest
+  * [ca8d3bc] some cleanup for lintian
+  * [81e0670] removed unneeded quilt dependency
 
- -- Markus Frosch <markus@lazyfrosch.de>  Mon, 13 Aug 2012 13:21:05 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 14 Sep 2012 17:56:05 +0200
 
 icinga-web (1.7.1-4) unstable; urgency=low
 
