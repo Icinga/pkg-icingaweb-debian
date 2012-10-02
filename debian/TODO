@@ -7,5 +7,7 @@ TODOs (not for wheezy!)
    add question to change password on request, not update
    it everytime postinst runs
 
- -- Markus Frosch <markus@lazyfrosch.de>  Mon, 13 Aug 2012 14:41:04 +0200
+ * add reference for icinga-idoutils README.Debian
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 2 Oct 2012 12:01:04 +0200
 
