@@ -1,3 +1,13 @@
+icinga-web (1.7.1+dfsg1-5) unstable; urgency=high
+
+  * [4cc829d] DFSG cleaned upstream 1.7.1+dfsg1
+              Removed JSmin from upstream tarball
+              due to non-free license
+  * [795fde4] added gbp.conf for wheezy branch
+  * [bca5fb8] updated watch file for dfsg tarballs
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 08 Oct 2012 14:52:10 +0200
+
 icinga-web (1.7.1-4) unstable; urgency=low
 
   * [3b184da] fixed postrm to avoid breaking on
