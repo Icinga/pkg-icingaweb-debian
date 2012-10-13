@@ -1,3 +1,15 @@
+icinga-web (1.8.0~beta-1) UNRELEASED; urgency=low
+
+  == Attention: this is a beta version ==
+
+  * [265f0d7] Imported Upstream version 1.8.0~beta
+  * [7739702] updated watch file for dfsg tarballs
+  * [1dbaec2] updated rules for 1.8.0 (CHANGELOG + DB)
+  * [9da2d75] added gbp.conf
+  * [b72c159] added reference to icinga-idoutils to README
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Sat, 13 Oct 2012 14:26:35 +0200
+
 icinga-web (1.7.2-1) experimental; urgency=low
 
   * [acc4449] optimized apache2.conf
