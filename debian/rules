@@ -36,6 +36,9 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	echo "no build necessary..."
 
+override_dh_auto_test:
+	echo "skipping tests - they are development only!"
+
 override_dh_install:
 	# removed INSTALL for policy
 	rm ${b}/tmp/usr/doc/INSTALL
@@ -47,18 +50,20 @@ override_dh_install:
 	# Remove empty paths
 	rm -rf ${b}/tmp/usr/lib/agavi/src/build/
 	rmdir ${b}/tmp/usr/app/modules/Reporting/data/
+	rmdir ${b}/tmp/usr/app/data/i18n/po/
 	# Install the rest
 	dh_install
 	# MySQL schema for dbconfig-common
 	cp etc/schema/mysql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/mysql
-	cp etc/schema/updates/mysql_v1-6-2_to_v1-7.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.0-1
-	cp etc/schema/updates/mysql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.2-1
-	cp etc/schema/updates/mysql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.0~beta-1
+	cp etc/schema/updates/mysql/mysql_v1-6-2_to_v1-7.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.0-1
+	cp etc/schema/updates/mysql/mysql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.2-1
+	cp etc/schema/updates/mysql/mysql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.0~beta-1
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
-	cp etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
-	cp etc/schema/updates/pgsql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.2-1
-	cp etc/schema/updates/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
+	cp etc/schema/updates/pgsql/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
+	chmod -x ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1 # TEMP fix -mf
+	cp etc/schema/updates/pgsql/pgsql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.2-1
+	cp etc/schema/updates/pgsql/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
 	###
 	# PNP
 	###
