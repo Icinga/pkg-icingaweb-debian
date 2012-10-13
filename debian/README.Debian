@@ -3,6 +3,9 @@ icinga-web for Debian
 
 Notes:
 
+  * Please also read /usr/share/doc/icinga-idoutils/README.Debian
+    this file will explain how to enable the IDO in the first place
+
   * Supported databases are: MySQL and PostgreSQL (by auto configuration)
 
   * PostgreSQL with ident authentication:
@@ -52,5 +55,5 @@ Notes:
     To achieve this run this command as root:
       /usr/lib/icinga-web/bin/clearcache.sh
 
- -- Markus Frosch <markus@lazyfrosch.de>  Tue, 28 Jun 2012 18:47:58 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Sat, 13 Oct 2012 14:45:35 +0200
 
