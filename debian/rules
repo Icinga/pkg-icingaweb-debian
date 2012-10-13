@@ -42,8 +42,8 @@ override_dh_install:
 	# remove LICENSE files for packages - see debian/copyright
 	rm ${b}/tmp/usr/doc/LICENSE
 	# Upstream CHANGELOG by debian policy
-	cat ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x > ${b}/tmp/usr/doc/changelog
-	rm ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x
+	cat ${b}/tmp/usr/doc/CHANGELOG-1.8 ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x > ${b}/tmp/usr/doc/changelog
+	rm ${b}/tmp/usr/doc/CHANGELOG-1.8 ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x
 	# Remove empty paths
 	rm -rf ${b}/tmp/usr/lib/agavi/src/build/
 	rmdir ${b}/tmp/usr/app/modules/Reporting/data/
@@ -52,9 +52,13 @@ override_dh_install:
 	# MySQL schema for dbconfig-common
 	cp etc/schema/mysql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/mysql
 	cp etc/schema/updates/mysql_v1-6-2_to_v1-7.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.0-1
+	cp etc/schema/updates/mysql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.2-1
+	cp etc/schema/updates/mysql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.0~beta-1
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
 	cp etc/schema/updates/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
+	cp etc/schema/updates/pgsql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.2-1
+	cp etc/schema/updates/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
 	###
 	# PNP
 	###
