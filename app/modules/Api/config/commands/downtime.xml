@@ -12,7 +12,7 @@
             <ic:parameter ref="COMMAND_DOWNTIME_ID" />
         </ic:parameters>
     </ic:command>
-    
+
     <ic:command name="DEL_SVC_DOWNTIME">
         <ic:definition>DEL_SVC_DOWNTIME</ic:definition>
         <ic:type>downtime</ic:type>

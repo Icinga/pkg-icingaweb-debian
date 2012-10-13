@@ -56,7 +56,7 @@ ACICINGA_CHECK_BIN([PHING], [phing])
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
-
+ACICINGA_CHECK_PHP_MODULE([sockets xsl xml json])
 # Define install options
 
 # Meta option
@@ -300,18 +300,20 @@ ACICINGA_RESOURCE_EXISTS([icinga_config], [$icinga_cfg])
 # Testing switches
 AC_ARG_WITH([phpunit],
     AS_HELP_STRING([--with-phpunit=BINARY], [Path to phpunit script]),
-    phpunit=$withval,
-    phpunit=phpunit
+    PHPUNIT=$withval,
+    PHPUNIT=phpunit
 )
 
+# Supress warnings to the user
 #ACICINGA_CHECK_BIN([PHPUNIT], [$phpunit])
 
 AC_ARG_WITH([phpcs],
     AS_HELP_STRING([--with-phpcs=BINARY], [Path to phpcs script]),
-    phpcs=$withval,
-    phpcs=phpcs
+    PHPCS=$withval,
+    PHPCS=phpcs
 )
 
+# Supress warnings ro the user
 #ACICINGA_CHECK_BIN([PHPCS], [$phpcs])
 
 # Custom vars

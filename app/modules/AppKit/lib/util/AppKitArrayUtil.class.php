@@ -115,10 +115,34 @@ class AppKitArrayUtil {
      * Splits a string into parts and respects spaces
      * @param string $string
      * @param string $split_char
+     * @param boolean $auto_convert Try to findout the right types for value
      * @return array
      */
-    public static function trimSplit($string, $split_char=',') {
-        return preg_split('/\s*'. preg_quote($split_char). '\s*/', $string);
+    public static function trimSplit($string, $split_char=',', $auto_convert=true) {
+       
+        // Avoid ugly array items 
+        $string = trim($string);
+
+        // Tests of is_array in code
+        if (strlen($string) < 1) {
+            return null;
+        }
+
+        $data = preg_split('/\s*'. preg_quote($split_char). '\s*/', $string);
+   
+        // Some database systems are more type safe (pg) and throws
+        // a bunch of errors if you ignore that
+        if ($auto_convert===true) {
+            foreach ($data as &$val) {
+                if (is_float($val) === true) {
+                    $val = (float)$val;
+                } elseif (is_numeric($val)) {
+                    $val = (integer)$val;
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**
@@ -270,6 +294,45 @@ class AppKitArrayUtil {
             }
         }
         return $array;
+    }
+    
+    /**
+     * Checks for item in a string list
+     * @todo Maybe this is slow
+     * @param string $list
+     * @param string $match
+     * @param string $split_char
+     * @return boolean the result
+     */
+    public static function matchAgainstStringList($list, $match, $split_char=',') {
+        return in_array($match, self::trimSplit($list, $split_char));
+    }
+    
+    /**
+     * Converts an array containing ISO-8859-1 string to utf-8
+     * 
+     * @param array $obj
+     */
+    public static function toUTF8_recursive(array &$obj) {
+        foreach($obj as $field=>&$value) {
+            if(is_string($value) && !AppKitStringUtil::isUTF8($value))
+                $value = utf8_encode($value);
+            else if(is_array($value))
+                AppKitArrayUtil::toUTF8_recursive($value);
+        }
+    }
+    /**
+     * Converts an array containing ISO-8859-1 string to utf-8
+     * 
+     * @param array $obj
+     */
+    public static function toISO_recursive(array &$obj) {
+        foreach($obj as $field=>&$value) {
+            if(is_string($value))
+                $value = utf8_decode($value);
+            else if(is_array($value))
+                AppKitArrayUtil::toISO_recursive($value);
+        }
     }
 }
 

@@ -22,7 +22,19 @@
 // {{{ICINGA_LICENSE_CODE}}}
 
 
+/**
+ * Interface for modifying doctrine query like a observer
+ */
 interface IcingaIDoctrineQueryFilter {
+    /**
+     * Changing the query before main
+     * @param Doctrine_Query_Abstract $query
+     */
     public function preQuery(Doctrine_Query_Abstract $query);
+    
+    /**
+     * Changing the query after all is processed
+     * @param Doctrine_Query_Abstract $query
+     */
     public function postQuery(Doctrine_Query_Abstract $query);
 }
