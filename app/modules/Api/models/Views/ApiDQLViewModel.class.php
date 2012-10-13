@@ -127,13 +127,14 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
     }
 
     public function addWhere($field,$operator,$value) {
-         $value = $this->connection->quote($value);
+         if($operator != "IN")
+             $value = $this->connection->quote($value);
 
          $field = $this->enableFilter($field);
          $field = $this->getAliasedTableFromDQL($field);
-         $this->currentQuery->addWhere("$field $operator $value");
+         $this->currentQuery->andWhere("$field $operator $value");
 
-         AppKitLogger::verbose("Query after addWhere extension %s ", $this->currentQuery->getSqlQuery());
+         AppKitLogger::verbose("Query after addWhere (%s %s %s) %s ",$field, $operator, $value, $this->currentQuery->getSqlQuery());
          
     }
 
@@ -186,15 +187,11 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
     }
 
     private function applyCredentials(IcingaDoctrine_Query &$query) {
-
-        $models = array();
         AppKitLogger::verbose("Parsing credentials: %s",$this->view["credentials"]);
-        $filter = $this->getContext()->getModel('Filter.DoctrineUserRestriction', 'Api');
-        $filter->setCurrentUser();
         foreach($this->view["credentials"] as $credentialDefinition) {
             switch($credentialDefinition["type"]) {
                 case "auto":
-                    $models[$credentialDefinition["name"]] = $credentialDefinition["alias"];
+                    throw new AppKitModelException('Auto credential is deprecated');
                     break;
                 case "custom":
                     AppKitLogger::verbose("Applying custom credential %s (%s)",$credentialDefinition["name"],$credentialDefinition["dql"]);
@@ -213,9 +210,6 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
                    $extender->extend($query,$credentialDefinition["params"]);
            }
         }
-        $filter->enableModels($models);
-
-        $query->addFilter($filter);   
     }
 
     public function getAliasedTableFromDQL($field) {

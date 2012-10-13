@@ -52,7 +52,7 @@ class DQLCronkTemplateWorker extends CronkGridTemplateWorker {
         $this->connection = $connection;
         $view = $this->readDataSourceDefinition();
         $source = $template->getSection("datasource");
-
+        
         $this->parser = $context->getModel("Views.ApiDQLView","Api",array(
             "view" => $view,
             "parameters" => isset($source["parameters"]) ? $source["parameters"] : array(),
@@ -202,8 +202,20 @@ class DQLCronkTemplateWorker extends CronkGridTemplateWorker {
             }
         }
         
-        $field = $this->aliasToColumn($field);
-        $val = str_replace("'","'",$val);
+        /*
+         * Use override field if some special has done in the view we
+         * can not filter on it
+         */
+        $filter = $this->template->getFieldByName($field, 'filter');
+        if ($filter->hasParameter('field')) {
+            $field = $filter->getParameter('field');
+        } else {
+            $field = $this->aliasToColumn($field);
+        }
+        if($op == AppKitSQLConstants::SQL_OP_IN || $op == AppKitSQLConstants::SQL_OP_NOT_IN) {
+            $val = "(".$val.")";
+        } else 
+            $val = str_replace("'","'",$val);
         $this->parser->addWhere($field, $operator,$val);
         
     }

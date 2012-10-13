@@ -47,6 +47,8 @@ class NsmUser extends BaseNsmUser {
      */
     private $principals_list    = null;
     
+    private $target_list        = null;
+    
     private $context = null;
     
     private $storage = null;
@@ -74,14 +76,32 @@ class NsmUser extends BaseNsmUser {
 //                           'type' => 'unique'
 //         ));
         
-        $this->index('user_search', array(
-                         'fields' => array(
-                             'user_name',
-                             'user_authsrc',
-                             'user_authid',
-                             'user_disabled'
-                         )
+        $this->createUserSearchIndex();
+    }
+    
+    /**
+     * Decision maker. How the index should be created
+     */
+    private function createUserSearchIndex() {
+        $conn = Doctrine_Manager::getInstance()->getConnection('icinga_web');
+        
+        $user_search_index = array('fields' => array(
+            'user_name',
+            'user_authsrc',
+            'user_authid',
+            'user_disabled'
         ));
+        
+        if (strtolower($conn->getDriverName()) === 'mysql') {
+            $user_search_index = array('fields' => array(
+                'user_name',
+                'user_authsrc',
+                'user_authid' => array('length' => 127),
+                'user_disabled'
+            ));
+        }
+        
+        $this->index('user_search', $user_search_index);
     }
 
     public function getContext() {
@@ -488,14 +508,15 @@ class NsmUser extends BaseNsmUser {
      * @return boolean
      */
     public function hasTarget($name) {
-        $q = $this->getTargetsQuery();
-        $q->andWhere('t.target_name=?', array($name));
-
-        if ($q->execute()->count() > 0) {
-            return true;
+        
+        if ($this->target_list === null) {
+            $res = $this->getTargetsQuery()->execute();
+            $this->target_list = array();
+            foreach ($res as $target) {
+                $this->target_list[$target->target_name] = true;
+            }
         }
-
-        return false;
+        return isset($this->target_list[$name]);
     }
 
     /**
@@ -582,10 +603,9 @@ class NsmUser extends BaseNsmUser {
     
                     $out[ $t->target_name ][] = $tmp;
                 }
-                
-                self::$targetValuesCache =& $out;
             }
-        
+            
+            self::$targetValuesCache =& $out;
         }
         return self::$targetValuesCache;
     }

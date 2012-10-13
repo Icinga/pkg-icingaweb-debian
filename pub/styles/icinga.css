@@ -162,6 +162,17 @@ div#icinga-portal-loading {
         center;
 }
 
+div#icinga-portal-loading-text {
+    position: absolute;
+    display: inline-block;
+    left: 20px;
+    top: 20px;
+    padding: 2px;
+    z-index: 90001;
+    padding: 0;
+    font-size: 12px;
+}
+
 div.logEntry {
     padding: 5px;
     margin-top: 7px;
@@ -904,17 +915,6 @@ div.icinga-monitor-performance-container-50 {
     -o-box-shadow: 1px -1px 50px red;
 }
 
-.icinga-icon-chart-organisation {
-    background-image: url(../images/famfamfam/chart_organisation.png)
-        !important;
-    background-repeat: no-repeat;
-}
-
-.icinga-icon-sitemap {
-    background-image: url(../images/famfamfam/sitemap.png) !important;
-    background-repeat: no-repeat;
-}
-
 /*!
  * Ext JS Library 3.3.1
  * Copyright(c) 2006-2010 Sencha Inc.
@@ -1078,4 +1078,9 @@ div.icinga-row-downtime {
 input.icinga-global-search-box {
     padding-left: 22px;
     background: #fff url("../images/icons/magnifier.png") 2px center no-repeat;
+}
+
+/** ExtJS grid fix **/
+.x-grid3-cell-first .x-grid3-cell-inner {
+    padding-left: 2px;
 }

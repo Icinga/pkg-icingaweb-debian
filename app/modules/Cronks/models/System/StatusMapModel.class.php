@@ -32,7 +32,9 @@ class Cronks_System_StatusMapModel extends CronksBaseModel {
     private $connectionName = null;
     private $tm = false;
 
-    private $scriptTemplate = '<a href="#" onclick="return CronkTrigger({objectId:%s,objectName:\'%s\',objectType:\'host\'});">%s</a>';
+    private $scriptTemplate = '<a class="icinga-link" \
+        subgrid="icinga-service-template:host:%1$s:%2$s">%3$s</a>';
+    
     private $tableRowTemplate = '<tr><td>%s</td><td>%s</td></tr>';
     private $tableTemplate = '<table>%s</table>';
 
@@ -44,7 +46,9 @@ class Cronks_System_StatusMapModel extends CronksBaseModel {
         parent::initialize($context, $parameters);
         $this->tm = $this->getContext()->getTranslationManager();
        
-        $this->connectionName = isset($parameters["connection"]) ? $parameters["connection"] : "icinga";
+        $this->connectionName = 
+            isset($parameters["connection"]) ? 
+            $parameters["connection"] : "icinga";
 
     }
 
@@ -67,15 +71,16 @@ class Cronks_System_StatusMapModel extends CronksBaseModel {
         $apiResHosts = $hostView->getResult();
      
         $hostWithParents = array();
-
+        $row = array(
+            'HOST_OBJECT_ID' => 0,
+            'HOST_CURRENT_STATE'  => '-1',
+            'HOST_NAME'    => 'Icinga Monitoring Process'
+        );
+              
         $root = array(
               'id'      => $idPrefix . '-1',
               'name'    => 'Icinga',
-              'data'    => array(
-                  'object_id' => 0,
-                  'status'  => '-1',
-                  'relation'    => 'Icinga Monitoring Process',
-              ),
+              'data'    => array("relation"=>$row),
               'children'    => array(),
           );
 
@@ -90,11 +95,7 @@ class Cronks_System_StatusMapModel extends CronksBaseModel {
             $hosts[$objectId] = array(
                 'id'        => $objectId,
                 'name'      => $row['HOST_NAME'],
-                'data'      => array(
-                    'status'    => $row['HOST_CURRENT_STATE'],
-                    'relation'  => $this->getHostDataTable($row),
-                    'object_id' => $row['HOST_OBJECT_ID']
-                ),
+                'data'      => array("relation"=>$row),
                 'children'  => array(),
                 'parent' => $row['HOST_PARENT_OBJECT_ID']
             );
@@ -106,7 +107,7 @@ class Cronks_System_StatusMapModel extends CronksBaseModel {
         // connect childs to parents
         foreach($hostWithParents as $objectId=>$parentId) {
             if(isset($hosts[$parentId]))
-               $hosts[$parentId]["children"][] = $hosts[$objectId];
+               $hosts[$parentId]["children"][] = &$hosts[$objectId];
             else // if parent node is missing, connect to top level
                 $hosts[$objectId]["parent"] = -1;
         }
