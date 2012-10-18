@@ -1,6 +1,4 @@
-icinga-web (1.8.0~beta-1) experimental; urgency=low
-
-  == Attention: this is a beta version of Icinga Web ==
+icinga-web (1.8.0-1) experimental; urgency=low
 
   * [265f0d7] Imported Upstream version 1.8.0~beta
   * [7739702] updated watch file for dfsg tarballs
@@ -11,8 +9,9 @@ icinga-web (1.8.0~beta-1) experimental; urgency=low
   * [fe9868e] patch 20_pgsql_statusquery_fix is now upstream
   * [dc543c0] add build-dependencies php5-cli and php5-xsl
   * [98e0f8b] more rules changes
+  * [02e787f] Imported Upstream version 1.8.0
 
- -- Markus Frosch <markus@lazyfrosch.de>  Sat, 13 Oct 2012 15:29:51 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 18 Oct 2012 21:46:24 +0200
 
 icinga-web (1.7.2-1) experimental; urgency=low
 
