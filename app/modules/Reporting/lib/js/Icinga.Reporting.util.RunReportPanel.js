@@ -27,6 +27,9 @@ Icinga.Reporting.DEFAULT_JSCONTROL = {
 };
 
 Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.ApplicationWindow, {
+    
+    REPORT_UNIT: 'com.jaspersoft.jasperserver.api.metadata.jasperreports.domain.ReportUnit',
+    
     title : _('Report details'),
     border : false,
     
@@ -51,12 +54,14 @@ Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.Appl
                 text : _('Run report'),
                 iconCls : 'icinga-icon-report-run',
                 handler: this.runReport,
-                scope : this
+                scope : this,
+                itemId: 'tb-run-report'
             }, {
                 text : _('Preview'),
                 iconCls : 'icinga-icon-report-preview',
                 handler : this.previewReport,
-                scope : this
+                scope : this,
+                itemId: 'tb-preview-report'
             }]
         });
         
@@ -68,12 +73,14 @@ Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.Appl
         Icinga.Reporting.util.RunReportPanel.superclass.initComponent.call(this);
         
         this.add({
-            xtype : 'panel', 
-            html : '<div style="padding: 20px;"><h3>'
-                + _('... please select a report from the left tree view')
-                + '</h3></div>'
+            layout : 'fit',
+            html : String.format('<h1>{0}</h1>{1}',
+                _('No report selected'), 
+                _('Please select a report from the tree panel on the left')
+            ),
+            border : false,
+            cls : 'simple-content-box'
         });
-        
         
         this.setToolbarEnabled(false);
     },
@@ -105,7 +112,8 @@ Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.Appl
             cls : 'simple-content-box'
         });
         
-        if (this.parameterData.length == 0) {
+        if (this.nodeAttributes.PROP_RESOURCE_TYPE !== this.REPORT_UNIT) {
+            this.setToolbarEnabled(false);
             this.add({
                 layout: 'fit',
                 html: String.format('<h4>{0}</h4><i>{1}</i>', _('No report'), _('Sorry, no report selected. Please select a report item in the tree on the left'))
@@ -128,6 +136,18 @@ Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.Appl
             
             this.formPanel.add(outputSelector);
             
+            if (this.parameterData.length == 0) {
+                this.formPanel.add({
+                    layout:'fit',
+                    border: false,
+                    html: String.format(
+                        '<h4>{0}</h4><i>{1}</i>', 
+                        _('No more parameters'),
+                        _('Nothing else needed here, just press "Run" or "Preview" to proceed')
+                    )
+                });
+            }
+            
             this.messagePanel = new Ext.Container({
                 border : false,
                 width : 356,
@@ -141,11 +161,11 @@ Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.Appl
             this.formPanel.add(this.messagePanel);
             
             this.add(this.formPanel);
+            
+            this.setToolbarEnabled(true);
         }
         
         this.doLayout();
-        
-        this.setToolbarEnabled();
     },
     
     addMessage : function(html, cls) {
@@ -164,7 +184,10 @@ Icinga.Reporting.util.RunReportPanel = Ext.extend(Icinga.Reporting.abstract.Appl
     parseOutput : function(response, options) {
         this.parameterData = Ext.util.JSON.decode(response.responseText);
         
-        this.loadingMask.hide();
+        if (!Ext.isEmpty(this.loadingMask)) {
+            this.loadingMask.hide();
+        }
+        
         delete this.loadingMask;
         
         this.buildInterface(this.parameterData);
