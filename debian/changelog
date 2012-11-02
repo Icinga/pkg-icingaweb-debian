@@ -1,3 +1,9 @@
+icinga-web (1.8.0-1~debmon60+1) debmon-squeeze; urgency=low
+
+  * Rebuild for squeeze on debmon.org
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 18 Oct 2012 22:26:20 +0200
+
 icinga-web (1.8.0-1) experimental; urgency=low
 
   * [265f0d7] Imported Upstream version 1.8.0~beta
