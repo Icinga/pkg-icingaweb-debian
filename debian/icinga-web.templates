@@ -40,3 +40,6 @@ Type: error
 _Description: Password input error
  The two passwords you entered were not the same. Please try again.
 
+Template: icinga-web/rootpassword_changed
+Type: boolean
+
