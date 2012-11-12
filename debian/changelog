@@ -1,3 +1,14 @@
+icinga-web (1.8.0-2) UNRELEASED; urgency=low
+
+  * [5f0e216] Debconf language update for ja (Japanese)
+    Thanks to victory (Closes: 693061)
+  * [aede6fb] changed root password update
+    the password now will only be set after it
+    has been changed via dpkg-reconfigure
+  * [3e161a1] updated templates for new password behavior
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 12 Nov 2012 20:33:11 +0100
+
 icinga-web (1.8.0-1) experimental; urgency=low
 
   * [265f0d7] Imported Upstream version 1.8.0~beta
