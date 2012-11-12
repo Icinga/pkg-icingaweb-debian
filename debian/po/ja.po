@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-10 14:29+0000\n"
+"POT-Creation-Date: 2012-11-12 23:37+0100\n"
 "PO-Revision-Date: 2012-10-10 23:29+0900\n"
 "Last-Translator: victory <victory.deb@gmail.com>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -65,18 +65,8 @@ msgid ""
 "administrative user. After login, you will be able to create new users and "
 "set their permissions."
 msgstr ""
-"これはデフォルト管理ユーザでウェブインターフェースにアクセスするのに必要となる"
-"パスワードです。ログイン後、新規ユーザの作成や権限設定が可能になります。"
-
-#. Type: password
-#. Description
-#: ../icinga-web.templates:3001
-msgid ""
-"Please be aware that the password will be reset to this value each time the "
-"package is upgraded."
-msgstr ""
-"パッケージ更新のたびにパスワードがこの値にリセットされることを承知しておいてく"
-"ださい。"
+"これはデフォルト管理ユーザでウェブインターフェースにアクセスするのに必要とな"
+"るパスワードです。ログイン後、新規ユーザの作成や権限設定が可能になります。"
 
 #. Type: password
 #. Description
@@ -91,8 +81,8 @@ msgid ""
 "Please enter the same root password again to verify that you have typed it "
 "correctly."
 msgstr ""
-"正しく入力されていることを確認するため、同一の root 用パスワードを再び入力して"
-"ください。"
+"正しく入力されていることを確認するため、同一の root 用パスワードを再び入力し"
+"てください。"
 
 #. Type: error
 #. Description
@@ -105,3 +95,10 @@ msgstr "パスワードの入力に誤りがあります。"
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr "入力された 2 つのパスワードが異なります。やり直してください。"
+
+#~ msgid ""
+#~ "Please be aware that the password will be reset to this value each time "
+#~ "the package is upgraded."
+#~ msgstr ""
+#~ "パッケージ更新のたびにパスワードがこの値にリセットされることを承知しておい"
+#~ "てください。"

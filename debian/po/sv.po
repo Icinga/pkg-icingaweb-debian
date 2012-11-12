@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-06-30 07:30+0200\n"
+"POT-Creation-Date: 2012-11-12 23:37+0100\n"
 "PO-Revision-Date: 2012-07-06 20:42+0100\n"
 "Last-Translator: Martin Bagge / brother <brother@bsnet.se>\n"
 "Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
@@ -73,16 +73,6 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
-msgid ""
-"Please be aware that the password will be reset to this value each time the "
-"package is upgraded."
-msgstr ""
-"Notera att lösenordet kommer att återställas tinn vad du anger här varje "
-"gång paketet uppgraderas."
-
-#. Type: password
-#. Description
 #: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
 msgstr "Upprepa lösenordet för kontroll:"
@@ -108,3 +98,10 @@ msgstr "Fel vid inmatning av lösenord"
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr "Lösenorden du angav stämmer inte överrens. Försök igen."
+
+#~ msgid ""
+#~ "Please be aware that the password will be reset to this value each time "
+#~ "the package is upgraded."
+#~ msgstr ""
+#~ "Notera att lösenordet kommer att återställas tinn vad du anger här varje "
+#~ "gång paketet uppgraderas."

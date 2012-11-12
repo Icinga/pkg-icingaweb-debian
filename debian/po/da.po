@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-06-30 07:30+0200\n"
+"POT-Creation-Date: 2012-11-12 23:37+0100\n"
 "PO-Revision-Date: 2012-06-30 23:51+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
@@ -73,16 +73,6 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
-msgid ""
-"Please be aware that the password will be reset to this value each time the "
-"package is upgraded."
-msgstr ""
-"Vær opmærksom på at adgangskoden vil blive nulstillet til denne værdi, hver "
-"gang pakke bliver opgraderet."
-
-#. Type: password
-#. Description
 #: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
 msgstr "Gentast adgangskode for at verificere:"
@@ -108,3 +98,10 @@ msgstr "Inddatafejl for adgangskode"
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr "De to indtastede adgangskoder var ikke ens. Prøv igen."
+
+#~ msgid ""
+#~ "Please be aware that the password will be reset to this value each time "
+#~ "the package is upgraded."
+#~ msgstr ""
+#~ "Vær opmærksom på at adgangskoden vil blive nulstillet til denne værdi, "
+#~ "hver gang pakke bliver opgraderet."
