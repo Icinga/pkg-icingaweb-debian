@@ -140,7 +140,7 @@ setpassword() {
         
         if dbc_mysql_exec_command "$query"; then
             echo "root password updates successfully!"
-            db_set icinga-web/rootpassword_changed false || true
+            db_fset icinga-web/rootpassword changed false || true
             db_go || true
         else
             echo "setting root password failed: $dbc_error" >&2
@@ -154,7 +154,7 @@ setpassword() {
         
         if _dbc_pgsql_exec_command "$query"; then
             echo "root password updates successfully!"
-            db_set icinga-web/rootpassword_changed false || true
+            db_fset icinga-web/rootpassword changed false || true
             db_go || true
         else
             echo "setting root password failed: $dbc_error" >&2
@@ -170,8 +170,8 @@ setpassword() {
 
 db_get icinga-web/dbconfig-install || true
 if [ "$RET" = "true" ]; then
-    db_get icinga-web/rootpassword_changed || true
-    if [ "$RET" = "true" ]; then
+    db_fget icinga-web/rootpassword changed || true
+    if [ "$RET" != "false" ]; then
         db_get icinga-web/rootpassword || true
         if [ "$RET" != "" ]; then
             setpassword $RET
