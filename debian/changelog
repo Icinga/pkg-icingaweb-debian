@@ -1,3 +1,23 @@
+icinga-web (1.7.1+dfsg2-6) unstable; urgency=high
+
+  * [bb01a46] Security fix for a YUI library issue
+
+    Two .swf files has been removed from the Debian package
+    and the Flash supported chart feature is disable for now.
+
+    In addition a upstream patch was applied to allow the user
+    to use the feature with a newer .swf resource if he wants
+    to.
+
+    Please see README.Debian for instructions
+
+    Closes: #694262
+
+  * [4ec39a9] DFSG cleaned upstream 1.7.1+dfsg2
+    SWF binary files has been removed from tarball
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 28 Nov 2012 23:03:41 +0100
+
 icinga-web (1.7.1+dfsg1-5) unstable; urgency=high
 
   * [4cc829d] DFSG cleaned upstream 1.7.1+dfsg1
