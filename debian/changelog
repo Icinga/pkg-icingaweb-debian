@@ -12,11 +12,12 @@ icinga-web (1.7.1+dfsg2-6) unstable; urgency=high
     Please see README.Debian for instructions
 
     Closes: #694262
+    Closes: #694641
 
   * [4ec39a9] DFSG cleaned upstream 1.7.1+dfsg2
     SWF binary files has been removed from tarball
 
- -- Markus Frosch <markus@lazyfrosch.de>  Wed, 28 Nov 2012 23:03:41 +0100
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 29 Nov 2012 00:17:41 +0100
 
 icinga-web (1.7.1+dfsg1-5) unstable; urgency=high
 
