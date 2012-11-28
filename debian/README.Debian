@@ -3,6 +3,37 @@ icinga-web for Debian
 
 Notes:
 
+  * [Security Information]
+    The Yahoo Interface library is used in Icinga Web to render certain
+    pie charts, unfortunatly this causes problems due to a cross site
+    scripting issue.
+
+    The flash component has been removed from Debian and the charting
+    feature is disabled.
+
+    Though a upstream fix is applied to allow the usage - when the user
+    decides to...
+
+    If you want to use the TO charts you have to either download a .swf
+    file to your server or use a swf loaded from yahooapis.com on demand.
+
+    See the file /usr/share/icinga-web/app/modules/AppKit/lib/js/AppKit.js
+    for configuration options.
+
+    Remote files:
+     uncomment the respective lines there and run
+     /usr/lib/icinga-web/bin/clearcache.sh
+
+    Local files:
+     download both files
+      http://yui.yahooapis.com/2.8.2/build/charts/assets/charts.swf
+      http://swfobject.googlecode.com/svn/trunk/swfobject/expressInstall.swf
+
+     and store them in /usr/share/icinga-web/lib/ext3/resources/
+
+     make sure to also change AppKit.js to uncomment the respective lines and
+     run /usr/lib/icinga-web/bin/clearcache.sh
+
   * Supported databases are: MySQL and PostgreSQL (by auto configuration)
 
   * PostgreSQL with ident authentication:
@@ -52,5 +83,5 @@ Notes:
     To achieve this run this command as root:
       /usr/lib/icinga-web/bin/clearcache.sh
 
- -- Markus Frosch <markus@lazyfrosch.de>  Tue, 28 Jun 2012 18:47:58 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Tue, 27 Nov 2012 16:17:58 +0200
 
