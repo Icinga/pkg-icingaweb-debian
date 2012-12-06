@@ -58,12 +58,14 @@ override_dh_install:
 	cp etc/schema/updates/mysql/mysql_v1-6-2_to_v1-7.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.0-1
 	cp etc/schema/updates/mysql/mysql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.7.2-1
 	cp etc/schema/updates/mysql/mysql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.0~beta-1
+	cp etc/schema/updates/mysql/mysql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.1~schema0
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
 	cp etc/schema/updates/pgsql/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
 	chmod -x ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1 # TEMP fix -mf
 	cp etc/schema/updates/pgsql/pgsql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.2-1
 	cp etc/schema/updates/pgsql/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
+	cp etc/schema/updates/pgsql/pgsql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.1~schema0
 	###
 	# PNP
 	###
@@ -71,3 +73,5 @@ override_dh_install:
 	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/CHANGELOG
 	# remove LICENSE files for packages - see debian/copyright
 	rm ${b}/icinga-web-pnp/usr/share/doc/icinga-web-pnp/LICENSE
+
+# vi: ts=4 sw=4 noexpandtab :

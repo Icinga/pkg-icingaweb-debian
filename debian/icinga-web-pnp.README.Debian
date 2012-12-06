@@ -1,0 +1,12 @@
+icinga-web-pnp for Debian
+=========================
+
+icinga-web-pnp provides the PNP4Nagios Cronk for Icinga Web.
+
+There is no really configuration required.
+
+The cronk provides an iframe for the pnp4nagios-web pages and
+buttons for hosts and services in the grid view of Icinga Web.
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Sat, 12 Nov 2012 24:44:35 +0100
+
