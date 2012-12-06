@@ -1,3 +1,9 @@
+icinga-web (1.8.1-1~debmon60+1) debmon-squeeze; urgency=low
+
+  * Rebuild for debmon-squeeze.
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 06 Dec 2012 19:32:59 +0100
+
 icinga-web (1.8.1-1) experimental; urgency=low
 
   * [5f0e216] Debconf language update for ja (Japanese)
