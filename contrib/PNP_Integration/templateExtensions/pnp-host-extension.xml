@@ -30,7 +30,7 @@
                                     <parameter name="condition">show</parameter>
                                     <parameter name="fn"><![CDATA[
                                         function() {
-                                            if (this.getRecord().get("process_performance_data") === "1") {
+                                            if (this.getRecord().get("process_performance_data") == "1") {
                                                 return true;
                                             } else {
                                                 return false;
@@ -68,7 +68,7 @@
                                     <parameter name="condition">show</parameter>
                                     <parameter name="fn"><![CDATA[
                                         function() {
-                                            if (this.getRecord().get("process_performance_data") === "1") {
+                                            if (this.getRecord().get("process_performance_data") == "1") {
                                                 return true;
                                             } else {
                                                 return false;
@@ -96,7 +96,7 @@
                 <parameter name="field">HOST_PROCESS_PERFORMANCE_DATA</parameter>
             </datasource>
             <display>
-                <parameter name="visible">false"</parameter>
+                <parameter name="visible">false</parameter>
                 <parameter name="label"></parameter>
             </display>
 
