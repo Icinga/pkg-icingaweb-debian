@@ -1,17 +1,17 @@
-# Danish translation icinga-web.
-# Copyright (C) 2012 icinga-web & nedenstående oversættere.
-# This file is distributed under the same license as the icinga-web package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2012.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# victory <victory.deb@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
 "POT-Creation-Date: 2012-11-12 23:37+0100\n"
-"PO-Revision-Date: 2012-06-30 23:51+0200\n"
-"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
-"Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-10-10 23:29+0900\n"
+"Last-Translator: victory <victory.deb@gmail.com>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,13 +26,13 @@ msgstr "apache2"
 #. Description
 #: ../icinga-web.templates:2002
 msgid "Apache servers to configure for Icinga:"
-msgstr "Apacheservere at konfigurere for Icinga:"
+msgstr "Icinga 用に設定する Apache サーバ:"
 
 #. Type: multiselect
 #. Description
 #: ../icinga-web.templates:2002
 msgid "Please select which Apache servers should be configured for Icinga."
-msgstr "Vælg venligst hvilke Apacheservere der skal konfigureres for Icinga."
+msgstr "Icinga 用に設定する Apache サーバを選択してください。"
 
 #. Type: multiselect
 #. Description
@@ -40,15 +40,13 @@ msgstr "Vælg venligst hvilke Apacheservere der skal konfigureres for Icinga."
 msgid ""
 "If you would prefer to perform configuration manually, leave all servers "
 "unselected."
-msgstr ""
-"Hvis du ønsker at udføre konfigurationen manuelt, så efterlad alle serverne "
-"umarkeret."
+msgstr "手作業で設定したい場合はどのサーバも選択しないようにしてください。"
 
 #. Type: password
 #. Description
 #: ../icinga-web.templates:3001
 msgid "Icinga new web administrative password:"
-msgstr "Adgangskode for Icingas nye internetadministator:"
+msgstr "Icinga の新しいウェブ管理パスワード:"
 
 #. Type: password
 #. Description
@@ -56,8 +54,8 @@ msgstr "Adgangskode for Icingas nye internetadministator:"
 msgid ""
 "Please provide the password for the user \"root\" in Icinga's web interface."
 msgstr ""
-"Angiv venligst adgangskoden for brugeren »root« i Icingas "
-"internetgrænseflade."
+"Icinga のウェブインターフェースでの「root」ユーザのパスワードを提供してくださ"
+"い。"
 
 #. Type: password
 #. Description
@@ -67,15 +65,14 @@ msgid ""
 "administrative user. After login, you will be able to create new users and "
 "set their permissions."
 msgstr ""
-"Dette er adgangskoden, du skal bruge for at tilgå internetgrænsefladen med "
-"den administrative bruger. Efter logind, vil du kunne oprette nye brugere og "
-"angive deres rettigheder."
+"これはデフォルト管理ユーザでウェブインターフェースにアクセスするのに必要とな"
+"るパスワードです。ログイン後、新規ユーザの作成や権限設定が可能になります。"
 
 #. Type: password
 #. Description
 #: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
-msgstr "Gentast adgangskode for at verificere:"
+msgstr "確認用にパスワードを再入力してください:"
 
 #. Type: password
 #. Description
@@ -84,24 +81,24 @@ msgid ""
 "Please enter the same root password again to verify that you have typed it "
 "correctly."
 msgstr ""
-"Indtast venligst den samme root-adgangskode igen for at verificere at du har "
-"tastet den korrekt."
+"正しく入力されていることを確認するため、同一の root 用パスワードを再び入力し"
+"てください。"
 
 #. Type: error
 #. Description
 #: ../icinga-web.templates:5001
 msgid "Password input error"
-msgstr "Inddatafejl for adgangskode"
+msgstr "パスワードの入力に誤りがあります。"
 
 #. Type: error
 #. Description
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
-msgstr "De to indtastede adgangskoder var ikke ens. Prøv igen."
+msgstr "入力された 2 つのパスワードが異なります。やり直してください。"
 
 #~ msgid ""
 #~ "Please be aware that the password will be reset to this value each time "
 #~ "the package is upgraded."
 #~ msgstr ""
-#~ "Vær opmærksom på at adgangskoden vil blive nulstillet til denne værdi, "
-#~ "hver gang pakke bliver opgraderet."
+#~ "パッケージ更新のたびにパスワードがこの値にリセットされることを承知しておい"
+#~ "てください。"

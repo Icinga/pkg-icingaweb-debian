@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-06-30 07:30+0200\n"
+"POT-Creation-Date: 2012-11-12 23:37+0100\n"
 "PO-Revision-Date: 2012-07-01 19:15+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <debian-l10n-slovak@lists.debian.org>\n"
@@ -73,16 +73,6 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
-msgid ""
-"Please be aware that the password will be reset to this value each time the "
-"package is upgraded."
-msgstr ""
-"Prosím, buďte si vedomí, že heslo sa obnoví na túto hodnotu pri každej "
-"aktualizácii balíka."
-
-#. Type: password
-#. Description
 #: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
 msgstr "Zadajte heslo znova na overenie:"
@@ -107,3 +97,10 @@ msgstr "Chyba pri zadávaní hesla"
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr "Dve heslá, ktoré ste zadali sa nezhodnovali. Prosím, skúste to znova."
+
+#~ msgid ""
+#~ "Please be aware that the password will be reset to this value each time "
+#~ "the package is upgraded."
+#~ msgstr ""
+#~ "Prosím, buďte si vedomí, že heslo sa obnoví na túto hodnotu pri každej "
+#~ "aktualizácii balíka."

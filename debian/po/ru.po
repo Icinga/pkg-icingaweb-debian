@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web 1.7.0-3\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-06-30 07:30+0200\n"
+"POT-Creation-Date: 2012-11-12 23:37+0100\n"
 "PO-Revision-Date: 2012-06-30 11:24+0400\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -71,16 +71,6 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
-msgid ""
-"Please be aware that the password will be reset to this value each time the "
-"package is upgraded."
-msgstr ""
-"Заметим, что пароль будет сбрасываться в это значение каждый раз при "
-"обновлении пакета."
-
-#. Type: password
-#. Description
 #: ../icinga-web.templates:4001
 msgid "Re-enter password to verify:"
 msgstr "Введите пароль ещё раз для проверки:"
@@ -106,3 +96,10 @@ msgstr "Ошибка ввода пароля"
 #: ../icinga-web.templates:5001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr "Введённые вами пароли не совпадают. Попробуйте ещё раз."
+
+#~ msgid ""
+#~ "Please be aware that the password will be reset to this value each time "
+#~ "the package is upgraded."
+#~ msgstr ""
+#~ "Заметим, что пароль будет сбрасываться в это значение каждый раз при "
+#~ "обновлении пакета."

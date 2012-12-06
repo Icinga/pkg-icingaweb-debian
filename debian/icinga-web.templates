@@ -25,9 +25,9 @@ _Description: Icinga new web administrative password:
  This is the password you need to access the web interface with the
  default administrative user. After login, you will be able
  to create new users and set their permissions.
- .
- Please be aware that the password will be reset to this value
- each time the package is upgraded.
+# .
+# Please be aware that the password will be reset to this value
+# each time the package is upgraded.
 
 Template: icinga-web/rootpassword-repeat
 Type: password

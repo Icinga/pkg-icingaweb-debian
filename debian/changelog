@@ -1,3 +1,18 @@
+icinga-web (1.8.1-1) experimental; urgency=low
+
+  * [5f0e216] Debconf language update for ja (Japanese)
+    Thanks to victory (Closes: #693061)
+  * [aede6fb] changed root password update
+    the password now will only be set after it
+    has been changed via dpkg-reconfigure
+  * [3e161a1] updated templates for new password behavior
+  * [74b5d9b] password update now via flag, not a extra template
+  * [f17211e] Imported Upstream version 1.8.1
+  * [2f1cc10] Updates for upstream 1.8.1
+  * [b6c0d4c] added README.source
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 6 Dec 2012 19:07:11 +0100
+
 icinga-web (1.8.0-1~debmon60+1) debmon-squeeze; urgency=low
 
   * Rebuild for squeeze on debmon.org

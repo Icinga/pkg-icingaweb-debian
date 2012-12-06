@@ -1,0 +1,36 @@
+icinga-web for Debian
+=====================
+
+Here is a checklist for new upstream releases:
+
+ * use pristine-tar for importing (enabled via debian/gbp.conf)
+
+ * Database Schema changes
+   check for sql updates in
+    etc/schema/updates/mysql/
+    etc/schema/updates/pgsql/
+
+   the file like "mysql_v1-8-0_to_v-1-8-1.sql"
+   should be referenced in debian/rules and copied to
+   a appropriate name, like: "1.8.1~schema0"
+
+   (the strange prefix is because of sql updating
+   for backports or unofficial releases)
+
+ * Check for obsolete patches
+
+ * For major releases: CHANGELOG handling - see rules
+
+ * Updates for config files in debian/
+
+    vimdiff etc/conf.d/cronks.xml debian/cronks.xml
+    vimdiff etc/conf.d/databases.xml.in debian/databases.xml
+    vimdiff etc/conf.d/module_reporting.xml debian/module_reporting.xm
+    
+   much derived, but check: (use git log to check for changes)
+
+    etc/apache2/icinga-web.conf.in <-> debian/apache2.conf
+    pub/.htaccess.in
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 6 Dec 2012 18:45:35 +0100
+
