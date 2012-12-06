@@ -1,3 +1,9 @@
+icinga-web (1.8.1-1~ppa1) lucid; urgency=low
+
+  * Rebuild for Launchpad PPA of lazyfrosch
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 06 Dec 2012 20:01:03 +0100
+
 icinga-web (1.8.1-1) experimental; urgency=low
 
   * [5f0e216] Debconf language update for ja (Japanese)
