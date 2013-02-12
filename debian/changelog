@@ -1,3 +1,12 @@
+icinga-web (1.8.2-1) experimental; urgency=low
+
+  * [5a03f8a] bump standards version
+  * [14c51bc] Imported Upstream version 1.8.2
+  * [e80aa3c] Updated module_reporting.xml to match upstream
+  * [f97dab8] remove deprecated soap interface
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Tue, 12 Feb 2013 17:48:09 +0100
+
 icinga-web (1.8.1-1~debmon70+1) debmon-wheezy; urgency=low
 
   * Rebuild for debmon-wheezy.
