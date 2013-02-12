@@ -457,7 +457,7 @@ Ext.ns("Cronk.grid");
         getView: function () {
             if (!this.view) {
                 var viewConfig = {
-                    forceFit: true,
+                    forceFit: false,
                     groupTextTpl: '{text} ({[values.rs.length]}' + ' {[values.rs.length > 1 ? "Items" : "Item"]})'
                 };
 
@@ -557,6 +557,7 @@ Ext.ns("Cronk.grid");
                                         btn.setChecked(v, true);
                                     });
                                 },
+
                                 scope: this
 
                             },
@@ -818,7 +819,9 @@ Ext.ns("Cronk.grid");
                     }
                 }
             }, this);
-
+            this.store.on("load",function() {
+                this.saveState();
+            },this)
             this.on("show", function () {
                 if (this.autoRefreshEnabled) {
                     this.startRefreshTimer();
@@ -836,6 +839,10 @@ Ext.ns("Cronk.grid");
                     store: this.getStore(),
                     msg: _("Loading ...")
                 });
+            }, this);
+
+            this.on("columnmove", function(grid) {
+                this.saveState();
             }, this);
         },
 
@@ -1008,9 +1015,9 @@ Ext.ns("Cronk.grid");
             }
             
             var o = {
-                nativeState: Ext.grid.GridPanel.prototype.getState.apply(this),
                 filter_params: this.filter_params || {},
                 filter_types: this.filter_types || {},
+                nativeState: Ext.grid.GridPanel.prototype.getState.apply(this),
                 store_origin_params: ("originParams" in store) ? store.originParams : {},
                 sortToggle: store.sortToggle,
                 sortInfo: store.sortInfo,
@@ -1018,7 +1025,7 @@ Ext.ns("Cronk.grid");
                 autoRefresh: aR,
                 connection: this.store.baseParams.connection
             };
-            
+
             return o;
         },
 
@@ -1076,7 +1083,6 @@ Ext.ns("Cronk.grid");
 
             if (state.connection) {
                 this.setConnection(state.connection);
-
             }
             if (Ext.isObject(state.nativeState)) {
                 return Ext.grid.GridPanel.prototype.applyState.call(this, {
