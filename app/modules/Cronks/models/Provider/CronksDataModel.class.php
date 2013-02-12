@@ -100,9 +100,11 @@ class Cronks_Provider_CronksDataModel extends CronksBaseModel implements AgaviIS
         }
         
         $this->initializeXmlData();
-        
-        $this->cronks = $this->getCronks(true);
-        
+
+        if (!isset($parameters['lazy'])) {
+            $this->cronks = $this->getCronks(true);
+        }
+
     }
     
     /**
@@ -225,8 +227,13 @@ class Cronks_Provider_CronksDataModel extends CronksBaseModel implements AgaviIS
      * @return array
      */
     private function getXmlCronks($all=false) {
-        $out = array();
+        $cached = $this->user->getStorage()->read("icinga.cronks.cache.xml");
 
+        if($cached) {
+            return $cached;
+        }
+
+        $out = array();
         foreach(self::$xml_cronk_data as $uid=>$cronk) {
             
             /*
@@ -257,7 +264,7 @@ class Cronks_Provider_CronksDataModel extends CronksBaseModel implements AgaviIS
                 $this->getContext()->getLoggerManager()->log('No action or module for cronk: '. $uid, AgaviLogger::ERROR);
                 continue;
             }
-            
+
             $out[$uid] = array(
                 'cronkid' => $uid,
                 'module' => $cronk['module'],
@@ -276,9 +283,10 @@ class Cronks_Provider_CronksDataModel extends CronksBaseModel implements AgaviIS
                 'position' => isset($cronk['position']) ? $cronk['position'] : 0,
                 'owner_name' => self::DEFAULT_CRONK_OWNER,
                 'owner_id' => self::DEFAULT_CRONK_OWNERID
-                         );
+            );
+
         }
-        
+        $this->user->getStorage()->write("icinga.cronks.cache.xml",$out);
         return $out;
     }
 
@@ -383,7 +391,6 @@ class Cronks_Provider_CronksDataModel extends CronksBaseModel implements AgaviIS
         $cronks = (array)$this->getDbCronks() + $cronks;
 
         $this->reorderCronks($cronks);
-
         return $cronks;
     }
     
@@ -680,13 +687,17 @@ class Cronks_Provider_CronksDataModel extends CronksBaseModel implements AgaviIS
         $cronks_out = array();
         
         $categories = $this->getCategoryModel()->getCategories();
-        
+
         $cronks = $this->getCronks();
 
         foreach($categories as $category_name=>$category) {
             $tmp = array();
 
             foreach($cronks as $cronk) {
+                // skipping hidden cronks for the output
+                if ($cronk['hide'] == true) {
+                    continue;
+                }
                 if (AppKitArrayUtil::matchAgainstStringList($cronk['categories'], $category_name)) {
                     $tmp[] = $cronk;
                 }
