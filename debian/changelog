@@ -1,3 +1,12 @@
+icinga-web (1.8.3-1) experimental; urgency=low
+
+  * [bba67b0] Removing own symlinks to nagios-images.
+    The links are now provided by nagios-images itself
+  * [4aa93b9] Imported Upstream version 1.8.3
+  * [1e1e363] Debian package updates for 1.8.3
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 25 Mar 2013 16:41:30 +0100
+
 icinga-web (1.8.2-1) experimental; urgency=low
 
   * [5a03f8a] bump standards version
