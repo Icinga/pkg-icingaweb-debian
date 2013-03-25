@@ -1,3 +1,9 @@
+icinga-web (1.8.3-1~debmon70+1) debmon-wheezy; urgency=low
+
+  * Rebuild for debmon-wheezy
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 25 Mar 2013 16:55:28 +0100
+
 icinga-web (1.8.3-1) experimental; urgency=low
 
   * [bba67b0] Removing own symlinks to nagios-images.
