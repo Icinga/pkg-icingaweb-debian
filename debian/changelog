@@ -1,3 +1,9 @@
+icinga-web (1.8.3-1~debmon60+1) debmon-squeeze; urgency=low
+
+  * Rebuild for debmon-squeeze
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 25 Mar 2013 17:00:54 +0100
+
 icinga-web (1.8.3-1) experimental; urgency=low
 
   * [bba67b0] Removing own symlinks to nagios-images.
