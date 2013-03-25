@@ -221,9 +221,9 @@ class NsmUser extends BaseNsmUser {
 
             AppKitLogger::warn("New: Setting %s => %s", $key,$pref->toArray(false) );
         }
-        NsmUser::$cachedPreferences[$key] = array();
         NsmUser::$cachedPreferences[$key] = $val;
-        $this->getStorage()->write("appkit.nsm_user.preferences",self::$cachedPreferences);
+        // disabled storing cached prefs into session -mfrosch
+        //$this->getStorage()->write("appkit.nsm_user.preferences",self::$cachedPreferences);
         return true;
     }
 
@@ -325,7 +325,8 @@ class NsmUser extends BaseNsmUser {
         if(!empty(self::$cachedPreferences)) {
             return self::$cachedPreferences;
         }
-        self::$cachedPreferences = $this->getStorage()->read("appkit.nsm_user.preferences");
+        // disabled storing cached prefs into session -mfrosch
+        //self::$cachedPreferences = $this->getStorage()->read("appkit.nsm_user.preferences");
         if(!empty(self::$cachedPreferences)) {
             return self::$cachedPreferences;
         }
@@ -347,7 +348,8 @@ class NsmUser extends BaseNsmUser {
             }
         }
         self::$cachedPreferences = $out;
-        $this->getStorage()->write("appkit.nsm_user.preferences",self::$cachedPreferences);
+        // disabled storing cached prefs into session -mfrosch
+        //$this->getStorage()->write("appkit.nsm_user.preferences",self::$cachedPreferences);
         return $out;
     }
 
@@ -433,8 +435,10 @@ class NsmUser extends BaseNsmUser {
      * @return Doctrine_Collection
      */
     public function getPrincipals($userOnly= false) {
+        /* removed caching for principals due to problems on deletion -mfrosch
         if ($this->principals === null)
             $this->principals =  $this->getStorage()->read("appkit.nsm_user.principals");
+        */
 
         if ($this->principals === null) {
             $roles = $this->getRoleIds();
@@ -445,7 +449,9 @@ class NsmUser extends BaseNsmUser {
 
                                 ->orWhere('p.principal_user_id = ?',$this->user_id)
                                 ->execute();
+            /* removed caching for principals due to problems on deletion -mfrosch
             $this->getStorage()->write("appkit.nsm_user.principals",$this->principals);
+            */
         }
         
         return $this->principals;
@@ -573,10 +579,12 @@ class NsmUser extends BaseNsmUser {
     }
 
     public function getTargetValuesArray() {
+        /* removed caching for target values due to problems on deletion -mfrosch
         if (empty(self::$targetValuesCache)) {
             self::$targetValuesCache = $this->getStorage()->read("appkit.nsm_user.targetvalues");
         }
         if (empty(self::$targetValuesCache)) {
+        */
             $tc = AppKitDoctrineUtil::createQuery()
                   ->select('t.target_name, t.target_id')
                   ->from('NsmTarget t')
@@ -606,9 +614,12 @@ class NsmUser extends BaseNsmUser {
                 }
             }
             
+        /* removed caching for target values due to problems on deletion -mfrosch
             self::$targetValuesCache =& $out;
             $this->getStorage()->write("appkit.nsm_user.targetvalues",self::$targetValuesCache);
         }
         return self::$targetValuesCache;
+        */
+        return $out;
     }
 }
