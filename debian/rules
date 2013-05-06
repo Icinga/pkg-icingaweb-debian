@@ -60,6 +60,7 @@ override_dh_install:
 	cp etc/schema/updates/mysql/mysql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.0~beta-1
 	cp etc/schema/updates/mysql/mysql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.1~schema0
 	cp etc/schema/updates/mysql/mysql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.3~schema0
+	cp etc/schema/updates/mysql/mysql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.9.0~0schema
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
 	cp etc/schema/updates/pgsql/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
@@ -68,6 +69,7 @@ override_dh_install:
 	cp etc/schema/updates/pgsql/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
 	cp etc/schema/updates/pgsql/pgsql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.1~schema0
 	cp etc/schema/updates/pgsql/pgsql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.3~schema0
+	cp etc/schema/updates/pgsql/pgsql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.9.0~0schema
 	###
 	# PNP
 	###
