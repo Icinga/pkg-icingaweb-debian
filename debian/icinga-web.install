@@ -1,4 +1,4 @@
-debian/apache2.conf /etc/icinga-web
+etc/apache2/icinga-web.conf etc/icinga-web
 etc/icinga-web/conf.d/* etc/icinga-web/conf.d
 debian/database-ido.xml.tmpl usr/share/icinga-web/tmpl
 debian/database-web.xml.tmpl usr/share/icinga-web/tmpl

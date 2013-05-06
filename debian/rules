@@ -70,6 +70,8 @@ override_dh_install:
 	cp etc/schema/updates/pgsql/pgsql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.1~schema0
 	cp etc/schema/updates/pgsql/pgsql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.3~schema0
 	cp etc/schema/updates/pgsql/pgsql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.9.0~0schema
+	# rename apache config file
+	mv ${b}/icinga-web/etc/icinga-web/icinga-web.conf ${b}/icinga-web/etc/icinga-web/apache2.conf
 	###
 	# PNP
 	###
