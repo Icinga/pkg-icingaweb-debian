@@ -1,3 +1,12 @@
+icinga-web (1.9.0-1) UNRELEASED; urgency=low
+
+  * [e8ce6b5] Imported Upstream version 1.9.0
+  * [3535d71] added database schema for 1.9.0
+  * [435cae2] switched to Apache2 configuration coming from upstream
+  * [020f7f4] Switched to new build prefix and updated paths in install
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 08 May 2013 16:03:39 +0200
+
 icinga-web (1.8.3-1) experimental; urgency=low
 
   * [bba67b0] Removing own symlinks to nagios-images.
