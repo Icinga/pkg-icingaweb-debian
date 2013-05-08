@@ -1,11 +1,14 @@
-icinga-web (1.9.0-1) UNRELEASED; urgency=low
+icinga-web (1.9.0+dfsg1-1) unstable; urgency=low
 
   * [e8ce6b5] Imported Upstream version 1.9.0
   * [3535d71] added database schema for 1.9.0
   * [435cae2] switched to Apache2 configuration coming from upstream
   * [020f7f4] Switched to new build prefix and updated paths in install
+  * Merged back wheezy related changes into unstable
+    and reintegrated them with the latest changes
+  * [f5f36b2] Updated patch 21_yui_chartsswf for 1.9.0
 
- -- Markus Frosch <markus@lazyfrosch.de>  Wed, 08 May 2013 16:03:39 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 08 May 2013 16:50:31 +0200
 
 icinga-web (1.8.3-1) experimental; urgency=low
 
