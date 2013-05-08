@@ -6,8 +6,8 @@ Uploaders: Markus Frosch <markus@lazyfrosch.de>, Alexander Wirt <formorer@debian
 Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php5-cli, php5-xsl
 Standards-Version: 3.9.4
 Homepage: http://www.icinga.org
-Vcs-Git: git://git.debian.org/git/pkg-nagios/pkg-icinga-web.git
-Vcs-Browser: http://git.debian.org/?p=pkg-nagios/pkg-icinga-web.git;a=summary
+Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-icinga-web.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-icinga-web.git;a=summary
 
 Package: icinga-web
 Architecture: all

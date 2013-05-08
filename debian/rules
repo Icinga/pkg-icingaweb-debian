@@ -15,7 +15,7 @@ b := $(shell pwd)/debian
 	dh --buildsystem=autoconf $@
 
 override_dh_auto_configure:
-	./configure --prefix=/usr \
+	./configure --prefix=/usr/share/icinga-web \
 	--bindir=/usr/lib/icinga-web/bin \
 	--sysconfdir=/etc/icinga-web \
 	--datarootdir=/usr/share/icinga-web \
@@ -41,16 +41,13 @@ override_dh_auto_test:
 
 override_dh_install:
 	# removed INSTALL for policy
-	rm ${b}/tmp/usr/doc/INSTALL
+	rm ${b}/tmp/usr/share/icinga-web/doc/INSTALL
 	# remove LICENSE files for packages - see debian/copyright
-	rm ${b}/tmp/usr/doc/LICENSE
-	# Upstream CHANGELOG by debian policy
-	cat ${b}/tmp/usr/doc/CHANGELOG-1.8 ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x > ${b}/tmp/usr/doc/changelog
-	rm ${b}/tmp/usr/doc/CHANGELOG-1.8 ${b}/tmp/usr/doc/CHANGELOG-1.7 ${b}/tmp/usr/doc/CHANGELOG-1.6 ${b}/tmp/usr/doc/CHANGELOG-1.x
+	rm ${b}/tmp/usr/share/icinga-web/doc/LICENSE
 	# Remove empty paths
-	rm -rf ${b}/tmp/usr/lib/agavi/src/build/
-	rmdir ${b}/tmp/usr/app/modules/Reporting/data/
-	rmdir ${b}/tmp/usr/app/data/i18n/po/
+	rm -rf ${b}/tmp/usr/share/icinga-web/lib/agavi/src/build/
+	rm -rf ${b}/tmp/usr/share/icinga-web/app/modules/Reporting/data/
+	rm -rf ${b}/tmp/usr/share/icinga-web/app/data/i18n/po/
 	# Install the rest
 	dh_install
 	# MySQL schema for dbconfig-common
@@ -60,6 +57,7 @@ override_dh_install:
 	cp etc/schema/updates/mysql/mysql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.0~beta-1
 	cp etc/schema/updates/mysql/mysql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.1~schema0
 	cp etc/schema/updates/mysql/mysql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.3~schema0
+	cp etc/schema/updates/mysql/mysql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.9.0~0schema
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
 	cp etc/schema/updates/pgsql/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
@@ -68,6 +66,9 @@ override_dh_install:
 	cp etc/schema/updates/pgsql/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
 	cp etc/schema/updates/pgsql/pgsql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.1~schema0
 	cp etc/schema/updates/pgsql/pgsql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.3~schema0
+	cp etc/schema/updates/pgsql/pgsql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.9.0~0schema
+	# rename apache config file
+	mv ${b}/icinga-web/etc/icinga-web/icinga-web.conf ${b}/icinga-web/etc/icinga-web/apache2.conf
 	###
 	# PNP
 	###

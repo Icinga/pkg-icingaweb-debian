@@ -1,0 +1,10 @@
+TODOs for icinga-web
+====================
+
+ * Resolve license-problem-gfdl-invariants lintian error
+
+ * Recheck external libraries, especially extjs for
+   migration to a dependency
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 8 May 2013 16:34:12 +0200
+

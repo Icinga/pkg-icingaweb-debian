@@ -1,4 +1,4 @@
-debian/apache2.conf /etc/icinga-web
+etc/apache2/icinga-web.conf etc/icinga-web
 etc/icinga-web/conf.d/* etc/icinga-web/conf.d
 debian/database-ido.xml.tmpl usr/share/icinga-web/tmpl
 debian/database-web.xml.tmpl usr/share/icinga-web/tmpl
@@ -6,13 +6,13 @@ debian/databases.xml etc/icinga-web/conf.d
 debian/cronks.xml etc/icinga-web/conf.d
 debian/module_reporting.xml etc/icinga-web/conf.d
 
-usr/app/* usr/share/icinga-web/app
-usr/bin/clearcache.sh usr/lib/icinga-web/bin
-usr/doc/* usr/share/doc/icinga-web
-usr/lib/agavi usr/share/icinga-web/lib
-usr/lib/doctrine usr/share/icinga-web/lib
-usr/lib/ext3 usr/share/icinga-web/lib
-usr/lib/jit usr/share/icinga-web/lib
-usr/lib/jsgettext usr/share/icinga-web/lib
-usr/lib/phpseclib usr/share/icinga-web/lib
-usr/pub/index.php usr/pub/api/ usr/pub/images/ usr/pub/styles/ usr/share/icinga-web/pub
+usr/share/icinga-web/app/* usr/share/icinga-web/app
+usr/share/icinga-web/bin/clearcache.sh usr/lib/icinga-web/bin
+usr/share/icinga-web/doc/* usr/share/doc/icinga-web
+usr/share/icinga-web/lib/agavi usr/share/icinga-web/lib
+usr/share/icinga-web/lib/doctrine usr/share/icinga-web/lib
+usr/share/icinga-web/lib/ext3 usr/share/icinga-web/lib
+usr/share/icinga-web/lib/jit usr/share/icinga-web/lib
+usr/share/icinga-web/lib/jsgettext usr/share/icinga-web/lib
+usr/share/icinga-web/lib/phpseclib usr/share/icinga-web/lib
+usr/share/icinga-web/pub/* usr/share/icinga-web/pub
