@@ -1,3 +1,9 @@
+icinga-web (1.9.0+dfsg1-1~debmon60+1) debmon-squeeze; urgency=low
+
+  * Rebuild for debmon-squeeze
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 08 May 2013 18:45:27 +0200
+
 icinga-web (1.9.0+dfsg1-1) unstable; urgency=low
 
   * [e8ce6b5] Imported Upstream version 1.9.0
