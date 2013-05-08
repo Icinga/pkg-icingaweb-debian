@@ -1,0 +1,123 @@
+Description: YUI library security change
+ Security fix for YUI libraries' charts.swf
+ .
+ Making changes to some JS objects to support
+ the security fixed version of charts.swf
+ .
+ This is the port of a upstream fix - the .swf
+ file is no longer included in the debian
+ package and now loaded via the internet.
+Author: Markus Frosch <markus@lazyfrosch.de>
+Origin: backport
+Bug-Icinga: https://dev.icinga.org/issues/3464
+Applied-Upstream: 1.8.1
+Last-Update: 2012-11-27
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/app/modules/AppKit/lib/js/AppKit.js
++++ b/app/modules/AppKit/lib/js/AppKit.js
+@@ -54,7 +54,17 @@
+                 var me = AppKit;
+ 
+                 Ext.BLANK_IMAGE_URL = me.c.path + '/images/ajax/s.gif';
+-                Ext.chart.Chart.CHART_URL = me.c.path + '/js/ext3/resources/charts.swf';
++                // BEGIN Debian - see /usr/share/doc/icinga-web/README.Debian
++                // disabled external Flash components
++                Ext.chart.Chart.CHART_URL = null;
++                Ext.FlashComponent.EXPRESS_INSTALL_URL = null;
++                // enable the following for local stored files
++                //Ext.chart.Chart.CHART_URL = me.c.path + '/js/ext3/resources/charts.swf';
++                //Ext.FlashComponent.EXPRESS_INSTALL_URL = me.c.path + '/js/ext3/resources/expressinstall.swf';
++                // enable the following for remote stored resources
++                //Ext.chart.Chart.CHART_URL = 'http:/' + '/yui.yahooapis.com/2.8.2/build/charts/assets/charts.swf';
++                //Ext.FlashComponent.EXPRESS_INSTALL_URL = 'http:/' + '/swfobject.googlecode.com/svn/trunk/swfobject/expressInstall.swf';
++                // END Debian
+ 
+                 Ext.QuickTips.init();
+                 growlStack();
+@@ -270,4 +280,4 @@
+     }()));
+ })();
+ 
+-Ext.ns('AppKit.lib', 'AppKit.util');
+\ No newline at end of file
++Ext.ns('AppKit.lib', 'AppKit.util');
+--- /dev/null
++++ b/app/modules/Cronks/lib/js/Ext/ux/FlashComponent.js
+@@ -0,0 +1,59 @@
++// {{{ICINGA_LICENSE_CODE}}}
++// -----------------------------------------------------------------------------
++// This file is part of icinga-web.
++//
++// Copyright (c) 2009-2012 Icinga Developer Team.
++// All rights reserved.
++//
++// icinga-web is free software: you can redistribute it and/or modify
++// it under the terms of the GNU General Public License as published by
++// the Free Software Foundation, either version 3 of the License, or
++// (at your option) any later version.
++//
++// icinga-web is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++// GNU General Public License for more details.
++//
++// You should have received a copy of the GNU General Public License
++// along with icinga-web.  If not, see <http://www.gnu.org/licenses/>.
++// -----------------------------------------------------------------------------
++// {{{ICINGA_LICENSE_CODE}}}
++/*global Ext: false, Icinga: false, AppKit: false, _: false, Cronk: false */
++
++(function() {
++    "use strict";
++
++    Ext.ns('Ext.chart', 'YAHOO.widget');
++
++    /**
++     * @class Ext.chart.PieChart
++     * @overrides Ext.chart.PieChart
++     * @namespace Ext.chart
++     * @author Markus Frosch <markus.frosch@netways.de>
++     * @getId
++     */
++    Ext.override(Ext.chart.PieChart, {
++        /*
++          Replacing getId with a new version to give the YUI swf
++          an id that he wants and allows
++        */
++        getId: function() {
++            return this.id || (this.id = "yuiswf" + (++Ext.Component.AUTO_ID));
++        }
++    });
++
++    /**
++     * @class YAHOO.widget.SWF
++     * @extends Ext.FlashEventProxy
++     * @namespace YAHOO.widget
++     * @author Markus Frosch <markus.frosch@netways.de>
++     *
++     * A proxy object to call Ext.FlashEventProxy
++     * from a YUI flash component
++     */
++    YAHOO.widget.SWF = Ext.FlashEventProxy;
++    YAHOO.widget.SWF.eventHandler = function(id, e) {
++        this.onEvent(id, e);
++    };
++}());
+--- a/app/modules/Cronks/config/javascript.xml
++++ b/app/modules/Cronks/config/javascript.xml
+@@ -29,6 +29,7 @@
+             <ae:parameter>%core.module_dir%/Cronks/lib/js/grid/MetaGridCreator.js</ae:parameter>
+             <ae:parameter>%core.module_dir%/Cronks/lib/js/grid/GridUtil.js</ae:parameter>
+             <ae:parameter>%core.module_dir%/Cronks/lib/js/grid/OptimisticPagingToolbar.js</ae:parameter>
++            <ae:parameter>%core.module_dir%/Cronks/lib/js/Ext/ux/FlashComponent.js</ae:parameter>
+             <ae:parameter>%core.root_dir%/lib/ext3/examples/ux/ColumnNodeUI.js</ae:parameter>
+             <ae:parameter>%core.root_dir%/lib/jit/Extras/excanvas.js</ae:parameter>
+             <ae:parameter>%core.root_dir%/lib/jit/jit-yc.js</ae:parameter>
+@@ -80,4 +81,4 @@
+             <ae:parameter>%core.module_dir%/Cronks/lib/js/CronkTrigger.js</ae:parameter>
+         </javascript>
+     </ae:configuration>
+-</ae:configurations>
+\ No newline at end of file
++</ae:configurations>
