@@ -15,7 +15,7 @@ b := $(shell pwd)/debian
 	dh --buildsystem=autoconf $@
 
 override_dh_auto_configure:
-	./configure --prefix=/usr \
+	./configure --prefix=/usr/share/icinga-web \
 	--bindir=/usr/lib/icinga-web/bin \
 	--sysconfdir=/etc/icinga-web \
 	--datarootdir=/usr/share/icinga-web \
@@ -41,13 +41,13 @@ override_dh_auto_test:
 
 override_dh_install:
 	# removed INSTALL for policy
-	rm ${b}/tmp/usr/doc/INSTALL
+	rm ${b}/tmp/usr/share/icinga-web/doc/INSTALL
 	# remove LICENSE files for packages - see debian/copyright
-	rm ${b}/tmp/usr/doc/LICENSE
+	rm ${b}/tmp/usr/share/icinga-web/doc/LICENSE
 	# Remove empty paths
-	rm -rf ${b}/tmp/usr/lib/agavi/src/build/
-	rmdir ${b}/tmp/usr/app/modules/Reporting/data/
-	rmdir ${b}/tmp/usr/app/data/i18n/po/
+	rm -rf ${b}/tmp/usr/share/icinga-web/lib/agavi/src/build/
+	rmdir ${b}/tmp/usr/share/icinga-web/app/modules/Reporting/data/
+	rmdir ${b}/tmp/usr/share/icinga-web/app/data/i18n/po/
 	# Install the rest
 	dh_install
 	# MySQL schema for dbconfig-common
