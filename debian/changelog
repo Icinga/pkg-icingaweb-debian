@@ -1,3 +1,9 @@
+icinga-web (1.9.0+dfsg1-1~debmon70+1) debmon-wheezy; urgency=low
+
+  * Rebuild for debmon-wheezy
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 08 May 2013 18:33:11 +0200
+
 icinga-web (1.9.0+dfsg1-1) unstable; urgency=low
 
   * [e8ce6b5] Imported Upstream version 1.9.0
