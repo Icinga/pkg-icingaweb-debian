@@ -1,0 +1,4 @@
+# this doc does not contain any invariant sections
+# so the lintian error is unjustified
+# -- Markus Frosch <markus@lazyfrosch.de>
+license-problem-gfdl-invariants lib/phing/docs/phing_guide/book/chapters/AboutThisBook.html
