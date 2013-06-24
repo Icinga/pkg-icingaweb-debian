@@ -73,18 +73,34 @@ generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
 # Apache2
 ###
 
-if [ "$1" = "configure" ] && [ -x "/usr/sbin/apache2" ]; then
+if [ "$1" = "configure" ]; then
     echo "enabling Apache2 config..."
 
-    # enable mod rewrite
-    [ -f /etc/apache2/mods-enabled/rewrite.load ] || a2enmod rewrite
+    COMMON_STATE=$(dpkg-query -f '${Status}' -W 'apache2.2-common' 2>/dev/null | awk '{print $3}' || true)
 
-    # create symlink if not existing
-    [ -f /etc/apache2/conf.d/icinga-web.conf ] || ln -vs ../../icinga-web/apache2.conf /etc/apache2/conf.d/icinga-web.conf
+    # NEW method for Apache >= 2.4
+    if [ -e /usr/share/apache2/apache2-maintscript-helper ]; then
+        . /usr/share/apache2/apache2-maintscript-helper
 
-    # reload webserver
-    [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
+        apache2_invoke enmod rewrite
+        apache2_invoke enconf icinga-web
+
+        # remove OLD Apache 2.2 link
+        [ -L /etc/apache2/conf.d/icinga-web.conf ] && rm /etc/apache2/conf.d/icinga-web.conf
+
+    # OLD methods for Apache < 2.4
+    elif [ "$COMMON_STATE" = "installed" ] || [ "$COMMON_STATE" = "unpacked" ] ; then
+        # enable mod rewrite
+        [ -f /etc/apache2/mods-enabled/rewrite.load ] || a2enmod rewrite
+
+        # create symlink if not existing
+        [ -f /etc/apache2/conf.d/icinga-web.conf ] || ln -vs ../../icinga-web/apache2.conf /etc/apache2/conf.d/icinga-web.conf
+
+        # reload webserver
+        [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
+    fi
 fi
+
 
 ###
 # Set root password in database
