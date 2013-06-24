@@ -45,11 +45,11 @@ generate_dbxml() {
     dbc_edbname=$(uriescape $dbc_dbname)
     
     # allow pgsql socket
-    [ "$dbc_server" = "" ] && [ "$dbc_authmethod_user" = "ident" ] && dbc_server="%2Fvar%2Frun%2Fpostgresql"
+    [ "$dbc_dbserver" = "" ] && [ "$dbc_authmethod_user" = "ident" ] && dbc_dbserver="%2Fvar%2Frun%2Fpostgresql"
 
     # uri escape the vars
     # build the dsn
-    local dsn="$dbc_dbtype://$dbc_edbuser:$dbc_edbpass@${dbc_server:=localhost}$dbc_dbport/$dbc_edbname"
+    local dsn="$dbc_dbtype://$dbc_edbuser:$dbc_edbpass@${dbc_dbserver:=localhost}$dbc_dbport/$dbc_edbname"
 
     # write xml to temp
     cat $template | sed "s|_DBDSN_|$dsn|" > $tempfile
