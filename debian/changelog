@@ -1,3 +1,11 @@
+icinga-web (1.9.0+dfsg1-3) unstable; urgency=low
+
+  * [e45ba7d] Make debconf stop explicitly at the end of post*
+              to avoid breaking when restarting Apache2
+              see #713967
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 03 Jul 2013 14:30:41 +0200
+
 icinga-web (1.9.0+dfsg1-2) unstable; urgency=low
 
   * [74c7e99] Added php5-json as a Dependency (Closes: #713220)
