@@ -219,3 +219,6 @@ setperm www-data www-data 0770 /var/cache/icinga-web
 setperm www-data www-data 0770 /var/cache/icinga-web/reporting
 
 #DEBHELPER#
+
+# stop debconf explicitly
+db_stop
