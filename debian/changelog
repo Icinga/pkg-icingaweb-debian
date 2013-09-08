@@ -1,3 +1,11 @@
+icinga-web (1.9.1+dfsg1-1) unstable; urgency=low
+
+  * [08222f1] Imported Upstream version 1.9.1
+  * [e1e2b92] DFSG cleaned upstream version 1.9.1+dfsg1
+  * [2dca23c] Cleaned up installation of docs
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Sun, 08 Sep 2013 19:04:20 +0200
+
 icinga-web (1.9.0+dfsg1-3) unstable; urgency=low
 
   * [e45ba7d] Make debconf stop explicitly at the end of post*
