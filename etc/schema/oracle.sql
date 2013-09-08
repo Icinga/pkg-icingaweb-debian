@@ -220,7 +220,7 @@ alter table nsm_target add constraint nsm_target_pk PRIMARY KEY  (target_id)
 
 ALTER TABLE
   nsm_target
-  add constraint target_key_unique_target_name_uq UNIQUE (target_name)
+  add constraint target_key_unq_tgt_n_uq UNIQUE (target_name)
   using index tablespace &IXTBS;
 
 --use index organized table because most of all data is within index  
@@ -618,7 +618,7 @@ INSERT INTO nsm_target (target_id,target_name,target_description,target_class,ta
 
 INSERT INTO nsm_user (user_id,user_account,user_name,user_firstname,user_lastname,user_password,user_salt,user_authsrc,user_email,user_disabled,user_created,user_modified) VALUES ('1','0','root','Enoch','Root','42bc5093863dce8c150387a5bb7e3061cf3ea67d2cf1779671e1b0f435e953a1','0c099ae4627b144f3a7eaa763ba43b10fd5d1caa8738a98f11bb973bebc52ccd','internal','root@localhost.local','0',sysdate,sysdate);
 
-INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.8.3', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.9.0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO nsm_principal (principal_id,principal_user_id,principal_type,principal_disabled) VALUES ('1','1','user','0');
 INSERT INTO nsm_principal (principal_id,principal_role_id,principal_type,principal_disabled) VALUES ('2','2','role','0');
