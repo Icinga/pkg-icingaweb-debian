@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: icinga-web\n"
 "Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
-"POT-Creation-Date: 2012-11-12 23:37+0100\n"
+"POT-Creation-Date: 2013-06-24 11:05+0200\n"
 "PO-Revision-Date: 2012-07-01 19:15+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <debian-l10n-slovak@lists.debian.org>\n"
@@ -16,52 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: multiselect
-#. Choices
-#: ../icinga-web.templates:2001
-msgid "apache2"
-msgstr "apache2"
-
-#. Type: multiselect
-#. Description
-#: ../icinga-web.templates:2002
-msgid "Apache servers to configure for Icinga:"
-msgstr "Servery Apache, ktoré sa majú nakonfigurovať na spúšťanie Icinga:"
-
-#. Type: multiselect
-#. Description
-#: ../icinga-web.templates:2002
-msgid "Please select which Apache servers should be configured for Icinga."
-msgstr ""
-"Prosím, vyberte, ktoré servery Apache sa majú nakonfigurovať na spúšťanie "
-"Icinga."
-
-#. Type: multiselect
-#. Description
-#: ../icinga-web.templates:2002
-msgid ""
-"If you would prefer to perform configuration manually, leave all servers "
-"unselected."
-msgstr ""
-"Ak uprednostňujete konfiguráciu vykonať ručne, ponechajte všetky servery "
-"nevybrané."
-
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
+#: ../icinga-web.templates:2001
 msgid "Icinga new web administrative password:"
 msgstr "Nové heslo webového systému na správu Icinga:"
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
+#: ../icinga-web.templates:2001
 msgid ""
 "Please provide the password for the user \"root\" in Icinga's web interface."
 msgstr "Prosím, zadajte heslo používateľa „root“ vo webovom rozhraní Icinga."
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:3001
+#: ../icinga-web.templates:2001
 msgid ""
 "This is the password you need to access the web interface with the default "
 "administrative user. After login, you will be able to create new users and "
@@ -73,13 +43,13 @@ msgstr ""
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:4001
+#: ../icinga-web.templates:3001
 msgid "Re-enter password to verify:"
 msgstr "Zadajte heslo znova na overenie:"
 
 #. Type: password
 #. Description
-#: ../icinga-web.templates:4001
+#: ../icinga-web.templates:3001
 msgid ""
 "Please enter the same root password again to verify that you have typed it "
 "correctly."
@@ -88,15 +58,33 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../icinga-web.templates:5001
+#: ../icinga-web.templates:4001
 msgid "Password input error"
 msgstr "Chyba pri zadávaní hesla"
 
 #. Type: error
 #. Description
-#: ../icinga-web.templates:5001
+#: ../icinga-web.templates:4001
 msgid "The two passwords you entered were not the same. Please try again."
 msgstr "Dve heslá, ktoré ste zadali sa nezhodnovali. Prosím, skúste to znova."
+
+#~ msgid "apache2"
+#~ msgstr "apache2"
+
+#~ msgid "Apache servers to configure for Icinga:"
+#~ msgstr "Servery Apache, ktoré sa majú nakonfigurovať na spúšťanie Icinga:"
+
+#~ msgid "Please select which Apache servers should be configured for Icinga."
+#~ msgstr ""
+#~ "Prosím, vyberte, ktoré servery Apache sa majú nakonfigurovať na spúšťanie "
+#~ "Icinga."
+
+#~ msgid ""
+#~ "If you would prefer to perform configuration manually, leave all servers "
+#~ "unselected."
+#~ msgstr ""
+#~ "Ak uprednostňujete konfiguráciu vykonať ručne, ponechajte všetky servery "
+#~ "nevybrané."
 
 #~ msgid ""
 #~ "Please be aware that the password will be reset to this value each time "
