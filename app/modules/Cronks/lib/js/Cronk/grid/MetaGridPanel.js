@@ -503,7 +503,15 @@ Ext.ns("Cronk.grid");
                     store: this.getStore(),
                     displayInfo: true,
                     displayMsg: _('Displaying topics {0} - {1} of {2}'),
-                    emptyMsg: _('No topics to display')
+                    emptyMsg: _('No topics to display'),
+                    listeners: {
+                        change: function() {
+                            var sm = this.getSelectionModel();
+                            if (sm && typeof sm.syncWithPage === 'function')
+                                sm.syncWithPage();
+                        },
+                        scope: this
+                    }
                 };
 
                 if (Ext.isEmpty(datasource.countmode) || datasource.countmode === "none") {
@@ -532,7 +540,7 @@ Ext.ns("Cronk.grid");
                     iconCls: 'icinga-icon-arrow-refresh',
                     tooltip: _('Refresh the data in the grid'),
                     handler: function (oBtn, e) {
-                        this.store.load();
+                        this.store.reload();
                     },
                     scope: this
                 }, {
@@ -630,7 +638,7 @@ Ext.ns("Cronk.grid");
             var options = this.getOption("template.option", {});
             if (!Ext.isEmpty(options.selection_model)) {
                 if (options.selection_model === "checkbox") {
-                    var sm = new Ext.grid.CheckboxSelectionModel({
+                    var sm = new Cronk.grid.ObjectSelectionModel({
                         dataIndex: "id"
                     });
 
@@ -991,7 +999,9 @@ Ext.ns("Cronk.grid");
          * refresh our grid data
          *  @private
          */
-        refreshTask: new Ext.util.DelayedTask(function () {
+        refreshTask: null, // not creating the singleton here
+
+        refreshTaskImpl: function () {
             //NOTE: hidden tabs won't be refreshed
             if (!this.store || this.ownerCt.hidden) {
                 return true;
@@ -1003,12 +1013,15 @@ Ext.ns("Cronk.grid");
             } else if (this.getStore()) {
                 this.getStore().reload();
             }
-        }),
+        },
 
         /**
          * Calls the refreshTask 200ms delayed
          */
         refreshGrid: function () {
+            // create the refreshTask for this MetaGridPanel
+            if (!this.refreshTask)
+                this.refreshTask = new Ext.util.DelayedTask(this.refreshTaskImpl);
             this.refreshTask.delay(200, null, this);
         },
 

@@ -7,16 +7,6 @@
 # Even minor modifications require translation updates and such
 # changes should be coordinated with translators and reviewers.
 
-Template: icinga-web/httpd
-Type: multiselect
-__Choices: apache2
-Default: apache2
-_Description: Apache servers to configure for Icinga:
- Please select which Apache servers should be configured for Icinga.
- .
- If you would prefer to perform configuration manually, leave all
- servers unselected.
-
 Template: icinga-web/rootpassword
 Type: password
 _Description: Icinga new web administrative password:

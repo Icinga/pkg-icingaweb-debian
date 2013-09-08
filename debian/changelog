@@ -1,3 +1,31 @@
+icinga-web (1.9.1+dfsg1-1) unstable; urgency=low
+
+  * [08222f1] Imported Upstream version 1.9.1
+  * [e1e2b92] DFSG cleaned upstream version 1.9.1+dfsg1
+  * [2dca23c] Cleaned up installation of docs
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Sun, 08 Sep 2013 19:04:20 +0200
+
+icinga-web (1.9.0+dfsg1-3) unstable; urgency=low
+
+  * [e45ba7d] Make debconf stop explicitly at the end of post*
+              to avoid breaking when restarting Apache2
+              see #713967
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 03 Jul 2013 14:30:41 +0200
+
+icinga-web (1.9.0+dfsg1-2) unstable; urgency=low
+
+  * [74c7e99] Added php5-json as a Dependency (Closes: #713220)
+  * [4e59689] Fix usage of wrong dbc_dbserver variable in postinst
+  * [adf9c48] Removed debconf integration for httpd selection
+  * [263996a] Removed debconf templates for httpd selection
+  * [d3bd710] Added support for Apache 2.4 config integration
+              (Closes: #714537)
+  * [4d8b05d] Updated README.Debian with Apache2 changes
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Sun, 30 Jun 2013 20:17:04 +0200
+
 icinga-web (1.9.0+dfsg1-1~debmon70+1) debmon-wheezy; urgency=low
 
   * Rebuild for debmon-wheezy

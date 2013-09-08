@@ -3,6 +3,21 @@ icinga-web for Debian
 
 Notes:
 
+  * Apache2 configuration
+    due to changes introduced with Apache 2.4 the debconf setting which
+    webservers are enabled is now removed.
+
+    If you want to disable icinga-web in your webserver do the following:
+
+    Apache >= 2.4:
+     $ a2disconf icinga-web
+     $ service apache2 reload
+
+    Apache < 2.4:
+     $ rm /etc/apache2/conf.d/icinga-web.conf     # remove link
+     $ touch /etc/apache2/conf.d/icinga-web.conf  # create empty file
+     $ service apache2 reload
+
   * [Security Information]
     The Yahoo Interface library is used in Icinga Web to render certain
     pie charts, unfortunatly this causes problems due to a cross site
@@ -86,5 +101,5 @@ Notes:
     To achieve this run this command as root:
       /usr/lib/icinga-web/bin/clearcache.sh
 
- -- Markus Frosch <markus@lazyfrosch.de>  Wed, 8 May 2013 16:22:41 +0200
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 24 Jun 2013 11:36:34 +0200
 

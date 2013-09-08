@@ -45,11 +45,11 @@ generate_dbxml() {
     dbc_edbname=$(uriescape $dbc_dbname)
     
     # allow pgsql socket
-    [ "$dbc_server" = "" ] && [ "$dbc_authmethod_user" = "ident" ] && dbc_server="%2Fvar%2Frun%2Fpostgresql"
+    [ "$dbc_dbserver" = "" ] && [ "$dbc_authmethod_user" = "ident" ] && dbc_dbserver="%2Fvar%2Frun%2Fpostgresql"
 
     # uri escape the vars
     # build the dsn
-    local dsn="$dbc_dbtype://$dbc_edbuser:$dbc_edbpass@${dbc_server:=localhost}$dbc_dbport/$dbc_edbname"
+    local dsn="$dbc_dbtype://$dbc_edbuser:$dbc_edbpass@${dbc_dbserver:=localhost}$dbc_dbport/$dbc_edbname"
 
     # write xml to temp
     cat $template | sed "s|_DBDSN_|$dsn|" > $tempfile
@@ -70,42 +70,37 @@ generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
                /etc/dbconfig-common/icinga-idoutils.conf
 
 ###
-# webservers (currently only Apache2)
+# Apache2
 ###
 
-# get the list of selected servers
-db_get icinga-web/httpd
-servers=$(echo $RET | sed -e 's/,/ /g')
+if [ "$1" = "configure" ]; then
+    echo "enabling Apache2 config..."
 
-# check for activated servers
-for server in $servers; do
-    if [ "$server" = "apache2" ]; then
-        echo "enabling config for webserver $server..."
+    COMMON_STATE=$(dpkg-query -f '${Status}' -W 'apache2.2-common' 2>/dev/null | awk '{print $3}' || true)
 
+    # NEW method for Apache >= 2.4
+    if [ -e /usr/share/apache2/apache2-maintscript-helper ]; then
+        . /usr/share/apache2/apache2-maintscript-helper
+
+        apache2_invoke enmod rewrite
+        apache2_invoke enconf icinga-web
+
+        # remove OLD Apache 2.2 link
+        [ -L /etc/apache2/conf.d/icinga-web.conf ] && rm /etc/apache2/conf.d/icinga-web.conf
+
+    # OLD methods for Apache < 2.4
+    elif [ "$COMMON_STATE" = "installed" ] || [ "$COMMON_STATE" = "unpacked" ] ; then
         # enable mod rewrite
         [ -f /etc/apache2/mods-enabled/rewrite.load ] || a2enmod rewrite
-        
+
         # create symlink if not existing
         [ -f /etc/apache2/conf.d/icinga-web.conf ] || ln -vs ../../icinga-web/apache2.conf /etc/apache2/conf.d/icinga-web.conf
-        
-        # reload webserver
-        [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
-    else
-        echo "warning: webserver $server is not supported!"
-    fi
-done
 
-# check for not wanted servers
-if ! echo $servers | grep -q "apache2"; then
-    # remove link if exists
-    if [ -L /etc/apache2/conf.d/icinga-web.conf ]; then
-        echo "removing config for webserver apache2"
-        rm -f /etc/apache2/conf.d/icinga-web.conf
-        
         # reload webserver
         [ -x $(which invoke-rc.d) ] && invoke-rc.d apache2 reload
     fi
 fi
+
 
 ###
 # Set root password in database
@@ -224,3 +219,6 @@ setperm www-data www-data 0770 /var/cache/icinga-web
 setperm www-data www-data 0770 /var/cache/icinga-web/reporting
 
 #DEBHELPER#
+
+# stop debconf explicitly
+db_stop
