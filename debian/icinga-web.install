@@ -8,7 +8,6 @@ debian/module_reporting.xml etc/icinga-web/conf.d
 
 usr/share/icinga-web/app/* usr/share/icinga-web/app
 usr/share/icinga-web/bin/clearcache.sh usr/lib/icinga-web/bin
-usr/share/icinga-web/doc/* usr/share/doc/icinga-web
 usr/share/icinga-web/lib/agavi usr/share/icinga-web/lib
 usr/share/icinga-web/lib/doctrine usr/share/icinga-web/lib
 usr/share/icinga-web/lib/ext3 usr/share/icinga-web/lib
