@@ -129,10 +129,25 @@ Ext.ns('Cronk.grid');
 
                 var out = Ext.util.Format.ellipsis(value, (Ext.isEmpty(cfg.length)) ? defaultLength : cfg.length);
                 if (out.indexOf('...', (out.length - 3)) !== -1) {
-                    metaData.attr = 'ext:qtip="' + value.replace(/"/g, "'") + '"';
+                    metaData.attr = value.replace(/"/g, "'");
                 }
 
-                return out;
+                var id = Ext.id();
+                (function() {
+                    var ttip = new Ext.ToolTip({
+                        target: Ext.get(id),
+                        autoHide: false,
+                        html: value,
+                        width: value.length > 200 ? 500 : 200
+                    });
+                    ttip.on('show', function(el) {
+                        var overlap = (el.x + el.getWidth()) - Ext.getBody().getWidth();
+                        if (overlap > 0) {
+                            el.setPagePosition(Ext.getBody().getWidth() - (el.getWidth() + 50), el.y);
+                        }
+                    }, this, {delay: 200});
+                }).defer(200)
+                return '<div id="' + id + '">' + out + '</div>';
             };
         },
 
@@ -182,10 +197,8 @@ Ext.ns('Cronk.grid');
                     // Old version
                     // return String.format('<img src="{0}/{1}"{2} />', AppKit.c.path, imgName, (flat_attr && " " + flat_attr + " "));
                     imgName = imgName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-                    metaData.style += String.format("background: transparent url('{0}/{1}') center center no-repeat;", AppKit.c.path, imgName);
-
-
-
+                    metaData.style += String.format("background: transparent url('{0}/{1}') center center no-repeat; background-size: 16px 16px;",
+                        AppKit.c.path, imgName);
 
                     return "<div style='width:24px;height:24px' " + (flat_attr && " " + flat_attr + " ") + "></div>";
                 }
