@@ -1,3 +1,10 @@
+icinga-web (1.9.2+dfsg1-1) unstable; urgency=low
+
+  * [d02e61f] Imported Upstream version 1.9.2
+  * [aae265c] DFSG cleaned upstream version 1.9.2+dfsg1
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Mon, 07 Oct 2013 15:59:59 +0200
+
 icinga-web (1.9.1+dfsg1-1) unstable; urgency=low
 
   * [08222f1] Imported Upstream version 1.9.1
