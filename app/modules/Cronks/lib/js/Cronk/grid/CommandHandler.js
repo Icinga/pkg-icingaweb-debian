@@ -127,13 +127,232 @@ Ext.ns('Cronk.grid');
             return new Ext.form.ComboBox(oDef);
         },
 
+        getFieldObjects: function (o, fieldNames) {
+
+            var fieldObjects = {};
+            var fNames = (fieldNames) ? fieldNames : ['expiration','expiretime','duration','duration-hour','duration-minute'];
+
+            for (var i=0; i<fNames.length; i++) {
+                fieldObjects[fNames[i]]=o.form.getForm().findField(fNames[i]);
+            }
+
+            return fieldObjects;
+        },
+
+        getExpiretimeFields: function (o, oDef) {
+
+            var exp_bool = false;
+            var def_datefield_color = "#000000";
+            var def_durationfield_color = "#A1A1A1";
+            var defaultValues = [];
+            defaultValues.seconds = (Math.ceil((oDef.value.getTime() - new Date().getTime()) / 1000)) ;
+            defaultValues.hours = Math.floor(defaultValues.seconds / 3600);
+            defaultValues.minutes = Math.floor((defaultValues.seconds  - (defaultValues.hours  * 3600)) / 60);
+
+            if ((o.fieldChecked === 'for') || (o.fieldChecked !== 'for' && o.fieldChecked !== 'until')) {
+                exp_bool = true;
+                def_datefield_color = "#A1A1A1";
+                def_durationfield_color = "#000000";
+            }
+
+            var getFieldObjects = function () {
+
+                var fieldObjects = {};
+                var fieldNames = ['expiration','expiretime','duration','duration-hour','duration-minute'];
+
+                for (var i=0; i<fieldNames.length; i++) {
+                    fieldObjects[fieldNames[i]]=o.form.getForm().findField(fieldNames[i]);
+                }
+                return fieldObjects;
+            };
+
+
+            var calculateDurationFieldValues = function () {
+
+                var valArray = [];
+                var fieldObjects = getFieldObjects();
+                var diff_to_now = (new Date(fieldObjects.expiretime.getValue()).getTime() / 1000 - Math.ceil(new Date().getTime() / 1000));
+                valArray.seconds = (diff_to_now > 0 ? diff_to_now : 0);
+                valArray.hours = Math.floor(valArray.seconds / 3600);
+                valArray.minutes = Math.floor((valArray.seconds - Math.floor(valArray.hours * 3600)) / 60);
+
+                return valArray;
+            };
+
+            var refreshExpiretimeValue = function () {
+                var durationFieldValues = calculateDurationFieldValues();
+                var fieldObjects = getFieldObjects();
+
+                fieldObjects.expiretime.setValue(new Date((Math.round(new Date().getTime() / 1000) + Number(fieldObjects.duration.getValue()))*1000));
+            };
+
+            var refreshDurationValues = function () {
+                var durationFieldValues = calculateDurationFieldValues();
+                var fieldObjects = getFieldObjects();
+
+                fieldObjects['duration-hour'].setValue(durationFieldValues.hours);
+                fieldObjects['duration-minute'].setValue(durationFieldValues.minutes);
+                fieldObjects.duration.setValue(durationFieldValues.seconds);
+            };
+
+            var dlistener = function (field, newValue, oldValue) {
+                var durationFieldValues = calculateDurationFieldValues();
+                var fieldObjects = getFieldObjects();
+
+                if (field.name != fieldObjects.expiretime.name) {
+                    fieldObjects.duration.setValue((fieldObjects['duration-minute'].getValue() * 60) + (fieldObjects['duration-hour'].getValue() * 3600));
+                    refreshExpiretimeValue();
+                } else {
+                    refreshDurationValues();
+                }
+            };
+
+            var clistener = function (checkedBox, val) {
+                var durationFieldValues = calculateDurationFieldValues();
+                var fieldObjects = getFieldObjects();
+                var cbool = fieldObjects.expiration.getValue();
+                var date_in_duration = (new Date((Math.round(new Date().getTime() / 1000) + Number(fieldObjects.duration.getValue()))*1000));
+
+                if (cbool) {
+                    fieldObjects.expiretime.setValue(date_in_duration);
+                    fieldObjects.expiretime.focus(true, 10);
+                } else {
+                    refreshDurationValues();
+                    fieldObjects['duration-hour'].focus(true, 10);
+                }
+
+                fieldObjects.expiretime.setReadOnly(!cbool);
+                fieldObjects.expiretime.getEl().applyStyles((cbool) ? { 'color' : "#000000" } : { 'color' : "#A1A1A1"});
+                fieldObjects['duration-minute'].setReadOnly(cbool);
+                fieldObjects['duration-minute'].getEl().applyStyles((!cbool) ? { 'color' : "#000000" } : { 'color' : "#A1A1A1"});
+                fieldObjects['duration-hour'].setReadOnly(cbool);
+                fieldObjects['duration-hour'].getEl().applyStyles((!cbool) ? { 'color' : "#000000" } : { 'color' : "#A1A1A1"});
+            };
+
+            Ext.apply(oDef, {
+                xtype: 'form',
+                fieldLabel: oDef.fieldLabel,
+                layout:'table',
+                layoutConfig: { columns:2 },
+                items: [{
+                    xtype: 'radio',
+                    boxLabel: _('until'),
+                    inputValue: true,
+                    colspan: 1,
+                    name: 'expiration',
+                    width: ((oDef.width - 1) * 0.35),
+                    checked: !exp_bool,
+                    listeners: {
+                        check: clistener
+                    }
+                }, {
+                    colspan: 1,
+                    xtype: 'datefield',
+                    name: oDef.name,
+                    value: oDef.value,
+                    format: oDef.format,
+                    readOnly: exp_bool,
+                    width: ((oDef.width - 1) * 0.65),
+                    layout: 'fit',
+                    style: {
+                        color: def_datefield_color
+                    },
+                    listeners: {
+                        change: dlistener
+                    }
+                }, {
+                    xtype: 'radio',
+                    boxLabel: _('for'),
+                    inputValue: false,
+                    name: 'expiration',
+                    width: ((oDef.width - 1) * 0.35),
+                    checked: exp_bool
+                }, {
+                    xtype: 'container',
+                    layout: 'form',
+                    layoutConfig: {
+                    columns:1,
+                    fieldTpl: (function() {
+                        var custstyle = new Ext.Template(
+                            '<div class="x-form-item {itemCls}" tabIndex="-1" style="margin-top:0px;margin-bottom:0px;">',
+                            '<label for="{id}" style="{labelStyle}" class="x-form-item-label">{label}{labelSeparator}</label>',
+                            '<div class="x-form-element" id="x-form-el-{id}" style="{elementStyle}">',
+                            '</div><div class="{clearCls}"></div>',
+                            '</div>');
+                            custstyle.disableFormats = true;
+                            return custstyle.compile();
+                        })()
+                    },
+                    width: ((oDef.width - 1) * 0.65),
+                    labelWidth: 70,
+                    style: { margin: '2px 0 0 0', padding: '3px 0px 3px 3px', border:'1px rgb(193, 193, 193) solid' },
+                    items: [{
+                        xtype: 'numberfield',
+                        name: 'duration-hour',
+                        fieldLabel: _('hours'),
+                        allowDecimals: false,
+                        allowNegative: false,
+                        emptyText: '0',
+                        grow: true,
+                        growMax: ((((oDef.width - 1) - ((oDef.width - 1) * 0.35)) * 0.5) - 8),
+                        value: defaultValues.hours,
+                        readOnly: !exp_bool,
+                        submitValue: false,
+                        selectOnFocus: true,
+                        style: {
+                            color: def_durationfield_color
+                        },
+                        listeners: {
+                            change: dlistener
+                        }
+                    }, {
+                        xtype: 'numberfield',
+                        name: 'duration-minute',
+                        fieldLabel: _('minutes'),
+                        allowDecimals: false,
+                        allowNegative: false,
+                        emptyText: '0',
+                        grow: true,
+                        width: 100,
+                        growMax: ((((oDef.width - 1) - ((oDef.width - 1) * 0.35)) * 0.5) - 8),
+                        value: defaultValues.minutes,
+                        readOnly: !exp_bool,
+                        submitValue: false,
+                        selectOnFocus: true,
+                        style: {
+                            color: def_durationfield_color
+                        },
+                        listeners: {
+                            change: dlistener
+                        },
+                        bodyStyle: 'margin: 0 0 0 0;'
+                    }, {
+                        xtype: 'numberfield',
+                        name: 'duration',
+                        fieldLabel: _('seconds'),
+                        allowDecimals: false,
+                        value: defaultValues.seconds,
+                        minValue: 1,
+                        grow: true,
+                        width: 40,
+                        growMax: ((((oDef.width - 1) - ((oDef.width - 1) * 0.35)) * 0.5) - 8),
+                        readOnly: true,
+                        style: {
+                            background: '#00cc00'
+                        }
+                    }]
+                }]
+            });
+            return new Ext.Container(oDef);
+        },
+
         getField: function (o) {
 
             var oDef = {
                 fieldLabel: o.fieldLabel,
                 name: o.fieldName,
                 value: o.fieldValue,
-                width: 200,
+                width: 230,
                 allowBlank: !o.fieldRequired
             };
 
@@ -181,6 +400,7 @@ Ext.ns('Cronk.grid');
                 return new Ext.form.Hidden(oDef);
 
             case 'date':
+
                 oDef.format = 'Y-m-d H:i:s';
 
                 if (!oDef.value) {
@@ -188,7 +408,11 @@ Ext.ns('Cronk.grid');
                 } else if (oDef.value.match(/^now[ \+\-]\d+$/)) {
                     oDef.value = new Date(new Date().getTime() + 1000 * Number(oDef.value.substr(3)));
                 }
-                return new Ext.form.DateField(oDef);
+
+                if (o.fieldName === 'expiretime') {
+                    return this.getExpiretimeFields(o, oDef);
+                }
+            return new Ext.form.DateField(oDef);
 
 
             case 'ro':
@@ -204,7 +428,7 @@ Ext.ns('Cronk.grid');
                         xtype: 'radio',
                         boxLabel: _('Yes'),
                         inputValue: 1,
-                        columnWidth: 0.5,
+                        columnWidth: 0.35,
                         name: o.fieldName,
                         checked: o.fieldValue !== "true"
                     }, {
@@ -212,28 +436,29 @@ Ext.ns('Cronk.grid');
                         boxLabel: _('No'),
                         inputValue: 0,
                         name: o.fieldName,
-                        columnWidth: 0.5,
+                        columnWidth: 0.65,
                         checked: o.fieldValue === "true"
                     }]
                 });
+
+                var clistener = function (checkedBox,val) {
+                    for (var i = 0; i < affectedForms.length; i++) {
+                        var m = form.getForm().findField(affectedForms[i]);
+
+                        if (m) {
+                            m.setReadOnly((checkedBox.initialConfig.boxLabel === _('No')) ? !val : val);
+                            m.container.setVisible((checkedBox.initialConfig.boxLabel === _('No')) ? val : !val);
+                        }
+                    }
+                };
+
                 if (o.fieldName === "fixed") {
-                    AppKit.log(oDef);
                     var affectedForms = ['duration', 'duration-minute', 'duration-hour'];
                     for(var i=0;i<oDef.items.length;i++) {
                         oDef.items[i].listeners = {
-                            check: function (checkedBox,val) {
-                                AppKit.log("?");
-                                for (var i = 0; i < affectedForms.length; i++) {
-                                    var m = form.getForm().findField(affectedForms[i]);
-
-                                    if (m) {
-                                        m.setReadOnly((checkedBox.initialConfig.boxLabel === _('No')) ? !val : val);
-                                        m.container.setVisible((checkedBox.initialConfig.boxLabel === _('No')) ? val : !val);
-                                    }
-                                }
-                            }
-                        }
-                    };
+                            check: clistener
+                        };
+                    }
                 }
                 return new Ext.Container(oDef);
 
@@ -499,6 +724,7 @@ Ext.ns('Cronk.grid');
                             fieldName: item,
                             fieldType: o.types[item].type,
                             fieldValue: this.command_options.predefined[item] || o.types[item].defaultValue || "",
+                            fieldChecked: o.types[item].defaultChecked || "",
                             fieldRequired: o.types[item].required == "true",
                             form: oForm
                         });
@@ -513,7 +739,7 @@ Ext.ns('Cronk.grid');
                     if (bAdd === false) {
                         oForm.add({
                             xtype: 'label',
-                            text: _('This command will be send to all selected items')
+                            text: _('This command will be sent to all selected items')
                         });
                     }
 
@@ -523,11 +749,33 @@ Ext.ns('Cronk.grid');
                     oWin.render(Ext.getBody());
 
                     if (this.command_options.predefined.fixed === 1) {
+                        var fexp = oForm.getForm().findField('expiretime');
                         var fdur = oForm.getForm().findField('duration');
-                        if (fdur) {
+                        var fdurhour = oForm.getForm().findField('duration-hour');
+                        var fdurminute = oForm.getForm().findField('duration-minute');
+                        var exp_bool = true;
+
+                        if (fexp) {
+                            if (fexp.initialConfig.readOnly === false) {
+                                exp_bool = true;
+                                Ext.onReady(function() {
+                                    fexp.focus(true, 372);
+                                });
+                            }
+                            else {
+                                exp_bool = false;
+                                Ext.onReady(function() {
+                                    fdurhour.focus(true, 372);
+                                });
+                            }
+                        }
+
+                        /*
+                        if (fdurhour && fdurminute) {
                             fdur.setReadOnly(true);
                             fdur.container.hide();
                         }
+                        */
                     }
 
                     oWin.show();

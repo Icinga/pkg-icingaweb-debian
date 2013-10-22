@@ -54,8 +54,8 @@ var AppKit, _ = function () {
                 var me = AppKit;
 
                 Ext.BLANK_IMAGE_URL = me.c.path + '/images/ajax/s.gif';
-                Ext.chart.Chart.CHART_URL = me.c.path + '/js/ext3/resources/charts.swf';
-
+                Ext.chart.Chart.CHART_URL = null; // force URL to be null
+                                                  // ExtJS loads a web url by default
                 Ext.QuickTips.init();
                 growlStack();
 
