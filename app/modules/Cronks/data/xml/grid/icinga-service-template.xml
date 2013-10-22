@@ -275,6 +275,10 @@
                     <parameter name="title">Add a service comment</parameter>
                     <parameter name="icon_class">icinga-icon-comment</parameter>
                 </parameter>
+                <parameter name="DEL_ALL_SVC_COMMENTS">
+                    <parameter name="title">Delete all service comments</parameter>
+                    <parameter name="icon_class">icinga-icon-delete</parameter>
+                </parameter>
                 <parameter name="SEND_CUSTOM_SVC_NOTIFICATION">
                     <parameter name="title">Send custom service notification</parameter>
                     <parameter name="icon_class">icinga-icon-notify</parameter>
@@ -771,6 +775,42 @@
 
             <order>
                 <parameter name="enabled">false</parameter>
+            </order>
+        </field>
+
+        <field name="service_state_type">
+            <datasource>
+                <parameter name="field">SERVICE_STATE_TYPE</parameter>
+            </datasource>
+
+            <display>
+                <parameter name="visible">false</parameter>
+                <parameter name="label">State Type</parameter>
+                <parameter name="width">60</parameter>
+                <parameter name="Ext.grid.Column">
+                    <parameter name="fixed">true</parameter>
+                </parameter>
+                <parameter name="jsFunc">
+                    <parameter name="namespace">Cronk.grid.ColumnRenderer</parameter>
+                    <parameter name="function">stateType</parameter>
+
+                    <!-- renderer/gridevent[cellclick|celldblclick|...] -->
+                    <parameter name="type">renderer</parameter>
+                </parameter>
+            </display>
+
+            <filter>
+                <parameter name="enabled">true</parameter>
+
+                <!-- Filter configuration -->
+                <parameter name="type">extjs</parameter>
+                <parameter name="subtype">appkit.ext.filter.statetype</parameter>
+                <parameter name="no_operator">false</parameter>
+                <parameter name="field">service_state_type</parameter>
+            </filter>
+
+            <order>
+                <parameter name="enabled">true</parameter>
             </order>
         </field>
 

@@ -1,0 +1,110 @@
+Icinga Web as package on SUSE
+-----------------------------
+
+NOTE: Keep in mind to read the Changelog!
+      /usr/share/doc/icinga-web-<version>/
+
+For detailed information on
+
+* how to build a package with provided icinga-web.spec
+* how to proceed with setup after package install
+    - setup the icinga_web database
+    - configure the backend for IDOUtils and internal Web DB
+
+please locate the howtos in the Icinga wiki
+
+https://wiki.icinga.org/display/howtos/Setting+up+Icinga+Web+on+SUSE
+
+as well as the official docs for a more detailed introduction
+
+http://docs.icinga.org
+http://docs.icinga.org/latest/en/icinga-web-introduction.html
+
+
+Requirements
+~~~~~~~~~~~~
+
+* Icinga
+* Icinga IDOUtils (providing database 'icinga')
+* MySQL or Postgresql (for the 'icinga_web' database storing user credentials, sessions, etc)
+
+
+Installation
+~~~~~~~~~~~~
+
+# zypper install <packagename>
+
+* icinga-web - main package
+* icinga-web-{mysql,pgsql} - database config for 'icinga_web' database
+* icinga-web-module-pnp - pnp integration templates
+
+Database Setup
+~~~~~~~~~~~~~~
+
+* Create the database, user and permissions.
+
+# mysql -u root -p
+mysql> CREATE DATABASE icinga_web;
+       GRANT USAGE ON *.* TO 'icinga_web'@'localhost' IDENTIFIED BY 'icinga_web' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0;
+       GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, INDEX ON icinga_web.* TO 'icinga_web'@'localhost';
+       quit
+
+* Import the Icinga Web schema
+
+# mysql -u root -p icinga_web <  /usr/share/doc/icinga-web-<version>/schema/mysql.sql
+
+Web Interface
+~~~~~~~~~~~~~
+
+After installing the package, Icinga Web will be available at
+
+http://localhost/icinga-web
+User: root
+Password: password
+
+You can edit or add users from the admin panel then. Check the icinga
+docs for some details on that.
+http://docs.icinga.org/latest/en/icinga-web-introduction.html
+
+Configuration
+~~~~~~~~~~~~~
+
+Configuration is stored within *.xml files in /etc/icinga-web/conf.d
+After editing the config, clearing the cache is required running
+
+# /usr/bin/icinga-web-clearcache
+
+If you've chosen different database usernames/passwords please edit
+/etc/icinga-web/conf.d/databases.xml in the 'icinga web' and 'icinga
+idoutils' sections. 
+
+Check the documentation for more details
+http://docs.icinga.org/latest/en/icinga-web-config.html
+
+
+Logs & Errors
+~~~~~~~~~~~~~
+
+Icinga Web logs are stored in /var/log/icinga-web
+Common errors may also be within apache logs.
+
+Your browsers developer tools & console may help too. Details on that
+can be found on the Icinga wiki.
+
+https://wiki.icinga.org/display/testing/Icinga+Web+Testing
+
+File Locations
+~~~~~~~~~~~~~~
+
+An uptodate list can be found on the wiki
+https://wiki.icinga.org/display/howtos/Package+Specific+Locations
+
+| /etc/icinga-web/conf.d 		| xml configuration
+| /usr/share/icinga-web 		| data root dir (where the php, js will live)
+| /etc/apache2/conf.d/icinga-web.conf 	| apache config
+| /var/log/icinga-web 			| contains all log files
+| /var/cache/icinga-web 		| config cache files (cleared with icinga-web-clearcache)
+
+The icinga package places the external command pipe into '/var/icinga/rw/icinga.cmd'
+which will be the default location in the access.xml configuration file.
+
