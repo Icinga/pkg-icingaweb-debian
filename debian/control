@@ -13,7 +13,6 @@ Package: icinga-web
 Architecture: all
 Depends: dbconfig-common,
          icinga-core (>= 1.7.0),
-         icinga-idoutils (>= 1.7.0),
          php5,
          php5-cli,
          php5-gd,
@@ -22,7 +21,9 @@ Depends: dbconfig-common,
          php5-json,
          ucf,
          ${misc:Depends}
-Recommends: apache2 | httpd, mysql-client | postgresql-client
+Recommends: icinga-idoutils,
+            apache2 | httpd,
+            mysql-client | postgresql-client
 Suggests: icinga-doc, nagios-images
 Description: host and network monitoring system - modern web interface
  Icinga is a modular monitoring framework for hosts, services, and

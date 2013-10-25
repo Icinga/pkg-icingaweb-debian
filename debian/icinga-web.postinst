@@ -25,7 +25,15 @@ generate_dbxml() {
     if [ -f "$dbconfig" ]; then
         source $dbconfig
     else
-        echo "database config failed: file $dbconfig does not exist" >&2
+        (
+        echo
+        echo "[ WARNING ]"
+        echo "cannot configure database: $file"
+        echo "the database might not been configured with dbconfig-common"
+        echo "or there was another problem, the config file is missing:"
+        echo " $dbconfig"
+        echo
+        ) >&2
         return
     fi
 
@@ -43,7 +51,7 @@ generate_dbxml() {
     dbc_edbuser=$(uriescape $dbc_dbuser)
     dbc_edbpass=$(uriescape $dbc_dbpass)
     dbc_edbname=$(uriescape $dbc_dbname)
-    
+
     # allow pgsql socket
     [ "$dbc_dbserver" = "" ] && [ "$dbc_authmethod_user" = "ident" ] && dbc_dbserver="%2Fvar%2Frun%2Fpostgresql"
 
@@ -56,9 +64,9 @@ generate_dbxml() {
 
     # replace the file with ucf
     ucf --debconf-ok $tempfile $file
-    
+
     echo "database config successful: $file"
-    rm -f $tempfile 
+    rm -f $tempfile
 }
 
 generate_dbxml /etc/icinga-web/conf.d/database-web.xml \

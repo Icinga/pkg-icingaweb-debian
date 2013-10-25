@@ -1,0 +1,12 @@
+icinga-web (1.10.0-1) unstable; urgency=low
+
+  Please make sure to check your version of Icinga IDOutils, Icinga Web 1.10.0
+  requires the IDO schema to be at least version 1.10.0.
+
+  The reason is a column change that cannot be handled backwards compatible in
+  the database backend of icinga-web.
+
+  Please see also the upstream changelog:
+   /usr/share/doc/icinga-web/CHANGELOG-1.10.gz
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Fri, 25 Oct 2013 20:22:02 +0200
