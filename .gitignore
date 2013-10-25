@@ -37,6 +37,7 @@ app/modules/Api/lib/.ssh/*
 app/modules/Api/config/module.site.xml
 app/modules/Api/config/access.xml
 app/modules/Api/config/module.xml
+app/modules/Api/config/views.xml
 app/modules/Config/config/module.xml
 app/modules/AppKit/config/module.xml
 app/modules/Reporting/config/module.xml
@@ -59,11 +60,10 @@ etc/conf.d/access.xml
 etc/conf.d/databases.xml
 etc/conf.d/Makefile
 etc/conf.d/sla.xml
+antbuild.log
 tests/phpunit/test.properties
 tests/php/results.xml
 etc/apache2/icinga-web.conf
-pub/.htaccess
-pub/soap/.htaccess
 icinga-web.mwb.bak
 etc/scheduler/icingaCron
 lib/icingaScheduler/config.php
@@ -73,5 +73,7 @@ lib/icingaScheduler/config.php
 **/*.log
 #*
 .#*
-/.settings/
-/nbproject/private/
+.settings/
+nbproject/private/
+.idea/
+
