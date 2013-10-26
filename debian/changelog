@@ -1,3 +1,15 @@
+icinga-web (1.10.0-1) unstable; urgency=low
+
+  * [7dae107] Imported Upstream version 1.10.0 (Closes: #719859)
+              DFSG tarball no longer required
+  * [31e2756] Removed patch 21_yui_chartsswf - upstream doesn't use SWF anymore
+  * [d370ed9] Updated packaging for 1.10.0
+  * [ee59fb7] lintian: ignoring apache2 warnings
+  * [d3240e5] Made icinga-idoutils a recommendation,
+              while requiring at least 1.10.0 (Closes: #678350)
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Fri, 25 Oct 2013 20:31:59 +0200
+
 icinga-web (1.9.2+dfsg1-1~debmon7+1) debmon-wheezy; urgency=low
 
   * Rebuild for debmon-wheezy

@@ -14,4 +14,5 @@ usr/share/icinga-web/lib/ext3 usr/share/icinga-web/lib
 usr/share/icinga-web/lib/jit usr/share/icinga-web/lib
 usr/share/icinga-web/lib/jsgettext usr/share/icinga-web/lib
 usr/share/icinga-web/lib/phpseclib usr/share/icinga-web/lib
+usr/share/icinga-web/lib/raphael usr/share/icinga-web/lib
 usr/share/icinga-web/pub/* usr/share/icinga-web/pub

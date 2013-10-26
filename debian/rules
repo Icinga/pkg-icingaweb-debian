@@ -14,6 +14,11 @@ b := $(shell pwd)/debian
 %:
 	dh --buildsystem=autoconf $@
 
+override_dh_auto_clean:
+	dh_auto_clean
+	# temp fix for 1.10.0
+	rm -f app/modules/Api/config/views.xml
+
 override_dh_auto_configure:
 	./configure --prefix=/usr/share/icinga-web \
 	--bindir=/usr/lib/icinga-web/bin \
@@ -54,16 +59,22 @@ override_dh_install:
 	cp etc/schema/updates/mysql/mysql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.1~schema0
 	cp etc/schema/updates/mysql/mysql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.8.3~schema0
 	cp etc/schema/updates/mysql/mysql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.9.0~0schema
+	cp etc/schema/updates/mysql/mysql_v1-9-1_to_1-10-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/mysql/1.10.0~0schema
 	# PGSQL schema for dbconfig-common
 	cp etc/schema/pgsql.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/install/pgsql
 	cp etc/schema/updates/pgsql/pgsql_v1-7-0_to_v1-7-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1
-	chmod -x ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.1-1 # TEMP fix -mf
 	cp etc/schema/updates/pgsql/pgsql_v1-7-1_to_v1-7-2.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.7.2-1
 	cp etc/schema/updates/pgsql/pgsql_v1-7-2_to_v1-8-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.0~beta-1
 	cp etc/schema/updates/pgsql/pgsql_v1-8-0_to_v-1-8-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.1~schema0
 	cp etc/schema/updates/pgsql/pgsql_v1-8-1_to_v1-8-3.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.8.3~schema0
 	cp etc/schema/updates/pgsql/pgsql_v1-8-3_to_v1-9.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.9.0~0schema
+	cp etc/schema/updates/pgsql/pgsql_v1-9-1_to_v1-10-0.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.10.0~0schema
 	# rename apache config file
 	mv ${b}/icinga-web/etc/icinga-web/icinga-web.conf ${b}/icinga-web/etc/icinga-web/apache2.conf
+
+override_dh_compress:
+	dh_compress
+	# make sure all changelogs are compressed
+	find debian/icinga-web/usr/share/doc/icinga-web -regex ".*/CHANGELOG-[0-9]\.[0-9]+" | xargs -r gzip -9
 
 # vi: ts=4 sw=4 noexpandtab :
