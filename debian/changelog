@@ -1,3 +1,16 @@
+icinga-web (1.10.0-2) unstable; urgency=medium
+
+  * [9d4c780] Removed unnecessary dependency on icinga-core (Closes: #731840)
+  * [2a9455c] Define icinga-web breaking icinga-idoutils (<< 1.10)
+              This blocks the user from using icinga-web with an old and
+              outdated IDO schema - it could cause still problems when using
+              a remote IDO database, but helps to block incomplete Icinga
+              upgrades on a single server.
+
+              Please also see the NEWS entry! (Closes: #732058)
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Sat, 14 Dec 2013 18:02:02 +0100
+
 icinga-web (1.10.0-1) unstable; urgency=low
 
   * [7dae107] Imported Upstream version 1.10.0 (Closes: #719859)
