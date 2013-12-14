@@ -12,7 +12,6 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-icinga-web.git;a
 Package: icinga-web
 Architecture: all
 Depends: dbconfig-common,
-         icinga-core (>= 1.7.0),
          php5,
          php5-cli,
          php5-gd,
