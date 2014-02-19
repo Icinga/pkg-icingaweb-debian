@@ -1,3 +1,15 @@
+icinga-web (1.10.1-1) unstable; urgency=medium
+
+  * [a65c068] Imported Upstream version 1.10.1
+  * [a85c19d] Added database schema updates for 1.10.1
+  * [0d47dfe] Added lintian override for irrelevant privacy-breach-donation
+  * [f6c0957] Bumped standards to 3.9.5
+  * [6a4d77c] Added updated watch file for GitHub releases
+  * [4ba4364] Added php5-mysqlnd as an alternative MySQL driver
+    (Closes: #735969)
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 19 Feb 2014 18:10:58 +0100
+
 icinga-web (1.10.0-2~debmon70+1) debmon-wheezy; urgency=medium
 
   * Rebuild for debmon-wheezy
