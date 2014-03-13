@@ -1,3 +1,13 @@
+icinga-web (1.11.0) unstable; urgency=low
+
+  Please make sure to check your version of Icinga IDOutils, Icinga Web 1.11.0
+  requires the IDO schema to be at least version 1.11.0.
+
+  Please see also the upstream changelog:
+   /usr/share/doc/icinga-web/CHANGELOG-1.11.gz
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 13 Mar 2014 14:48:48 +0100
+
 icinga-web (1.10.0-1) unstable; urgency=low
 
   Please make sure to check your version of Icinga IDOutils, Icinga Web 1.10.0
