@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -75,7 +75,6 @@ class Api_LegacyApiContainerModel extends IcingaWebBaseModel
     public function createSearch($connection = "icinga") {
 
         return $this->getContext()->getModel("Store.LegacyLayer.IcingaApi","Api",array("connectionName"=>$connection));
-        ;
         throw new IcingaApiException("Could not create search (method not found)");
     }
 
