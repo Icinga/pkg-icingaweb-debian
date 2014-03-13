@@ -1,3 +1,12 @@
+icinga-web (1.11.0-1) unstable; urgency=medium
+
+  * [ccfbae3] Imported Upstream version 1.11.0
+  * [8bebe6f] Package updates for 1.11.0
+
+    Warning: Icinga IDO >= 1.11.0 is required!
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Thu, 13 Mar 2014 17:32:02 +0100
+
 icinga-web (1.10.1-1) unstable; urgency=medium
 
   * [a65c068] Imported Upstream version 1.10.1
