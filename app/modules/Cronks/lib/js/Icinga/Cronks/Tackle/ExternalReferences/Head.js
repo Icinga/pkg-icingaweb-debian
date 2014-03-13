@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -69,7 +69,7 @@
                 autoDestroy: true,
                 idIndex: 0,
                 target: this.targetType,
-                columns: [field_target+"_ACTION_URL",field_target+"_NOTES_URL"],
+                columns: [field_target+"_ACTION_URL",field_target+"_NOTES_URL",String.format('{0}_OBJECT_ID', this.type.toUpperCase())],
                 connection: this.connection
             });
             this.store.on("load",this.updateURLList,this);

@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -126,6 +126,8 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
         cfg.items = [];
         this.addMenuFields(cfg.items,this.menuData); 
         cfg.items.push({xtype : 'tbfill'});
+
+        this.addReloadStatus(cfg.items);
         this.addClock(cfg.items);
 
         if (AppKit.search.SearchHandler.isReady() === true) {
@@ -138,6 +140,13 @@ AppKit.util.AppKitNavBar = Ext.extend(Ext.Container,{
     addClock : function(itemsCfg) {
         var item = new AppKit.util.Servertime();
         itemsCfg.push({xtype: 'container',items:item});
+    },
+
+    addReloadStatus : function(itemsCfg) {
+        if (this.hasAuth === true) {
+            var item = new Cronk.menu.ReloadStatus();
+            itemsCfg.push({xtype: 'container',items:item});
+        }
     },
 
     addSearchBox : function(itemsCfg) {

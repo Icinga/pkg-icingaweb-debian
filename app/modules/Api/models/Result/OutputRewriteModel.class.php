@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -59,6 +59,12 @@ class Api_Result_OutputRewriteModel extends IcingaApiBaseModel {
                 'regex'    => 'CUSTOMVARIABLE_VALUE$',
                 'targets'  => 'all',
                 'method'   => 'rewriteCustomvariables',
+                'optional' => false
+            ),
+            array(
+                'regex'    => '_URL$',
+                'targets'  => array('host', 'service'),
+                'method'   => 'rewriteUrl',
                 'optional' => false
             )
         );
@@ -160,7 +166,30 @@ class Api_Result_OutputRewriteModel extends IcingaApiBaseModel {
         }
         return $val;
     }
-    
+
+    public function rewriteUrl($val, $field, $row) {
+        static $expander = null;
+
+        if ($expander === null) {
+            /** @var Api_MacroExpanderModel $expander */
+            $expander = $this->context->getModel('MacroExpander', 'Api');
+        }
+
+        $objectId = 0;
+
+        foreach ($row as $key => $value) {
+            if (preg_match('/OBJECT_ID$/i', $key)) {
+                $objectId = $value;
+                break;
+            }
+        }
+
+        if ($objectId > 0 && $val) {
+            return $expander->expandByObjectId($objectId, $val);
+        }
+
+        return $val;
+    }
     
     public function initialize(AgaviContext $context, array $parameters = array()) {
         parent::initialize($context, $parameters);
