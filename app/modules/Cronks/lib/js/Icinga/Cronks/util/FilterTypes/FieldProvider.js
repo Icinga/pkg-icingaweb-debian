@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -39,9 +39,9 @@
             'name': meta.name + '-field',
             'id': meta.name + '-field',
             hiddenName: 'value',
-            value: defaultv || '',
-            hiddenValue: defaultv || '',
-            fieldLabel: meta.boxLabel || _('Filter value')
+            value: defaultv || '',
+            hiddenValue: defaultv || '',
+            fieldLabel: meta.boxLabel || _('Filter value')
         }, meta);
     };
 
@@ -74,8 +74,8 @@
             displayField: 'value',
             mode: 'local',
             typeAhead: true,
-            value: defaultv || store.getAt(0).get('value'),
-            hiddenValue: defaultv || store.getAt(0).get('value'),
+            value: defaultv || store.getAt(0).get('value'),
+            hiddenValue: defaultv || store.getAt(0).get('value'),
             triggerAction: 'all',
             forceSelection: true
         };

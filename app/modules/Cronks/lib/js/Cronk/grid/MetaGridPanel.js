@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -810,10 +810,15 @@ Ext.ns("Cronk.grid");
                 }
             }
 
+            urlParams += '/';
             if (store.sortInfo) {
-                urlParams += "/groupDir=" + store.sortInfo.direction + "/" + "groupField=" + store.sortInfo.field + "/";
-            } else {
-                urlParams += "/groupDir=ASC/" + "groupField=instance/";
+                if (store.groupField) {
+                    urlParams += "groupDir=" + store.sortInfo.direction + "/";
+                    urlParams += "groupField=" + store.sortInfo.field + "/";
+                } else {
+                    urlParams += "sortDir=" + store.sortInfo.direction + "/";
+                    urlParams += "sortField=" + store.sortInfo.field + "/";
+                }
             }
 
             if (Ext.isDefined(cronk.iconCls)) {

@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -118,14 +118,14 @@ Ext.ns('Cronk.util');
             },
 
             getParameter: function (pname, vdefault) {
-                if (this.hasParameter(pname) || Ext.isDefined(this.params["p["+pname+"]"])) {
-                    return this.params[pname] || this.params["p["+pname+"]"];
+                if (this.hasParameter(pname) || Ext.isDefined(this.params["p["+pname+"]"])) {
+                    return this.params[pname] || this.params["p["+pname+"]"];
                 }
                 return vdefault;
             },
 
             hasParameter: function (pname) {
-                return Ext.isDefined(this.params[pname]) || Ext.isDefined(this.params["p["+pname+"]"]);
+                return Ext.isDefined(this.params[pname]) || Ext.isDefined(this.params["p["+pname+"]"]);
             },
 
             setStatefulObject: function (obj) {

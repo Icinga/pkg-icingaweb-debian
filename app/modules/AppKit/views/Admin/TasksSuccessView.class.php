@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -23,8 +23,23 @@
 
 
 class AppKit_Admin_TasksSuccessView extends AppKitBaseView {
+
     public function executeHtml(AgaviRequestDataHolder $rd) {
         $this->setupHtml($rd);
+    }
+
+    public function executeJson(AgaviRequestDataHolder $rd) {
+        $task = $this->getAttribute('task', 'unknown');
+        $status = $this->getAttribute('status', false);
+        $error = $this->getAttribute('error');
+
+        $output = array(
+            'success'   => $status,
+            'task'      => $task,
+            'error'     => $error
+        );
+
+        return json_encode($output);
     }
 }
 

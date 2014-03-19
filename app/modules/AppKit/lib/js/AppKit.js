@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -54,8 +54,8 @@ var AppKit, _ = function () {
                 var me = AppKit;
 
                 Ext.BLANK_IMAGE_URL = me.c.path + '/images/ajax/s.gif';
-                Ext.chart.Chart.CHART_URL = me.c.path + '/js/ext3/resources/charts.swf';
-
+                Ext.chart.Chart.CHART_URL = null; // force URL to be null
+                                                  // ExtJS loads a web url by default
                 Ext.QuickTips.init();
                 growlStack();
 

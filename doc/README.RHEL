@@ -1,6 +1,9 @@
 Icinga Web as package on RHEL
 -----------------------------
 
+NOTE: Keep in mind to read the Changelog!
+      /usr/share/doc/icinga-web-<version>/
+
 For detailed information on
 
 * how to build a package with provided icinga-web.spec
@@ -18,6 +21,43 @@ http://docs.icinga.org
 http://docs.icinga.org/latest/en/icinga-web-introduction.html
 
 
+Requirements
+~~~~~~~~~~~~
+
+* Icinga
+* Icinga IDOUtils (providing database 'icinga')
+* MySQL or Postgresql (for the 'icinga_web' database storing user credentials, sessions, etc)
+* Additional packages: 
+
+# yum install php php-cli php-pear php-xmlrpc php-xsl php-pdo php-soap php-gd php-ldap php-mysql
+
+NOTE: On RHEL5 PHP 5.3 is available through the package 'php53'.
+
+Installation
+~~~~~~~~~~~~
+
+# yum install <packagename>
+
+* icinga-web - main package
+* icinga-web-{mysql,pgsql} - database config for 'icinga_web' database
+* icinga-web-module-pnp - pnp integration templates
+
+Database Setup
+~~~~~~~~~~~~~~
+
+* Create the database, user and permissions.
+
+# mysql -u root -p
+
+mysql> 	CREATE DATABASE icinga;
+
+	GRANT SELECT, INSERT, UPDATE, DELETE, DROP, CREATE VIEW, INDEX, EXECUTE ON icinga_web.* TO 'icinga_web'@'localhost' IDENTIFIED BY 'icinga_web';
+
+        quit
+
+* Import the Icinga Web schema
+
+# mysql -u root -p icinga_web <  /usr/share/doc/icinga-web-<version>/schema/mysql.sql
 
 Web Interface
 ~~~~~~~~~~~~~
@@ -30,7 +70,7 @@ Password: password
 
 You can edit or add users from the admin panel then. Check the icinga
 docs for some details on that.
-
+http://docs.icinga.org/latest/en/icinga-web-introduction.html
 
 Configuration
 ~~~~~~~~~~~~~
@@ -40,16 +80,24 @@ After editing the config, clearing the cache is required running
 
 # /usr/bin/icinga-web-clearcache
 
+If you've chosen different database usernames/passwords please edit
+/etc/icinga-web/conf.d/databases.xml in the 'icinga web' and 'icinga
+idoutils' sections. 
+
 Check the documentation for more details
 http://docs.icinga.org/latest/en/icinga-web-config.html
 
 
-Logs
-~~~~
+Logs & Errors
+~~~~~~~~~~~~~
 
 Icinga Web logs are stored in /var/log/icinga-web
 Common errors may also be within apache logs.
 
+Your browsers developer tools & console may help too. Details on that
+can be found on the Icinga wiki.
+
+https://wiki.icinga.org/display/testing/Icinga+Web+Testing
 
 File Locations
 ~~~~~~~~~~~~~~
@@ -57,10 +105,12 @@ File Locations
 An uptodate list can be found on the wiki
 https://wiki.icinga.org/display/howtos/Package+Specific+Locations
 
+| /etc/icinga-web/conf.d 		| xml configuration
+| /usr/share/icinga-web 		| data root dir (where the php, js will live)
+| /etc/httpd/conf.d/icinga-web.conf 	| apache config
+| /var/log/icinga-web 			| contains all log files
+| /var/cache/icinga-web 		| config cache files (cleared with icinga-web-clearcache)
 
-Special note:
-~~~~~~~~~~~~~
-Unless further notice the provided icinga-web.spec file
-is still a work in progress and can/will change things.
+The icinga package places the external command pipe into '/var/spool/icinga/cmd/icinga.cmd'
+which will be the default location in the access.xml configuration file.
 
-Keep in mind to read the Changelog!

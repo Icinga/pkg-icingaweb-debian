@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 //
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 //
 // icinga-web is free software: you can redistribute it and/or modify
@@ -105,7 +105,7 @@ Ext.ns("AppKit.Admin");
             fields: ['id', 'name', 'firstname', {
                 name: 'disabled',
                 type: 'boolean'
-            }, 'lastname', 'modified', 'created', 'email',
+            }, 'lastname', 'modified', 'last_login', 'created', 'email',
                 'description', 'authsrc', 'authkey', 'roles', 'principals'],
             newUser: function () {
                 Ext.iterate(this.fields.keys, function (key) {
@@ -355,7 +355,7 @@ Ext.ns("AppKit.Admin");
                         name: 'user_name',
                         id: 'form_user_name',
                         anchor: '95%',
-                        minLength: 3,
+                        minLength: 2,
                         maxLength: 127
                     }, {
                         xtype: 'container',
@@ -372,7 +372,6 @@ Ext.ns("AppKit.Admin");
                                 xtype: 'textfield',
                                 anchor: '95%',
                                 allowBlank: false,
-                                minLength: 3,
                                 maxLength: 40
                             },
                             columnWidth: 0.5
@@ -387,7 +386,6 @@ Ext.ns("AppKit.Admin");
                                 fieldLabel: _('Surname'),
                                 anchor: '90%',
                                 allowBlank: false,
-                                minLength: 3,
                                 maxLength: 40
                             },
                             columnWidth: 0.5
@@ -519,6 +517,14 @@ Ext.ns("AppKit.Admin");
                         fieldLabel: _('Modified'),
                         name: 'user_modified',
                         id: 'form_user_modified',
+                        preventMark: true,
+                        allowBlank: true,
+                        anchor: '95%'
+                    }, {
+                        xtype: 'displayfield',
+                        fieldLabel: _('Last login'),
+                        name: 'user_last_login',
+                        id: 'form_user_last_login',
                         preventMark: true,
                         allowBlank: true,
                         anchor: '95%'

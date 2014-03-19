@@ -448,7 +448,8 @@ CREATE TABLE nsm_user (
     user_description character varying(255),
     user_disabled smallint DEFAULT 1 NOT NULL,
     user_created timestamp without time zone NOT NULL,
-    user_modified timestamp without time zone NOT NULL
+    user_modified timestamp without time zone NOT NULL,
+    user_last_login timestamp without time zone
 );
 
 
@@ -654,7 +655,7 @@ COPY cronk_principal_cronk (cpc_principal_id, cpc_cronk_id) FROM stdin;
 --
 
 COPY nsm_db_version (id, version, modified, created) FROM stdin;
-1	icinga-web/v1.9.0	2013-03-25 00:00:00	2013-03-23 00:00:00
+1	icinga-web/v1.10.1	2014-02-19 00:00:00	2014-02-19 00:00:00
 \.
 
 
@@ -990,6 +991,13 @@ CREATE UNIQUE INDEX user_name_unique ON nsm_user USING btree (user_name);
 --
 
 CREATE INDEX user_search ON nsm_user USING btree (user_name, user_authsrc, user_authid, user_disabled);
+
+
+--
+-- Name: session_id_idx; Type: INDEX; Schema: public; Owner: icinga_web; Tablespace: 
+--
+
+CREATE UNIQUE INDEX session_id_idx ON nsm_session USING btree (session_id);
 
 
 --

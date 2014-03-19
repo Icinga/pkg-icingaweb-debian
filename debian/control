@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Uploaders: Markus Frosch <markus@lazyfrosch.de>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
 Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php5-cli, php5-xsl, php5-json
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 Homepage: http://www.icinga.org
 Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-icinga-web.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-icinga-web.git;a=summary
@@ -12,17 +12,20 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-icinga-web.git;a
 Package: icinga-web
 Architecture: all
 Depends: dbconfig-common,
-         icinga-core (>= 1.7.0),
-         icinga-idoutils (>= 1.7.0),
          php5,
          php5-cli,
          php5-gd,
-         php5-mysql | php5-pgsql,
+         php5-mysql | php5-mysqlnd | php5-pgsql,
          php5-xsl,
          php5-json,
          ucf,
          ${misc:Depends}
-Recommends: apache2 | httpd, mysql-client | postgresql-client
+# Notice: this will prevent users from using icinga-web 1.11 with a
+# Icinga IDO lower than 1.11 - also see the appropriate NEWS entry
+Breaks: icinga-idoutils (<< 1.11)
+Recommends: icinga-idoutils,
+            apache2 | httpd,
+            mysql-client | postgresql-client
 Suggests: icinga-doc, nagios-images
 Description: host and network monitoring system - modern web interface
  Icinga is a modular monitoring framework for hosts, services, and

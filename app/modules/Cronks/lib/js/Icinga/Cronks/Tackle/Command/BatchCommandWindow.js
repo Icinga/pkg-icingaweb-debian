@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -590,7 +590,7 @@ Ext.ns('Icinga.Cronks.Tackle.Command').BatchCommandWindow = Ext.extend(Ext.Windo
                 var count = this.recipientStore.getTotalCount();
                 Ext.Msg.confirm(
                     _("Submitting commands to multiple targets"),
-                    _("This command will be send to "+count+" "+this.type+"s, proceed?"),
+                    _("This command will be sent to "+count+" "+this.type+"s, proceed?"),
                     function(btn) {
                         if(btn !== "yes") {
                             return false;

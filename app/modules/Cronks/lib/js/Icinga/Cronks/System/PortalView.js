@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -205,8 +205,8 @@ Ext.ns('Icinga.Cronks.System');
                         action: 'System.PortalView',
                         'p[parentid]': id
                     };
-                    data.dragData.parameter = data.dragData.parameter || {};
-                    if (Ext.apply(data.dragData.parameter, data.dragData["ae:parameter"] || {})) {
+                    data.dragData.parameter = data.dragData.parameter || {};
+                    if (Ext.apply(data.dragData.parameter, data.dragData["ae:parameter"] || {})) {
                         for (var k in data.dragData.parameter) {
                             params['p[' + k + ']'] = data.dragData.parameter[k];
                         }

@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ class AppKit_Auth_Provider_AuthKeyModel extends AppKitAuthProviderBaseModel  imp
         $res = AppKitDoctrineUtil::createQuery()
                ->select('COUNT(u.user_id) as cnt')
                ->from('NsmUser u')
-               ->where('u.user_authkey=? and user_disabled=? and user_authsrc = ?', array($uid, 0,'auth_key'));
+               ->where('lower(u.user_authkey)=? and user_disabled=? and user_authsrc = ?', array(strtolower($uid), 0,'auth_key'));
 
         $res = $res->execute(null, Doctrine::HYDRATE_ARRAY);
 

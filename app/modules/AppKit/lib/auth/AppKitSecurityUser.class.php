@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -144,7 +144,10 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
                 // Give notice
                 $this->getContext()->getLoggerManager()
                 ->log(sprintf('User %s (%s) logged in!', $username, $user->givenName()), AgaviLogger::INFO);
+                $user->user_last_login = date('Y-m-d h:i:s');
+                $user->user_modified = $user->user_modified;
 
+                $user->trySave();
                 return true;
 
             }

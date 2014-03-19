@@ -1,2 +1,3 @@
-usr/share/doc/icinga-web/CHANGELOG-1.9 usr/share/doc/icinga-web/changelog
+usr/share/doc/icinga-web/CHANGELOG-1.11.gz usr/share/doc/icinga-web/changelog.gz
 etc/icinga-web/apache2.conf etc/apache2/conf-available/icinga-web.conf
+var/cache/icinga-web/tmp usr/share/icinga-web/app/data/tmp

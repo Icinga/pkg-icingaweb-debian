@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@ class AppKit_DataProvider_UserProviderAction extends AppKitBaseAction {
         "lastname" => "user_lastname",
         "modified" => "user_modified",
         "created" => "user_created",
+        "last_login" => "user_last_login",
         "authsrc" => "user_authsrc",
         "disabled" => "user_disabled",
         "id" => "user_id",
@@ -64,6 +65,7 @@ class AppKit_DataProvider_UserProviderAction extends AppKitBaseAction {
             "description"   => $user->user_description,
             "modified"      => $user->user_modified,
             "created"       => $user->user_created,
+            "last_login"    => $user->user_last_login == 0 ? 'Not determined yet' : $user->user_last_login,
             "disabled"      => $user->user_disabled
         );
     }

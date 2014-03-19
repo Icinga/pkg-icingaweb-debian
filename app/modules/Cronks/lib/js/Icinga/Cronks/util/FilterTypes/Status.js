@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -70,7 +70,7 @@ var getStatusForm = function(filterCfg, radiobtns) {
 }
 
 Ext.ns('Icinga.Cronks.util.FilterTypes').Statetype = function(filterCfg,defaults) {
-    console.log(filterCfg);
+    //console.log(filterCfg);
     return getStatusForm(filterCfg,[{
         checked: defaults['value'] == 0 || defaults == {},
         inputValue: 0,
@@ -87,9 +87,9 @@ Ext.ns('Icinga.Cronks.util.FilterTypes').Statetype = function(filterCfg,defaults
 };
 
 Ext.ns('Icinga.Cronks.util.FilterTypes').Hoststatus = function(filterCfg,defaults) {
-    console.log(filterCfg);
+    //console.log(filterCfg);
     return getStatusForm(filterCfg,[{
-        checked: defaults['value'] == 0 || defaults == {},
+        checked: defaults['value'] == 0 || defaults == {},
         inputValue: 0,
         name: 'state_radio',
         xtype: 'radio',
@@ -111,7 +111,7 @@ Ext.ns('Icinga.Cronks.util.FilterTypes').Hoststatus = function(filterCfg,default
 
 Ext.ns('Icinga.Cronks.util.FilterTypes').Servicestatus = function(filterCfg,defaults) {
    return getStatusForm(filterCfg,[{
-        checked: defaults['value'] == 0 || defaults == {},
+        checked: defaults['value'] == 0 || defaults == {},
         inputValue: 0,
         name: 'state_radio',
         xtype: 'radio',

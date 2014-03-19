@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -363,6 +363,9 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
                     break;
                 case 'retained_flag':
                     $query = str_replace('${retained_flag}', $this->useRetained,$query);
+                    break;
+                case 'active_flag':
+                    $query = str_replace('${active_flag}', 1, $query);
                     break;
                 default:
                     $query = $this->resolveReferenceToken($token,$query);

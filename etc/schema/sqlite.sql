@@ -97,7 +97,8 @@ CREATE TABLE nsm_user (
 	user_description VARCHAR(254),
 	user_disabled INTEGER DEFAULT '1' NOT NULL, 
 	user_created DATETIME NOT NULL, 
-	user_modified DATETIME NOT NULL
+	user_modified DATETIME NOT NULL,
+	user_last_login DATETIME
 );
 
 CREATE UNIQUE INDEX user_name_unique_idx ON nsm_user(user_name);
@@ -172,7 +173,7 @@ CREATE TABLE cronk_principal_category (
 
 /*          Initial data import              */
  
-INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.7.1', DATETIME('now'), DATETIME('now'));
+INSERT INTO nsm_db_version VALUES ('1','icinga-web/v1.10.1', DATETIME('now'), DATETIME('now'));
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('1','IcingaHostgroup','Limit data access to specific hostgroups','IcingaDataHostgroupPrincipalTarget','icinga');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('2','IcingaServicegroup','Limit data access to specific servicegroups','IcingaDataServicegroupPrincipalTarget','icinga');
 INSERT INTO nsm_target (target_id,target_name,target_description,target_class,target_type) VALUES ('3','IcingaHostCustomVariablePair','Limit data access to specific custom variables','IcingaDataHostCustomVariablePrincipalTarget','icinga');

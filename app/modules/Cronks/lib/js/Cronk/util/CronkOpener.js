@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -90,7 +90,7 @@ Ext.ns('Cronk.util');
 
         // PRIVATE
         parseUrl: function () {
-            if (location.href.match(/modules\/cronks\/open\/([\w\d_\-\s]+)(\?(.+))?$/)) {
+            if (location.href.match(/modules\/cronks\/open\/([\w\d_\.\-\s]+)(\?(.+))?$/)) {
                 if (RegExp.$1) {
                     this.setCronkUid(RegExp.$1);
                 }

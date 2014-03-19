@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -52,15 +52,15 @@ Icinga.Store.StoreFactory = function() {
         return Ext.extend(store,{
             dispatcherParams: {}, 
             setDispatcherParam: function(field,value) { 
-                this.dispatcherParams[field] = value;
+                this.dispatcherParams[field] = value;
             },
             load: function(options) {
-                options =  options || {};
+                options =  options || {};
                 var dispatcherParams = this.dispatcherParams;
                 for(var i in options.dispatcherParams) {
-                    dispatcherParams[i] = options.dispatcherParams[i];
+                    dispatcherParams[i] = options.dispatcherParams[i];
                 }
-                options.params = options.params || {};
+                options.params = options.params || {};
                 options.params.params = Ext.encode(dispatcherParams);
                 return store.prototype.load.call(this,options);
             }
@@ -68,7 +68,7 @@ Icinga.Store.StoreFactory = function() {
     };
 
     this.getStoreFor = function(module,provider,store,db,overrides) {
-        db = db || "icinga";
+        db = db || "icinga";
         var descriptor = Icinga.Api.Provider.getProviderDescriptor(module,provider,store);
 
         if(!descriptor.fields) {

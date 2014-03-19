@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -323,18 +323,26 @@ Cronk.util.CronkTabHelper = Ext.extend(Object, {
             
             c.store.originParams= {};
             Ext.apply(c.store.originParams,data.cr_base);
-            
-            c.store.groupDir = data.groupDir;
-            c.store.groupField = data.groupField;
-            
-            c.store.sort(data.groupField,data.groupDir);
-            
-            if(p.sort_array)  {
-                p.sort_array[0]['direction'] = data.groupDir;
-                p.sort_array[0]['field'] = data.groupField;
+
+            if (data.groupDir && data.groupField) {
+                c.store.groupDir = data.groupDir;
+                c.store.groupField = data.groupField;
+                c.store.sort(data.groupField,data.groupDir);
             }
-            c.filterHdl.updateFromJsonString(data.filter);
-            c.store.setBaseParam("filter_json", Ext.encode(data.filter));
+            else if (data.sortDir && data.sortField) {
+                c.store.sortDir = data.sortDir;
+                c.store.sortField = data.sortField;
+                c.store.sort(data.sortField,data.sortDir);
+            }
+
+            if(p.sort_array)  {
+                p.sort_array[0]['direction'] = data.groupDir || data.sortDir;
+                p.sort_array[0]['field'] = data.groupField || data.sortField;
+            }
+            if(data.filter) {
+                c.filterHdl.updateFromJsonString(data.filter);
+                c.store.setBaseParam("filter_json", Ext.encode(data.filter));
+            }
             c.store.load();
             
         });

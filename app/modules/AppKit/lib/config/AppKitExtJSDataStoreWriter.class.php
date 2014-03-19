@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ class AppKitExtJSDataStoreWriter {
 
     private function createStore(array $store) {
 
-        $rewritten = array();
+        $rewritten = array();
 
         foreach($store as $key=>$elem) {
             if (is_array($elem)) {
