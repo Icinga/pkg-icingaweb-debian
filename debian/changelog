@@ -1,3 +1,9 @@
+icinga-web (1.11.0-1~debmon70+1) debmon-wheezy; urgency=medium
+
+  * Rebuild for debmon-wheezy.
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 19 Mar 2014 20:21:17 +0100
+
 icinga-web (1.11.0-1) unstable; urgency=medium
 
   * [ccfbae3] Imported Upstream version 1.11.0
