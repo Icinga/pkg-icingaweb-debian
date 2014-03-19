@@ -20,9 +20,9 @@ Depends: dbconfig-common,
          php5-json,
          ucf,
          ${misc:Depends}
-# Notice: this will prevent users from using icinga-web 1.10 with a
-# Icinga IDO lower than 1.10 - also see the appropriate NEWS entry
-Breaks: icinga-idoutils (<< 1.10)
+# Notice: this will prevent users from using icinga-web 1.11 with a
+# Icinga IDO lower than 1.11 - also see the appropriate NEWS entry
+Breaks: icinga-idoutils (<< 1.11)
 Recommends: icinga-idoutils,
             apache2 | httpd,
             mysql-client | postgresql-client

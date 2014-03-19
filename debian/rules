@@ -49,6 +49,7 @@ override_dh_install:
 	rm -rf ${b}/tmp/usr/share/icinga-web/lib/agavi/src/build/
 	rm -rf ${b}/tmp/usr/share/icinga-web/app/modules/Reporting/data/
 	rm -rf ${b}/tmp/usr/share/icinga-web/app/data/i18n/po/
+	rm -rf ${b}/tmp/usr/share/icinga-web/app/data/tmp/
 	# Install the rest
 	dh_install
 	# MySQL schema for dbconfig-common

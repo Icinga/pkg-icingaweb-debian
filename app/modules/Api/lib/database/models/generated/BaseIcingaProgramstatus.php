@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2013 Icinga Developer Team.
+// Copyright (c) 2009-present Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -307,6 +307,16 @@ abstract class BaseIcingaProgramstatus extends Doctrine_Record {
                              'notnull' => true,
                              'autoincrement' => false,
                          ));
+        $this->hasColumn('config_dump_in_progress', 'integer', 2, array(
+                            'type' => 'integer',
+                            'length' => 2,
+                            'fixed' => false,
+                            'unsigned' => false,
+                            'primary' => false,
+                            'default' => '0',
+                            'notnull' => true,
+                            'autoincrement' => false,
+                        ));
     }
 
     public function setUp() {
