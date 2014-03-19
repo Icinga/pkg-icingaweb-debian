@@ -1,3 +1,9 @@
+icinga-web (1.11.0-1~debmon60+1) debmon-squeeze; urgency=medium
+
+  * Rebuild for debmon-squeeze.
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 19 Mar 2014 21:42:24 +0100
+
 icinga-web (1.11.0-1) unstable; urgency=medium
 
   * [ccfbae3] Imported Upstream version 1.11.0
