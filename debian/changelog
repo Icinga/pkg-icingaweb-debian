@@ -1,3 +1,22 @@
+icinga-web (1.11.1-1) unstable; urgency=medium
+
+  * [9682a38] Imported Upstream version 1.11.1
+  * [182412b] Update lintian-overrides of icinga-web binary
+  * [d1a9c5f] Add, override and clarify missing source files
+  * [6985ff8] Clarify source-is-missing for some prettify.js source files
+  * [49e920b] Update copyright years and maintainer mail address
+  * [dc3a26e] Clean old fix from rules
+  * [f87b670] Remove pub/api/ from binary package - no longer needed
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Tue, 05 Aug 2014 17:31:54 +0200
+
+icinga-web (1.11.0-2) unstable; urgency=medium
+
+  * [f15ab5b] Fix disabled Reporting Cronk's category (Closes: #744053)
+  * [9377932] Only recommend/suggest pnp4nagios
+
+ -- Markus Frosch <markus@lazyfrosch.de>  Wed, 23 Apr 2014 18:35:05 +0200
+
 icinga-web (1.11.0-1~debmon70+1) debmon-wheezy; urgency=medium
 
   * Rebuild for debmon-wheezy.

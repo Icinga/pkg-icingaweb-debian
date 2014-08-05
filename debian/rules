@@ -16,8 +16,6 @@ b := $(shell pwd)/debian
 
 override_dh_auto_clean:
 	dh_auto_clean
-	# temp fix for 1.10.0
-	rm -f app/modules/Api/config/views.xml
 
 override_dh_auto_configure:
 	./configure --prefix=/usr/share/icinga-web \
@@ -74,6 +72,8 @@ override_dh_install:
 	cp etc/schema/updates/pgsql/pgsql_v1-10-0_to_v1-10-1.sql ${b}/icinga-web/usr/share/dbconfig-common/data/icinga-web/upgrade/pgsql/1.10.1
 	# rename apache config file
 	mv ${b}/icinga-web/etc/icinga-web/icinga-web.conf ${b}/icinga-web/etc/icinga-web/apache2.conf
+	# FIXME remove api js from binary package - we will remove this in the next Icinga Web release
+	rm -rf $b/icinga-web/usr/share/icinga-web/pub/api
 
 override_dh_compress:
 	dh_compress

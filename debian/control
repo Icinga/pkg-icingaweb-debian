@@ -2,7 +2,7 @@ Source: icinga-web
 Section: php
 Priority: extra
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
-Uploaders: Markus Frosch <markus@lazyfrosch.de>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
+Uploaders: Markus Frosch <lazyfrosch@debian.org>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
 Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php5-cli, php5-xsl, php5-json
 Standards-Version: 3.9.5
 Homepage: http://www.icinga.org
@@ -50,7 +50,9 @@ Description: host and network monitoring system - modern web interface
 
 Package: icinga-web-pnp
 Architecture: all
-Depends: icinga-web (= ${source:Version}), pnp4nagios, ${misc:Depends}
+Depends: icinga-web (= ${source:Version}), ${misc:Depends}
+Recommends: pnp4nagios-web-config-icinga | pnp4nagios-web
+Suggests: pnp4nagios
 Description: host and network monitoring system - PNP4Nagios web plugin
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to

@@ -29,6 +29,7 @@ Ext.ns('Icinga.Cronks.Tackle.Information');
     Icinga.Cronks.Tackle.Information.LongPluginOutput = Ext.extend(
         Icinga.Cronks.Tackle.Information.OutputPanel, {
         title: _("Long plugin output"),
+        keepLineBreaksInHTML: true,
         tplField: 'object_long_output'
     });
 
