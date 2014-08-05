@@ -2,7 +2,7 @@ Source: icinga-web
 Section: php
 Priority: extra
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
-Uploaders: Markus Frosch <markus@lazyfrosch.de>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
+Uploaders: Markus Frosch <lazyfrosch@debian.org>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
 Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php5-cli, php5-xsl, php5-json
 Standards-Version: 3.9.5
 Homepage: http://www.icinga.org
