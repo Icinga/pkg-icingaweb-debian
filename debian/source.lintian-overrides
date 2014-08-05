@@ -1,0 +1,41 @@
+# see debian/missing-sources for all JS and CSS files
+source-is-missing lib/ext3/examples/docs/resources/prettify/prettify.js
+
+# source is in debian/missing-sources (ExtJS 3.2.1)
+source-is-missing lib/ext3/examples/docs/resources/ext-all.js
+source-is-missing lib/ext3/examples/docs/resources/ext-base.js
+
+# the source for the file is corresponding ...-debug.js file
+source-is-missing lib/ext3/ext-all.js
+source-is-missing lib/ext3/pkgs/cmp-foundation.js
+source-is-missing lib/ext3/pkgs/data-foundation.js
+source-is-missing lib/ext3/pkgs/data-grouping.js
+source-is-missing lib/ext3/pkgs/data-json.js
+source-is-missing lib/ext3/pkgs/data-list-views.js
+source-is-missing lib/ext3/pkgs/data-xml.js
+source-is-missing lib/ext3/pkgs/direct.js
+source-is-missing lib/ext3/pkgs/ext-core.js
+source-is-missing lib/ext3/pkgs/ext-dd.js
+source-is-missing lib/ext3/pkgs/ext-foundation.js
+source-is-missing lib/ext3/pkgs/pkg-buttons.js
+source-is-missing lib/ext3/pkgs/pkg-charts.js
+source-is-missing lib/ext3/pkgs/pkg-forms.js
+source-is-missing lib/ext3/pkgs/pkg-grid-editor.js
+source-is-missing lib/ext3/pkgs/pkg-grid-foundation.js
+source-is-missing lib/ext3/pkgs/pkg-grid-grouping.js
+source-is-missing lib/ext3/pkgs/pkg-grid-property.js
+source-is-missing lib/ext3/pkgs/pkg-history.js
+source-is-missing lib/ext3/pkgs/pkg-menu.js
+source-is-missing lib/ext3/pkgs/pkg-tabs.js
+source-is-missing lib/ext3/pkgs/pkg-tips.js
+source-is-missing lib/ext3/pkgs/pkg-toolbars.js
+source-is-missing lib/ext3/pkgs/pkg-tree.js
+source-is-missing lib/ext3/pkgs/resizable.js
+source-is-missing lib/ext3/pkgs/state.js
+source-is-missing lib/ext3/pkgs/window.js
+source-is-missing lib/ext3/adapter/ext/ext-base.js
+source-is-missing lib/ext3/adapter/jquery/ext-jquery-adapter.js
+source-is-missing lib/ext3/adapter/prototype/ext-prototype-adapter.js
+source-is-missing lib/ext3/adapter/yui/ext-yui-adapter.js
+source-is-missing lib/ext3/examples/calendar/calendar-all.js
+source-is-missing lib/ext3/examples/ux/ux-all.js
