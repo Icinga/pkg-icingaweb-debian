@@ -1,6 +1,10 @@
 # see debian/missing-sources for all JS and CSS files
 source-is-missing lib/ext3/examples/docs/resources/prettify/prettify.js
 
+# these are really source files - just with very long lines
+source-is-missing debian/missing-sources/prettify/src/lang-matlab.js
+source-is-missing debian/missing-sources/prettify/src/lang-xq.js
+
 # source is in debian/missing-sources (ExtJS 3.2.1)
 source-is-missing lib/ext3/examples/docs/resources/ext-all.js
 source-is-missing lib/ext3/examples/docs/resources/ext-base.js
