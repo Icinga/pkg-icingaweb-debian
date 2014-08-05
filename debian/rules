@@ -16,8 +16,6 @@ b := $(shell pwd)/debian
 
 override_dh_auto_clean:
 	dh_auto_clean
-	# temp fix for 1.10.0
-	rm -f app/modules/Api/config/views.xml
 
 override_dh_auto_configure:
 	./configure --prefix=/usr/share/icinga-web \
