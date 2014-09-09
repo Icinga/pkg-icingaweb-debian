@@ -1,3 +1,20 @@
+icinga-web (1.11.1-2) unstable; urgency=medium
+
+  Starting from this version the IDO auto configuration has been moved to
+  separate packages.
+
+  Please install one of the following packages to configure the proper database
+  connection:
+   - icinga-web-config-icinga
+   - icinga-web-config-icinga2-ido-mysql
+   - icinga-web-config-icinga2-ido-pgsql
+
+  Also check the README's:
+   - /usr/share/doc/icinga-web/README.Debian
+   - /usr/share/doc/icinga-web-config-*/README.Debian
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Tue, 09 Sep 2014 12:33:02 +0200
+
 icinga-web (1.11.0-1) unstable; urgency=low
 
   Please make sure to check your version of Icinga IDOutils, Icinga Web 1.11.0
