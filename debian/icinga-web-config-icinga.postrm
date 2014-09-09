@@ -2,7 +2,7 @@
 
 set -e
 
-if [ "$1" = "purge" ]; then
+if [ "$1" = "purge" ] || [ "$1" = "remove" ]; then
     rm -f /etc/icinga-web/conf.d/database-ido.xml
     if which ucf >/dev/null; then
         ucf --purge /etc/icinga-web/conf.d/database-ido.xml
