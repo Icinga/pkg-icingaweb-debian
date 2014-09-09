@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "purge" ] || [ "$1" = "remove" ]; then
+    rm -f /etc/icinga-web/conf.d/database-ido.xml
+    rm -f /etc/icinga-web/conf.d/access.local.xml
+    if which ucf >/dev/null; then
+        ucf --purge /etc/icinga-web/conf.d/database-ido.xml
+        ucf --purge /etc/icinga-web/conf.d/access.local.xml
+    fi
+fi
+
+#DEBHELPER#
+

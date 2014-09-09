@@ -23,10 +23,13 @@ Depends: dbconfig-common,
 # Notice: this will prevent users from using icinga-web 1.11 with a
 # Icinga IDO lower than 1.11 - also see the appropriate NEWS entry
 Breaks: icinga-idoutils (<< 1.11)
-Recommends: icinga-idoutils,
-            apache2 | httpd,
-            mysql-client | postgresql-client
-Suggests: icinga-doc, nagios-images
+Recommends:
+    apache2 | httpd,
+    mysql-client | postgresql-client
+Suggests:
+    icinga-web-config-icinga2-ido-mysql | icinga-web-config-icinga2-ido-pgsql | icinga-web-config-icinga,
+    icinga-doc,
+    nagios-images
 Description: host and network monitoring system - modern web interface
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to
@@ -47,6 +50,89 @@ Description: host and network monitoring system - modern web interface
  results and send commands to the Icinga Core. Host and service status,
  history, notifications and status maps are available to keep a check on
  the health of your network in real time.
+
+Package: icinga-web-config-icinga
+Architecture: all
+Depends:
+    icinga-web (= ${source:Version}),
+    icinga-idoutils,
+    ucf,
+    ${misc:Depends}
+Conflicts: icinga-web-config-icinga2
+Description: host and network monitoring system - database config for Icinga 1.x
+ Icinga is a modular monitoring framework for hosts, services, and
+ networks, based on the Nagios project. It is designed to be easy to
+ understand and modify to fit any need.
+ .
+ Features include:
+  * monitoring of network services via ping, SMTP, POP3, HTTP, NNTP, or
+    TCP port;
+  * plugin interface to allow for user-developed service checks;
+  * contact notifications when problems occur and get resolved (via
+    email, pager, or user-defined method)
+  * support for proactive problem resolution (handlers can be defined to
+    be run during service or host events);
+  * web output: current status, notifications, problem history, log
+    file, etc.
+ .
+ This package provides database auto configuration of the Icinga 1.x IDO for
+ the web interface.
+
+Package: icinga-web-config-icinga2-ido-mysql
+Architecture: all
+Depends:
+    icinga-web (= ${source:Version}),
+    icinga2-ido-mysql,
+    php5-mysql | php5-mysqlnd,
+    ucf,
+    ${misc:Depends}
+Conflicts: icinga-web-config-icinga, icinga-web-config-icinga2-ido-pgsql
+Description: host and network monitoring system - config for Icinga 2 MySQL IDO
+ Icinga is a modular monitoring framework for hosts, services, and
+ networks, based on the Nagios project. It is designed to be easy to
+ understand and modify to fit any need.
+ .
+ Features include:
+  * monitoring of network services via ping, SMTP, POP3, HTTP, NNTP, or
+    TCP port;
+  * plugin interface to allow for user-developed service checks;
+  * contact notifications when problems occur and get resolved (via
+    email, pager, or user-defined method)
+  * support for proactive problem resolution (handlers can be defined to
+    be run during service or host events);
+  * web output: current status, notifications, problem history, log
+    file, etc.
+ .
+ This package provides database auto configuration of the Icinga 2 MySQL IDO
+ for the web interface.
+
+Package: icinga-web-config-icinga2-ido-pgsql
+Architecture: all
+Depends:
+    icinga-web (= ${source:Version}),
+    icinga2-ido-pgsql,
+    php5-pgsql,
+    ucf,
+    ${misc:Depends}
+Conflicts: icinga-web-config-icinga, icinga-web-config-icinga2-ido-mysql
+Description: host and network monitoring system - config for Icinga 2 PgSQL IDO
+ Icinga is a modular monitoring framework for hosts, services, and
+ networks, based on the Nagios project. It is designed to be easy to
+ understand and modify to fit any need.
+ .
+ Features include:
+  * monitoring of network services via ping, SMTP, POP3, HTTP, NNTP, or
+    TCP port;
+  * plugin interface to allow for user-developed service checks;
+  * contact notifications when problems occur and get resolved (via
+    email, pager, or user-defined method)
+  * support for proactive problem resolution (handlers can be defined to
+    be run during service or host events);
+  * web output: current status, notifications, problem history, log
+    file, etc.
+ .
+ This package provides database auto configuration of the Icinga 2 PgSQL IDO
+ for the web interface.
 
 Package: icinga-web-pnp
 Architecture: all

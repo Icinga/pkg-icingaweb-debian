@@ -1,0 +1,43 @@
+Description: Set correct URLs for Icinga Docs
+Author: Markus Frosch <lazyfrosch@debian.org>
+Last-Update: 2014-09-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/etc/conf.d/cronks.xml
++++ b/etc/conf.d/cronks.xml
+@@ -39,6 +39,35 @@
+             </cronk>
+         -->
+         
++        <!-- set correct url for docs -->
++            <cronk name="iframeViewIcingaDocsEn">
++                <ae:parameter name="module">Cronks</ae:parameter>
++                <ae:parameter name="action">System.IframeView</ae:parameter>
++                <ae:parameter name="hide">false</ae:parameter>
++                <ae:parameter name="description">Icinga docs english version</ae:parameter>
++                <ae:parameter name="name">Docs EN</ae:parameter>
++                <ae:parameter name="image">cronks.Info2</ae:parameter>
++                <ae:parameter name="categories">misc</ae:parameter>
++                <ae:parameter name="position">300</ae:parameter>
++                <ae:parameter name="ae:parameter">
++                    <ae:parameter name="url"><![CDATA[/icinga-web/docs/en/index.html]]></ae:parameter>
++                </ae:parameter>
++            </cronk>
++
++            <cronk name="iframeViewIcingaDocsDe">
++                <ae:parameter name="module">Cronks</ae:parameter>
++                <ae:parameter name="action">System.IframeView</ae:parameter>
++                <ae:parameter name="hide">false</ae:parameter>
++                <ae:parameter name="description">Icinga docs german version</ae:parameter>
++                <ae:parameter name="name">Docs DE</ae:parameter>
++                <ae:parameter name="image">cronks.Info2</ae:parameter>
++                <ae:parameter name="categories">misc</ae:parameter>
++                <ae:parameter name="position">310</ae:parameter>
++                 <ae:parameter name="ae:parameter">
++                    <ae:parameter name="url"><![CDATA[/icinga-web/docs/de/index.html]]></ae:parameter>
++                </ae:parameter>
++            </cronk>
++
+         <!-- Disable default activated cronks -->
+             <cronk name="icingaReportingDefault">
+                 <ae:parameter name="module">Reporting</ae:parameter>

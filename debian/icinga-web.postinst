@@ -39,7 +39,7 @@ generate_dbxml() {
 
     # leave when dbconfig not enabled
     if [ "$dbc_install" != "true" ]; then
-        echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!" 
+        echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!"
         return
     fi
 
@@ -72,10 +72,6 @@ generate_dbxml() {
 generate_dbxml /etc/icinga-web/conf.d/database-web.xml \
                /usr/share/icinga-web/tmpl/database-web.xml.tmpl \
                /etc/dbconfig-common/icinga-web.conf
-
-generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
-               /usr/share/icinga-web/tmpl/database-ido.xml.tmpl \
-               /etc/dbconfig-common/icinga-idoutils.conf
 
 ###
 # Apache2
@@ -115,7 +111,7 @@ fi
 ###
 setpassword() {
     password="$1"
-    
+
     # load database connection info
     if [ ! -f /etc/dbconfig-common/icinga-web.conf ]; then
         return
@@ -124,7 +120,7 @@ setpassword() {
 
     # gen new salt
     salt=$(php5 -r 'echo hash("sha256", uniqid("root_", mt_rand()));')
-    
+
     # gen new pw hash
     export SALT="$salt"
     export PW="$password"
@@ -132,15 +128,15 @@ setpassword() {
 
     salt_e=${salt/\'/\\\'}
     pwhash_e=${pwhash/\'/\\\'}
-    
+
     if [ "$dbc_dbtype" = "mysql" ]; then
         # query the database to update
         query="UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""', user_modified = NOW() WHERE user_name = 'root';"
-        
+
         # use app user and password for the command
         dbc_dbadmin="$dbc_dbuser"
         dbc_dbadmpass="$dbc_dbpass"
-        
+
         if dbc_mysql_exec_command "$query"; then
             echo "root password updates successfully!"
             db_fset icinga-web/rootpassword changed false || true
@@ -151,10 +147,10 @@ setpassword() {
     elif [ "$dbc_dbtype" = "pgsql" ]; then
         # query the database to update
         query="UPDATE nsm_user SET user_password='""$pwhash_e""', user_salt = '""$salt_e""', user_modified = NOW() WHERE user_name = 'root';"
-        
+
         # use the app user
         _dbc_asuser=1
-        
+
         if _dbc_pgsql_exec_command "$query"; then
             echo "root password updates successfully!"
             db_fset icinga-web/rootpassword changed false || true
@@ -215,9 +211,6 @@ setperm root www-data 0640 /etc/icinga-web/conf.d/auth.xml
 setperm root www-data 0640 /etc/icinga-web/conf.d/databases.xml
 if [ -f /etc/icinga-web/conf.d/database-web.xml ]; then
     setperm root www-data 0640 /etc/icinga-web/conf.d/database-web.xml
-fi
-if [ -f /etc/icinga-web/conf.d/database-ido.xml ]; then
-    setperm root www-data 0640 /etc/icinga-web/conf.d/database-ido.xml
 fi
 setperm root www-data 0640 /etc/icinga-web/conf.d/module_reporting.xml
 

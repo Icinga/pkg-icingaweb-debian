@@ -1,0 +1,34 @@
+Description: Disable Icinga Reporting Cronk per default
+Author: Markus Frosch <lazyfrosch@debian.org>
+Last-Update: 2014-09-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/etc/conf.d/cronks.xml
++++ b/etc/conf.d/cronks.xml
+@@ -40,7 +40,6 @@
+         -->
+         
+         <!-- Disable default activated cronks -->
+-        <!-- 
+             <cronk name="icingaReportingDefault">
+                 <ae:parameter name="module">Reporting</ae:parameter>
+                 <ae:parameter name="action">Cronk.Main</ae:parameter>
+@@ -60,7 +59,6 @@
+                     <ae:parameter name="enable_scheduling">1</ae:parameter>
+                 </ae:parameter>
+             </cronk>
+-        -->
+         
+        	</cronks>
+         <categories>
+--- a/etc/conf.d/module_reporting.xml
++++ b/etc/conf.d/module_reporting.xml
+@@ -7,7 +7,7 @@
+         here
+     -->
+ 
+-    <module enabled="true">
++    <module enabled="false">
+             <settings>
+                     <setting name="jasperconfig.default">
+                         <ae:parameter name="jasper_url">http://127.0.0.1:8080/jasperserver</ae:parameter>

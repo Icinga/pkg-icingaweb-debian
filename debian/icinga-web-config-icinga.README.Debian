@@ -1,0 +1,11 @@
+icinga-web-config-icinga for Debian
+=========================
+
+This package configures the IDO database connection for Icinga Web based on
+the dbconfig-common settings for icinga-idoutils.
+
+You can do this manually - without this package - by updating:
+ /etc/icinga-web/conf.d/databases.xml
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Tue, 09 Sep 2014 11:40:44 +0200
+

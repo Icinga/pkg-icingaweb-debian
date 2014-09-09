@@ -1,3 +1,17 @@
+icinga-web (1.11.1-2) unstable; urgency=medium
+
+  * [8f41dce] Avoid confusion of Linitian with donation HTML code in comments
+  * [8e87a20] Split configuration of IDO connection to separate packages
+  * [a85f558] Add NEWS entry for config split
+  * [c6cff5a] Use proper patches for configuration changes
+  * [c96f5f5] Setup commandpipe for Icinga2
+  * [a7d577c] Update README.Debian
+  * [bc786a0] Update copyright
+  * [157f8c8] Remove generated configs on postrm remove
+  * [dc82307] Fix setperm in postinst
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Tue, 09 Sep 2014 14:58:03 +0200
+
 icinga-web (1.11.1-1~debmon70+1) debmon-wheezy; urgency=medium
 
   * Rebuild for debmon-wheezy.
