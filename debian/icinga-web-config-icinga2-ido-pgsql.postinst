@@ -1,0 +1,99 @@
+#!/bin/bash
+
+set -e
+
+uriescape() {
+    echo "$(perl -MCGI::Util -e 'print CGI::Util::escape($ARGV[0]);' "$1")"
+}
+
+setperm() {
+    local user="$1"
+    local group="$2"
+    local mode="$3"
+    local file="$4"
+    shift 4
+    # only do something when no setting exists
+    if ! dpkg-statoverride --list "$file" >/dev/null 2>&1; then
+      chown "$user":"$group" "$file"
+      chmod "$mode" "$file"
+    fi
+}
+
+generate_dbxml() {
+    local file="$1"
+    local template="$2"
+    local dbconfig="$3"
+
+    source $dbconfig
+
+    # leave when dbconfig not enabled
+    if [ "$dbc_install" != "true" ]; then
+        echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!" 
+        exit 1
+    fi
+
+    # create tempfile
+    local tempfile=$(tempfile -m 600 -p "$(basename $file)")
+
+    # add a colon to port
+    [ "$dbc_dbport" != "" ] && dbc_dbport=":$dbc_dbport"
+    dbc_edbuser=$(uriescape $dbc_dbuser)
+    dbc_edbpass=$(uriescape $dbc_dbpass)
+    dbc_edbname=$(uriescape $dbc_dbname)
+
+    # allow pgsql socket
+    [ "$dbc_dbserver" = "" ] && [ "$dbc_authmethod_user" = "ident" ] && dbc_dbserver="%2Fvar%2Frun%2Fpostgresql"
+
+    # uri escape the vars
+    # build the dsn
+    local dsn="$dbc_dbtype://$dbc_edbuser:$dbc_edbpass@${dbc_dbserver:=localhost}$dbc_dbport/$dbc_edbname"
+
+    # write xml to temp
+    cat $template | sed "s|_DBDSN_|$dsn|" > $tempfile
+
+    # replace the file with ucf
+    ucf --debconf-ok $tempfile $file
+
+    echo "database config successful: $file"
+    rm -f $tempfile
+}
+
+case "$1" in
+    configure)
+        if [ -f /etc/dbconfig-common/icinga2-ido-pgsql.conf ]; then
+            echo "Configuration IDO database for the PostgreSQL IDO of Icinga 2..."
+            generate_dbxml /etc/icinga-web/conf.d/database-ido.xml \
+                           /usr/share/icinga-web/tmpl/database-ido.xml.tmpl \
+                           /etc/dbconfig-common/icinga2-ido-pgsql.conf
+
+            setperm root www-data 0640 /etc/icinga-web/conf.d/database-ido.xml
+        else
+            (
+            echo
+            echo "[ ERROR ]"
+            echo "cannot configure IDO database connection!"
+            echo "the database might not been configured with dbconfig-common"
+            echo "or there was another problem, this config file is missing:"
+            echo " /etc/dbconfig-common/icinga2-ido-pgsql.conf"
+            echo
+            ) >&2
+            exit 1
+        fi
+
+        if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
+            /usr/lib/icinga-web/bin/clearcache.sh
+        fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
