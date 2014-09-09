@@ -1,7 +1,6 @@
 etc/apache2/icinga-web.conf etc/icinga-web
 etc/icinga-web/conf.d/* etc/icinga-web/conf.d
-debian/database-ido.xml.tmpl usr/share/icinga-web/tmpl
-debian/database-web.xml.tmpl usr/share/icinga-web/tmpl
+debian/*.xml.tmpl usr/share/icinga-web/tmpl
 
 usr/share/icinga-web/app/* usr/share/icinga-web/app
 usr/share/icinga-web/bin/clearcache.sh usr/lib/icinga-web/bin

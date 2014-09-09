@@ -19,6 +19,41 @@ setperm() {
     fi
 }
 
+is_fresh_install()
+{
+    if [ -z "$2" ] ; then
+        return 0
+    fi
+    return 1
+}
+
+enable_icinga2_commandpipe() {
+    if is_fresh_install $@; then
+        echo "enabling icinga2 features for classicui"
+        icinga2-enable-feature command
+
+        echo "reloading icinga2"
+        [ -x $(which invoke-rc.d) ] && invoke-rc.d icinga2 reload
+    fi
+}
+
+write_access_local() {
+    local file=/etc/icinga-web/conf.d/access.local.xml
+    local template=/usr/share/icinga-web/tmpl/access.local.xml.tmpl
+    local pipe=/run/icinga2/cmd/icinga2.cmd
+
+    # create tempfile
+    local tempfile=$(tempfile -m 600 -p "$(basename $file)")
+
+    cat $template | sed "s|_PIPE_|$pipe|" > $tempfile
+
+    # replace the file with ucf
+    ucf --debconf-ok $tempfile $file
+
+    echo "database config successful: $file"
+    rm -f $tempfile
+}
+
 generate_dbxml() {
     local file="$1"
     local template="$2"
@@ -67,6 +102,7 @@ case "$1" in
                            /etc/dbconfig-common/icinga2-ido-pgsql.conf
 
             setperm root www-data 0640 /etc/icinga-web/conf.d/database-ido.xml
+            setperm root www-data 0640 /etc/icinga-web/conf.d/access.local.xml
         else
             (
             echo
@@ -79,6 +115,9 @@ case "$1" in
             ) >&2
             exit 1
         fi
+
+        enable_icinga2_commandpipe
+        write_access_local
 
         if [ -x /usr/lib/icinga-web/bin/clearcache.sh ]; then
             /usr/lib/icinga-web/bin/clearcache.sh
