@@ -4,9 +4,7 @@ debian/*.substvars
 debian/*.debhelper
 debian/files
 debian/tmp/
-debian/icinga-web/
-debian/icinga-web-pnp/
-debian/icinga-web-bp/
+debian/icinga-web*/
 .pc/
 
 app/modules/Cronks/config/module.xml
