@@ -1,9 +1,59 @@
 icinga-web for Debian
 =====================
 
-Notes:
+  [ XML config cache ]
 
-  * Apache2 configuration
+    !!! IMPORTANT !!!
+
+    If you change any part of Icinga Web's XML configuration, you *have* to
+    clear the config cache.
+
+    You can do this with proper permissions and the script:
+      /usr/lib/icinga-web/bin/clearcache.sh
+
+    The cache itself is located in /var/cache/icinga-web/config/
+
+  [ IDO Database connection ]
+
+    The connection to Icinga's IDO is no longer configured automatically.
+
+    You will either have to do this by hand, or use one of the config packages:
+      icinga-web-config-icinga
+      icinga-web-config-icinga2-ido-mysql
+      icinga-web-config-icinga2-ido-pgsql
+
+    Manual changes should be done inside: /etc/icinga-web/conf.d/databases.xml
+
+    WARNING: Make sure to disable the corresponding <xi:include part of that
+             file. This avoids inclusion of automatic generated configs.
+
+    Other README's to check:
+      /usr/share/doc/icinga-web-config-icinga2-ido-mysql/README.Debian
+      /usr/share/doc/icinga-web-config-icinga2-ido-pgsql/README.Debian
+      /usr/share/doc/icinga-web-config-icinga/README.Debian
+      /usr/share/doc/icinga-idoutils/README.Debian
+
+  [ Icinga 2 Command Pipe ]
+
+    When you are using Icinga 2 as monitoring system and are *not* using the
+    config packages, you will have to configure the path to Icinga's command
+    pipe manually.
+
+    Configuration is in:
+      /etc/icinga-web/conf.d/access.xml
+
+  [ Icinga Web database ]
+
+    Configuration for Icinga Web's internal database is provided via
+    dbconfig-common in the maintainer scripts of this file.
+
+    General database configuration:
+      /etc/icinga-web/conf.d/databases.xml
+
+    Auto-generated configuration:
+      /etc/icinga-web/conf.d/database-web.xml
+
+  [ Apache2 configuration ]
     due to changes introduced with Apache 2.4 the debconf setting which
     webservers are enabled is now removed.
 
@@ -18,88 +68,29 @@ Notes:
      $ touch /etc/apache2/conf.d/icinga-web.conf  # create empty file
      $ service apache2 reload
 
-  * [Security Information]
-    The Yahoo Interface library is used in Icinga Web to render certain
-    pie charts, unfortunatly this causes problems due to a cross site
-    scripting issue.
+  [ Notes regarding PostgreSQL ident authentication [
 
-    The flash component has been removed from Debian and the charting
-    feature is disabled.
+    This is not really supported, just because icinga-web runs as www-data
+    per default. You will have to do some configuration stuff to run
+    icinga-web with ident. But you'll have to do this on your own.
 
-    Though a upstream fix is applied to allow the usage - when the user
-    decides to...
+    Though the maintainer scripts will create you a config for the
+    socket connection.
 
-    If you want to use the TO charts you have to either download a .swf
-    file to your server or use a swf loaded from yahooapis.com on demand.
+    Every access rights the maintainer script changes is checked
+    against dpkg-statoverride - so make sure to use it.
 
-    See the file /usr/share/icinga-web/app/modules/AppKit/lib/js/AppKit.js
-    for configuration options.
+  [ Jasper Reporting integration ]
 
-    Remote files:
-     uncomment the respective lines there and run
-     /usr/lib/icinga-web/bin/clearcache.sh
+    The module is disabled by default, to activate it you have to edit:
 
-    Local files:
-     download both files
-      http://yui.yahooapis.com/2.8.2/build/charts/assets/charts.swf
-      http://swfobject.googlecode.com/svn/trunk/swfobject/expressInstall.swf
-
-     and store them in /usr/share/icinga-web/lib/ext3/resources/
-
-     make sure to also change AppKit.js to uncomment the respective lines and
-     run /usr/lib/icinga-web/bin/clearcache.sh
-
-  * Please also read /usr/share/doc/icinga-idoutils/README.Debian
-    this file will explain how to enable the IDO in the first place
-
-  * Supported databases are: MySQL and PostgreSQL (by auto configuration)
-
-  * PostgreSQL with ident authentication:
-    
-     This is not really supported, just because icinga-web runs as www-data
-     per default. You will have to do some configuration stuff to run
-     icinga-web with ident. But you'll have to do this on your own.
-    
-     Though the maintainer scripts will create you a config for the
-     socket connection.
-    
-     Every access rights the maintainer script changes is checked
-     against dpkg-statoverride - so make sure to use it.
-     
-  * Icinga Web uses two database connections
-
-    1) IDO database, which is configured with by a dependency
-       on the icinga-idoutils packet
- 
-       generated file: /etc/icinga-web/conf.d/database-ido.xml
-
-    2) Icinga Web database, which stores users and settings and
-       is configured by using the dbconfig-common system and debconf
-
-       generated file: /etc/icinga-web/conf.d/database-web.xml
-
-  * If you want to to use different database connection settings
-    modify the file
-      /etc/icinga-web/conf.d/databases.xml
-    and comment the includes of the auto generated xml files
-
-  * Jasper Reporting is disabled by default
-    to activate it you have to edit:
-      
       /etc/icinga-web/conf.d/cronks.xml
         comment out the xml node <cronk name="icingaReportingDefault">
-      
+        or change the hide/enabled values
+
       /etc/icinga-web/conf.d/module_reporting.xml
         set <module enabled="true">
         and change the url and user/pass to fit your jasper instance
 
-     Please see the Icinga Wiki for more information.
-
-  * If you change any configuration or code file of Icinga Web
-    it is necessary to clear the cache.
-
-    To achieve this run this command as root:
-      /usr/lib/icinga-web/bin/clearcache.sh
-
- -- Markus Frosch <markus@lazyfrosch.de>  Mon, 24 Jun 2013 11:36:34 +0200
+ -- Markus Frosch <lazyfrosch@debian.org>  Tue, 09 Sep 2014 13:15:20 +0200
 
