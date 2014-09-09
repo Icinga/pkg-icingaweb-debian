@@ -52,6 +52,10 @@ write_access_local() {
 
     echo "database config successful: $file"
     rm -f $tempfile
+
+    if [ -f $file ]; then
+        setperm root www-data 0640 /etc/icinga-web/conf.d/access.local.xml
+    fi
 }
 
 generate_dbxml() {
@@ -102,7 +106,6 @@ case "$1" in
                            /etc/dbconfig-common/icinga2-ido-mysql.conf
 
             setperm root www-data 0640 /etc/icinga-web/conf.d/database-ido.xml
-            setperm root www-data 0640 /etc/icinga-web/conf.d/access.local.xml
         else
             (
             echo
