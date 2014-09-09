@@ -1,4 +1,4 @@
-icinga-web (1.11.1-2) unstable; urgency=medium
+icinga-web (1.11.1-2~debmon70+1) debmon-wheezy; urgency=medium
 
   Starting from this version the IDO auto configuration has been moved to
   separate packages.
