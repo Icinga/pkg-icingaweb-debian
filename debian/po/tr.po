@@ -1,0 +1,72 @@
+# Turkish translation of icinga-web package
+# Copyright (C) 2014 Mert Dirik
+# This file is distributed under the same license as the icinga-web package.
+# Mert Dirik <mertdirik@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: icinga-web\n"
+"Report-Msgid-Bugs-To: icinga-web@packages.debian.org\n"
+"POT-Creation-Date: 2013-06-24 11:05+0200\n"
+"PO-Revision-Date: 2014-09-02 15:01+0200\n"
+"Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
+"Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid "Icinga new web administrative password:"
+msgstr "Icinga yeni web yönetimsel parolası:"
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid ""
+"Please provide the password for the user \"root\" in Icinga's web interface."
+msgstr ""
+"Lütfen Web arayüzü için yeni oluşturulacak olan \"root\" kullanıcısının "
+"kullanacağı parolayı girin."
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:2001
+msgid ""
+"This is the password you need to access the web interface with the default "
+"administrative user. After login, you will be able to create new users and "
+"set their permissions."
+msgstr ""
+"Web arayüzüne öntanımlı yönetimsel kullanıcı ile erişmek için bu parolaya "
+"gereksiniminiz olacaktır. Oturum açtıktan sonra yeni kullanıcılar "
+"yaratabilir ve bu kullanıcıların izinlerini ayarlayabilirsiniz."
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid "Re-enter password to verify:"
+msgstr "Parolayı doğrulamak için tekrar girin:"
+
+#. Type: password
+#. Description
+#: ../icinga-web.templates:3001
+msgid ""
+"Please enter the same root password again to verify that you have typed it "
+"correctly."
+msgstr ""
+"Lütfen doğru yazıldığından emin olmak için aynı root parolasını tekrar girin."
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:4001
+msgid "Password input error"
+msgstr "Parola girme hatası"
+
+#. Type: error
+#. Description
+#: ../icinga-web.templates:4001
+msgid "The two passwords you entered were not the same. Please try again."
+msgstr "Girdiğiniz iki parola aynı değil. Lütfen tekrar deneyin."
