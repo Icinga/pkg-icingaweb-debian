@@ -37,7 +37,7 @@
 
 Summary:        Open Source host, service and network monitoring Web UI
 Name:           icinga-web
-Version:        1.11.1
+Version:        1.11.2
 Release:        %{revision}%{?dist}
 License:        GPLv3
 Group:          Applications/System
@@ -52,6 +52,7 @@ Source0:	https://github.com/Icinga/icinga-web/releases/download/v%{version}/icin
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
+BuildRequires:  make
 BuildRequires:  %{phpbuildname} >= 5.2.3
 BuildRequires:  %{phpbuildname}-devel >= 5.2.3
 BuildRequires:  %{phpbuildname}-gd
@@ -213,18 +214,24 @@ fi
 # uncomment if building from git
 # %{__rm} -rf %{buildroot}%{_datadir}/icinga-web/.git
 
-%if "%{_vendor}" == "suse"
-a2enmod rewrite
-if service apache2 status; then
-  service apache2 restart
-fi
-%endif
-
 %preun
+%if "%{_vendor}" == "suse"
+	%restart_on_update apache2
+%endif
 
 %post
 # clean config cache, e.g. after upgrading
-%{__rm} -rf %{cachedir}/config/*.php
+%{name}-clearcache
+
+%if "%{_vendor}" == "suse"
+	a2enmod rewrite
+	%restart_on_update apache2
+%endif
+
+%postun
+%if "%{_vendor}" == "suse"
+        %restart_on_update apache2
+%endif
 
 %post pgsql
 ### change databases.xml to match pgsql config
@@ -249,7 +256,12 @@ fi
 
 %post module-pnp
 # clean cronk template cache
-%{__rm} -rf %{cachedir}/CronkTemplates/*.php
+%{name}-clearcache
+
+%postun module-pnp
+if [ -f %{_sbindir}/%{name}-clearcache ]; then
+	%{name}-clearcache
+fi
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -310,6 +322,9 @@ fi
 %attr(-,icinga,icinga) %{_localstatedir}/log/icingaCron
 
 %changelog
+* Wed Aug 13 2014 Michael Friedrich <michael.friedrich@netways.de> - 1.11.2-1
+- bump to 1.11.2
+
 * Thu Jun 26 2014 Marius Hein <marius.hein@netways.de> - 1.11.1-1
 - release 1.11.1
 
@@ -337,10 +352,10 @@ fi
 * Tue Apr 30 2013 Markus Frosch <markus@lazyfrosch.de> - 1.9.0-0.1.beta
 - release 1.9.0-beta
 
-* Thu Feb 15 2013 Michael Friedrich <michael.friedrich@netways.de> - 1.8.2-2
+* Fri Feb 15 2013 Michael Friedrich <michael.friedrich@netways.de> - 1.8.2-2
 - fix rpmlint errors/warnings
 
-* Wed Feb 11 2013 Markus Frosch <markus.frosch@netways.de> - 1.8.2-1
+* Mon Feb 11 2013 Markus Frosch <markus.frosch@netways.de> - 1.8.2-1
 - bump to 1.8.2
 
 * Wed Feb 06 2013 Michael Friedrich <michael.friedrich@netways.de> - 1.8.1-3
