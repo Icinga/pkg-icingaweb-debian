@@ -58,7 +58,7 @@ Depends:
     icinga-idoutils,
     ucf,
     ${misc:Depends}
-Conflicts: icinga-web-config-icinga2
+Conflicts: icinga-web-config-icinga2-ido-mysql, icinga-web-config-icinga2-ido-pgsql
 Description: host and network monitoring system - database config for Icinga 1.x
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to
