@@ -1,3 +1,20 @@
+icinga-web (1.11.2+dfsg1-1) UNRELEASED; urgency=medium
+
+  [ Mert Dirik ]
+  * [9ef4565] [INTL:tr] Turkish debconf template translation for icinga-web
+    (Closes: #760331)
+
+  [ Frans Spiesschaert ]
+  * [6120efa] [INTL:nl] Dutch translation of debconf messages (Closes: #766186)
+
+  [ Markus Frosch ]
+  * [852c1bd] Imported Upstream version 1.11.2
+  * [6ef7f88] DFSG cleaned upstream 1.11.2+dfsg1
+  * [a4be74b] Fix wrong conflicts entry
+  * [be114f0] Make sure to delete left over config files
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Sun, 26 Oct 2014 12:13:37 +0100
+
 icinga-web (1.11.1-2) unstable; urgency=medium
 
   * [8f41dce] Avoid confusion of Linitian with donation HTML code in comments
