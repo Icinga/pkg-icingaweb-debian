@@ -1,4 +1,4 @@
-icinga-web (1.11.2+dfsg1-1) UNRELEASED; urgency=medium
+icinga-web (1.11.2+dfsg1-1) unstable; urgency=medium
 
   [ Mert Dirik ]
   * [9ef4565] [INTL:tr] Turkish debconf template translation for icinga-web
@@ -12,8 +12,10 @@ icinga-web (1.11.2+dfsg1-1) UNRELEASED; urgency=medium
   * [6ef7f88] DFSG cleaned upstream 1.11.2+dfsg1
   * [a4be74b] Fix wrong conflicts entry
   * [be114f0] Make sure to delete left over config files
+  * [b7d9b57] Add linitian ignore for proper Apache backward compatibility
+  * [08970c7] Bump Standards version
 
- -- Markus Frosch <lazyfrosch@debian.org>  Sun, 26 Oct 2014 12:13:37 +0100
+ -- Markus Frosch <lazyfrosch@debian.org>  Sun, 26 Oct 2014 12:39:38 +0100
 
 icinga-web (1.11.1-2) unstable; urgency=medium
 
