@@ -30,8 +30,12 @@ is_fresh_install()
 enable_icinga2_commandpipe() {
     if is_fresh_install $@; then
         echo "enabling icinga2 features for classicui"
-        icinga2-enable-feature command
-
+        if [ -e "/usr/sbin/icinga2-enable-feature" ] 
+        then
+            icinga2-enable-feature command
+        else
+            icinga2 feature enable command
+        fi
         echo "reloading icinga2"
         [ -x $(which invoke-rc.d) ] && invoke-rc.d icinga2 reload
     fi
