@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -186,7 +186,7 @@ class AppKit_Auth_Provider_HTTPBasicAuthenticationModel extends AppKitAuthProvid
                     $this-> { $class_target } = $search_value;
                 }
             } else {
-                $this->log('Auth.Provider.HTTPBasicAuthentification: No value found for %s/%s', $class_target, $config_target, AgaviILogger::FATAL);
+                $this->log('Auth.Provider.HTTPBasicAuthentification: No value found for %s/%s', $class_target, $config_target, AgaviILogger::DEBUG);
             }
         }
 

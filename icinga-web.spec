@@ -16,12 +16,6 @@
 %define phpname php53
 %endif
 
-%define phpbuildname %{phpname}
-
-%if "%{_vendor}" == "suse"
-%define phpbuildname php5
-%endif
-
 %if "%{_vendor}" == "suse"
 %define apacheconfdir  %{_sysconfdir}/apache2/conf.d
 %define apacheuser wwwrun
@@ -37,7 +31,7 @@
 
 Summary:        Open Source host, service and network monitoring Web UI
 Name:           icinga-web
-Version:        1.11.2
+Version:        1.12.0
 Release:        %{revision}%{?dist}
 License:        GPLv3
 Group:          Applications/System
@@ -53,22 +47,22 @@ Source0:	https://github.com/Icinga/icinga-web/releases/download/v%{version}/icin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:  make
-BuildRequires:  %{phpbuildname} >= 5.2.3
-BuildRequires:  %{phpbuildname}-devel >= 5.2.3
-BuildRequires:  %{phpbuildname}-gd
-BuildRequires:  %{phpbuildname}-ldap
-BuildRequires:  %{phpbuildname}-pdo
+BuildRequires:  %{phpname} >= 5.2.3
+BuildRequires:  %{phpname}-devel >= 5.2.3
+BuildRequires:  %{phpname}-gd
+BuildRequires:  %{phpname}-ldap
+BuildRequires:  %{phpname}-pdo
 
 %if "%{_vendor}" == "redhat"
-BuildRequires:  %{phpbuildname}-xml
+BuildRequires:  %{phpname}-xml
 BuildRequires:  php-pear
 %endif
 %if "%{_vendor}" == "suse"
-BuildRequires:  %{phpbuildname}-json
-BuildRequires:  %{phpbuildname}-sockets
-BuildRequires:  %{phpbuildname}-xsl
-BuildRequires:  %{phpbuildname}-dom
-BuildRequires:  %{phpbuildname}-pear
+BuildRequires:  %{phpname}-json
+BuildRequires:  %{phpname}-sockets
+BuildRequires:  %{phpname}-xsl
+BuildRequires:  %{phpname}-dom
+BuildRequires:  %{phpname}-pear
 %endif
 
 Requires:       pcre >= 7.6
@@ -322,6 +316,9 @@ fi
 %attr(-,icinga,icinga) %{_localstatedir}/log/icingaCron
 
 %changelog
+* Tue Nov 18 2014 Markus Frosch <markus@lazyfrosch.de> - 1.12.0-1
+- bump to 1.12.0
+
 * Wed Aug 13 2014 Michael Friedrich <michael.friedrich@netways.de> - 1.11.2-1
 - bump to 1.11.2
 

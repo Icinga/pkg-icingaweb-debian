@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -49,30 +49,12 @@ Cronk.util.CronkTabHelper = Ext.extend(Object, {
         // Adding the contextmenu
         tp.on('contextmenu', this.contextMenu, this);
         
-        // Check if we've no tabs and say hello if the frame is empty
-        tp.on('afterrender', this.sayHello, this, { single: true, delay: 5 });
-        
         this.customCronkCredential = tp.customCronkCredential || false;
         
         // Prevent refresh
         this.applyGlobalKeyMap();
     },
-    
-    createWelcomeCronk : function() {
-        return Cronk.factory({
-            title: _("Welcome"),
-            crname: ( AppKit.getPrefVal('org.icinga.cronk.default') || 'portalHello' ),
-            closable: true,
-            iconCls: 'icinga-cronk-icon-start'
-        });
-    },
-    
-    sayHello : function() {
-        if (tp.items.getCount() < 1) {
-            tp.setActiveTab(tp.add(this.createWelcomeCronk()));
-        }
-    },
-    
+
     applyGlobalKeyMap : function() {
         keyMap = new Ext.KeyMap(Ext.getDoc(), {
             key: Ext.EventObject.F5,
