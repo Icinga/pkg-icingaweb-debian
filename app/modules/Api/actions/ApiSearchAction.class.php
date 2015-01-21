@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -63,7 +63,8 @@ class Api_ApiSearchAction extends IcingaApiBaseAction {
             "comment" => array('SERVICEGROUP_SUMMARY_COUNT',"SERVICEGROUP_ID","SERVICEGROUP_OBJECT_ID","SERVICEGROUP_NAME"),
             "servicecomment" => array('SERVICE_NAME',"SERVICE_ID","COMMENT_ID","COMMENT_DATA"),
             "hostcomment" => array('HOST_NAME',"HOST_ID","COMMENT_ID","COMMENT_DATA"),
-            "host_service" => array('HOST_NAME',"SERVICE_NAME")
+            "host_service" => array('HOST_NAME',"SERVICE_NAME"),
+            'downtime' => array('DOWNTIME_ID', 'HOST_NAME', 'SERVICE_NAME', 'DOWNTIME_INTERNAL_DOWNTIME_ID')
     );
 
     /*

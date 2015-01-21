@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -567,7 +567,13 @@ Ext.ns("Cronk.util.CronkBuilder");
                 if (!cid.match(/^CUSTOM-/)) {
                     cid = 'CUSTOM-' + this.cronk.crname;
                 }
-                form.findField('cid').setValue(Ext.id(null, cid));    
+                // remove old id attachment
+                if (cid.match(/\-?\d+$/)) {
+                    cid = cid.replace(/\d+$/,'');
+                }
+                // generate random id and append it
+                cid = cid + '-' + Math.floor((Math.random() * 100000000));
+                form.findField('cid').setValue(cid);
                 form.findField('module').setValue(this.cronk.params.module);
                 form.findField('action').setValue(this.cronk.params.action);
                 
