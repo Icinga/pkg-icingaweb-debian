@@ -35,6 +35,13 @@ fi
 # Delete Configs and other stuff on purge
 ###
 if [ "$1" = "purge" ]; then
+    # make sure to delete left over config file
+    # from before the migration to config packages
+    rm -f /etc/icinga-web/conf.d/database-ido.xml
+    if which ucf >/dev/null; then
+        ucf --purge /etc/icinga-web/conf.d/database-ido.xml
+    fi
+
     rm -f /etc/icinga-web/conf.d/database-web.xml
     if which ucf >/dev/null; then
         ucf --purge /etc/icinga-web/conf.d/database-web.xml

@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Uploaders: Markus Frosch <lazyfrosch@debian.org>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
 Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php5-cli, php5-xsl, php5-json
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://www.icinga.org
 Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-icinga-web.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-icinga-web.git;a=summary
@@ -58,7 +58,7 @@ Depends:
     icinga-idoutils,
     ucf,
     ${misc:Depends}
-Conflicts: icinga-web-config-icinga2
+Conflicts: icinga-web-config-icinga2-ido-mysql, icinga-web-config-icinga2-ido-pgsql
 Description: host and network monitoring system - database config for Icinga 1.x
  Icinga is a modular monitoring framework for hosts, services, and
  networks, based on the Nagios project. It is designed to be easy to

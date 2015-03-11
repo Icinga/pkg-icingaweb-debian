@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -299,7 +299,7 @@ class NsmUser extends BaseNsmUser {
                       ->where('p.upref_user_id=? and p.upref_key=?', array($this->user_id, $key))
                       ->execute()->getFirst();
 
-        if (is_null($idToDelete)) {
+        if (!$idToDelete) {
             return false;
         }
 

@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -300,9 +300,6 @@ Ext.ns('Icinga.Cronks.System.StatusOverall');
                             filter['f[' + d.type + '_has_been_checked-value]'] = 1;
                             filter['f[' + d.type + '_has_been_checked-operator]'] = 50;
                         } else if (d.state_org === 99) { // check pending
-                            // state ok
-                            filter['f[' + d.type + '_status-value]'] = 0;
-                            filter['f[' + d.type + '_status-operator]'] = 50;
                             // pending
                             filter['f[' + d.type + '_has_been_checked-value]'] = 0;
                             filter['f[' + d.type + '_has_been_checked-operator]'] = 50;

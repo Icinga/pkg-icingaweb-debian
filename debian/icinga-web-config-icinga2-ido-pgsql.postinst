@@ -30,10 +30,25 @@ is_fresh_install()
 enable_icinga2_commandpipe() {
     if is_fresh_install $@; then
         echo "enabling icinga2 features for classicui"
-        icinga2-enable-feature command
+        if [   -e "/etc/icinga2/features-available/command.conf" ] &&
+           [ ! -e "/etc/icinga2/features-enabled/command.conf" ]
+        then
+            do_reload=0
+            if [ -x "/usr/sbin/icinga2-enable-feature" ]; then
+                if icinga2-enable-feature command; then
+                    do_reload=1
+                fi
+            elif [ -x "/usr/sbin/icinga2" ]; then
+                if icinga2 feature enable command; then
+                    do_reload=1
+                fi
+            fi
 
-        echo "reloading icinga2"
-        [ -x $(which invoke-rc.d) ] && invoke-rc.d icinga2 reload
+            if [ "$do_reload" = "1" ]; then
+                echo "reloading icinga2"
+                [ -x $(which invoke-rc.d) ] && invoke-rc.d icinga2 reload || true
+            fi
+        fi
     fi
 }
 
@@ -67,7 +82,7 @@ generate_dbxml() {
 
     # leave when dbconfig not enabled
     if [ "$dbc_install" != "true" ]; then
-        echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!" 
+        echo "database config failed: dbconfig-common for \"$(basename $dbconfig .conf)\" not enabled!"
         exit 1
     fi
 

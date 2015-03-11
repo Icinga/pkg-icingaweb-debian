@@ -1,3 +1,34 @@
+icinga-web (1.12.0-1) unstable; urgency=medium
+
+  [ Alexander Wirt ]
+  * [1603edb] Fix enable feature for newer i2 versions
+
+  [ Markus Frosch ]
+  * [41cc4e4] Imported Upstream version 1.12.0
+  * [a0f14b7] Improve and fail-safe icinga2 interaction
+  * [462f171] Remove missing-sources, now shipped upstream
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Wed, 11 Mar 2015 15:24:23 +0100
+
+icinga-web (1.11.2+dfsg1-1) unstable; urgency=medium
+
+  [ Mert Dirik ]
+  * [9ef4565] [INTL:tr] Turkish debconf template translation for icinga-web
+    (Closes: #760331)
+
+  [ Frans Spiesschaert ]
+  * [6120efa] [INTL:nl] Dutch translation of debconf messages (Closes: #766186)
+
+  [ Markus Frosch ]
+  * [852c1bd] Imported Upstream version 1.11.2
+  * [6ef7f88] DFSG cleaned upstream 1.11.2+dfsg1
+  * [a4be74b] Fix wrong conflicts entry
+  * [be114f0] Make sure to delete left over config files
+  * [b7d9b57] Add linitian ignore for proper Apache backward compatibility
+  * [08970c7] Bump Standards version
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Sun, 26 Oct 2014 12:39:38 +0100
+
 icinga-web (1.11.1-2~debmon70+1) debmon-wheezy; urgency=medium
 
   * Rebuild for debmon-wheezy.

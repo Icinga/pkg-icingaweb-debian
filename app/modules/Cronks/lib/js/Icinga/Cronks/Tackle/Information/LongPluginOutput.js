@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-present Icinga Developer Team.
+// Copyright (c) 2009-2014 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -29,7 +29,6 @@ Ext.ns('Icinga.Cronks.Tackle.Information');
     Icinga.Cronks.Tackle.Information.LongPluginOutput = Ext.extend(
         Icinga.Cronks.Tackle.Information.OutputPanel, {
         title: _("Long plugin output"),
-        keepLineBreaksInHTML: true,
         tplField: 'object_long_output'
     });
 
