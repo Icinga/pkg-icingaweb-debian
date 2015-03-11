@@ -1,3 +1,15 @@
+icinga-web (1.12.0-1) unstable; urgency=medium
+
+  [ Alexander Wirt ]
+  * [1603edb] Fix enable feature for newer i2 versions
+
+  [ Markus Frosch ]
+  * [41cc4e4] Imported Upstream version 1.12.0
+  * [a0f14b7] Improve and fail-safe icinga2 interaction
+  * [462f171] Remove missing-sources, now shipped upstream
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Wed, 11 Mar 2015 15:24:23 +0100
+
 icinga-web (1.11.2+dfsg1-1) unstable; urgency=medium
 
   [ Mert Dirik ]
