@@ -1,3 +1,9 @@
+icinga-web (1.13.0-1) unstable; urgency=medium
+
+  * [14cee09] Imported Upstream version 1.13.0
+
+ -- Alexander Wirt <formorer@debian.org>  Tue, 09 Jun 2015 10:37:25 +0200
+
 icinga-web (1.12.0-1) unstable; urgency=medium
 
   [ Alexander Wirt ]
