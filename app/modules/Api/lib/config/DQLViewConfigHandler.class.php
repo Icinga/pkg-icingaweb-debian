@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -140,7 +140,8 @@ class DQLViewConfigHandler extends AgaviXmlConfigHandler {
             "merge" => array(),
             "base" => false,
             "extend" => array(),
-            "orderFields" => array()
+            "orderFields" => array(),
+            "customvariables" => array()
         );
         if($node->attributes->getNamedItem('base')) {
             $dqlView["base"] = $node->attributes->getNamedItem('base')->nodeValue;
@@ -214,7 +215,13 @@ class DQLViewConfigHandler extends AgaviXmlConfigHandler {
                     $this->parseSubSetting($filter,$viewParam,$type);
 
                     $dqlView["filter"][$filter["name"]] = $filter;
+                    break;
 
+                case 'customvariables':
+                    $customvariable = array();
+                    $this->parseSubSetting($customvariable, $viewParam, 'customvariable');
+                    $dqlView['customvariables'][] = $customvariable;
+                    break;
             }
         }
 

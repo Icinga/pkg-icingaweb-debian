@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -492,6 +492,7 @@ class Api_Store_LegacyLayer_TargetModifierModel extends IcingaStoreTargetModifie
                         "hg"  => array("src" => "h", "relation" => "hostgroups", "type"=>"left"),
                         "hgm" => array("src" => "hg","relation" => "members", "type"=>"left"),
                         "ohg" => array("src" => "hg","relation" => "object", "type"=>"left"),
+                        "dt"  => array("src" => "s", "relation" => "scheduledDowntimes", "type"=>"left"),
                         "cvsh" => array("src" => "h","relation"=> "customvariablestatus", "type"=>"left"),
                         "cvss"=> array("src" => "s","relation" => "customvariablestatus", "type"=>"left"),
                         "cvsc"=> array("src" => "cgm","relation" => "customvariablestatus", "type"=>"left")

@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -28,6 +28,11 @@
  * @author jmosshammer
  */
 final class AppKitLogger {
+
+    /**
+     * Command audit
+     */
+    const COMMAND = 4294967296;
 
     private static $verbose = null;
 
@@ -89,7 +94,7 @@ final class AppKitLogger {
                 $arg = json_encode($arg);
         }
 
-        
+
         return @vsprintf($format, $argv);
     }
 
@@ -110,7 +115,7 @@ final class AppKitLogger {
             return;
 
         $msg = $caller["class"]."::".$caller["function"]."()@".(isset($caller["line"]) ? $caller["line"] : "?") ." : ".$msg ;
-        
+
         $log->log($msg,AgaviLogger::DEBUG);
     }
 

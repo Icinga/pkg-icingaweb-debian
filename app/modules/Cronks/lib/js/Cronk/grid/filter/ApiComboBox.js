@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -75,6 +75,17 @@ Ext.ns('Cronk.grid.filter');
                 }
             }
 
+            var preFilter = null;
+            if (meta.api_filter && meta.api_filter.indexOf('=') > -1) {
+                var parts = meta.api_filter.split('=', 2);
+                preFilter = {
+                    type: 'atom',
+                    field: [parts[0]],
+                    method: ['like'],
+                    value: [parts[1]]
+                }
+            }
+
             var apiStore = new Ext.data.JsonStore({
                 autoDestroy: true,
                 url: AppKit.c.path + this.def_webpath,
@@ -101,16 +112,28 @@ Ext.ns('Cronk.grid.filter');
 
                 listeners: {
                     beforeload: function (store, options) {
+
+                        var filter = {
+                            type: 'AND',
+                            field: []
+                        };
+
+                        if (preFilter !== null) {
+                            filter.field.push(preFilter);
+                        }
+
                         if (!Ext.isEmpty(store.baseParams.query)) {
-                            store.baseParams.filters_json = Ext.util.JSON.encode({
-                                type: 'AND',
-                                field: [{
-                                    type: 'atom',
-                                    field: [vf],
-                                    method: ['like'],
-                                    value: [String.format('*{0}*', store.baseParams.query)]
-                                }]
+                            filter.field.push({
+                                type: 'atom',
+                                field: [vf],
+                                method: ['like'],
+                                value: [String.format('*{0}*', store.baseParams.query)]
                             });
+                        }
+
+                        if (filter.field.length > 0) {
+                            store.baseParams.filters_json = Ext.util.JSON.encode(filter)
+                            console.log(filter);
                         }
                     }
                 }

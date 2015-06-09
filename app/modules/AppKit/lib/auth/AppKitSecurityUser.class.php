@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
      * @var string
      */
     const USEROBJ_ATTRIBUTE = 'userobj';
-    
+
     /**
      * Attribute name of the currentProvider
      * @var string
@@ -67,7 +67,7 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
      * @var string
      */
     private static $role_source = self::ROLES_SOURCE_DB;
-    
+
     /**
      * Initialize the user object
      * @param AgaviContext $context
@@ -76,7 +76,7 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
     public function initialize(AgaviContext $context, array $parameters = array()) {
         parent::initialize($context, $parameters);
     }
-    
+
     /**
      * (non-PHPdoc)
      * @see AgaviRbacSecurityUser::getRoles()
@@ -85,12 +85,25 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
         if (count($this->role_names) <= 0) {
             foreach($this->getNsmUser()->NsmRole as $role) {
                 $this->role_names[$role->role_id] = $role->role_name;
-                $this->addParentRoles($role);                
+                $this->addParentRoles($role);
             }
 
         }
 
         return $this->role_names;
+    }
+
+    /**
+     * Retrieving the clients ip address from the webserver environment
+     *
+     * @return string
+     */
+    private function getRemoteAddress() {
+        if (isset($_SERVER["REMOTE_ADDR"])) {
+            return $_SERVER["REMOTE_ADDR"];
+        } else {
+            return "<unknown>";
+        }
     }
 
     private function addParentRoles(NsmRole $role) {
@@ -100,7 +113,7 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
             $this->addParentRoles($p);
         }
     }
-    
+
     /**
      * Shortcut method to authenticate user with auth key
      * @param string $key
@@ -138,12 +151,19 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
 
                 // Grant related roles
                 $this->applyDoctrineUserRoles($user);
-                
+
                 $this->setAttribute('currentProvider', $dispatcher->getCurrentProvider()->getName());
-                
+
                 // Give notice
-                $this->getContext()->getLoggerManager()
-                ->log(sprintf('User %s (%s) logged in!', $username, $user->givenName()), AgaviLogger::INFO);
+                $this->getContext()->getLoggerManager()->log(
+                    sprintf(
+                        'User %s (%s) logged in! (ip=%s)',
+                        $username,
+                        $user->givenName(),
+                        $this->getRemoteAddress()
+                    ),
+                    AgaviLogger::INFO
+                );
                 $user->user_last_login = date('Y-m-d h:i:s');
                 $user->user_modified = $user->user_modified;
 
@@ -154,7 +174,14 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
 
         } catch (AgaviSecurityException $e) {
             // Log authentification failure
-            $this->getContext()->getLoggerManager()->log(sprintf('Userlogin by %s failed!', $username), AgaviLogger::ERROR);
+            $this->getContext()->getLoggerManager()->log(
+                sprintf(
+                    'Userlogin by %s failed! (ip=%s)',
+                    $username,
+                    $this->getRemoteAddress()
+                ),
+                AgaviLogger::ERROR
+            );
 
             // Rethrow
             throw $e;
@@ -175,8 +202,14 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
         // destroy the session with all settings
         session_destroy();
 
-        $this->getContext()->getLoggerManager()
-        ->log(sprintf('User %s (%s) logged out!', $this->getAttribute('userobj')->user_name, $this->getAttribute('userobj')->givenName()), AgaviLogger::INFO);
+        $this->getContext()->getLoggerManager()->log(
+            sprintf(
+                'User %s (%s) logged out! (ip=%s)',
+                $this->getAttribute('userobj')->user_name,
+                $this->getAttribute('userobj')->givenName(),
+                $this->getRemoteAddress()
+            ), AgaviLogger::INFO
+        );
 
         return true;
     }
@@ -224,18 +257,18 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
             while ($next->hasParent()) {
                 $next = $next->getParent();
                 $this->addCredentialsFromRole($next);
-                
+
                 $this->roles[] = $next;
 
             }
-            
+
         }
-        
+
         foreach($user->getTargets("credential") as $credential) {
             $this->addCredential($credential->get("target_name"));
 
         }
-   
+
     }
 
     /**
@@ -243,9 +276,13 @@ class AppKitSecurityUser extends AgaviRbacSecurityUser {
      * @param NsmRole $role
      */
     private function addCredentialsFromRole(NsmRole &$role) {
-        foreach($role->getTargets('credential') as $credential) {
+        $targets = $role->getTargets('credential');
+        if ($targets === null) {
+            return;
+        }
+        foreach($targets as $credential) {
             $this->addCredential($credential->get('target_name'));
-            
+
         }
     }
 
