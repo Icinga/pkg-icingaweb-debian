@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -209,6 +209,9 @@ class AppKit_RoleAdminModel extends AppKitBaseModel {
     public function removeRole(NsmRole &$role) {
 
         $targets = $role->getTargets();
+        if ($targets === null) {
+            return;
+        }
         foreach($targets as $target) {
             $vals = $role->getTargetValues($target->get("target_name"));
             foreach($vals as $value) {

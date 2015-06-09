@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 //
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -427,7 +427,7 @@ Ext.ns('Cronk.grid');
                     items: [{
                         xtype: 'radio',
                         boxLabel: _('Yes'),
-                        inputValue: 1,
+                        inputValue: o.fieldYesValue || 1,
                         columnWidth: 0.35,
                         name: o.fieldName,
                         checked: o.fieldValue !== "true"
@@ -726,6 +726,7 @@ Ext.ns('Cronk.grid');
                             fieldValue: this.command_options.predefined[item] || o.types[item].defaultValue || "",
                             fieldChecked: o.types[item].defaultChecked || "",
                             fieldRequired: o.types[item].required == "true",
+                            fieldYesValue: o.types[item].yesValue || null,
                             form: oForm
                         });
 

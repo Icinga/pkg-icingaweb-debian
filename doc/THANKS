@@ -33,6 +33,7 @@ name, please let us know.
     * Max Stephan
     * David Mikulski
     * Dirk Götz
+    * Ewoud Kohl van Wijngaarden
 
 * Design stuff
     * Karolina Hein
@@ -42,6 +43,7 @@ name, please let us know.
 * Sponsoring
     * Bundesverwaltungsamt, Köln, DE: Sponsored the native reporting integration
     * Geberit, Pfullendorf, DE: New api view filer interface >= 1.9
+    * Datev eG, Nuremberg: Added customvariables to grids
 
 * Translations
     * Bernd Erk
