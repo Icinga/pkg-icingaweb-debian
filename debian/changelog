@@ -1,3 +1,9 @@
+icinga-web (1.13.0-1~ppa1) lucid; urgency=medium
+
+  * Update for my ppa
+
+ -- Alexander Wirt <formorer@debian.org>  Tue, 09 Jun 2015 11:47:00 +0200
+
 icinga-web (1.13.0-1) unstable; urgency=medium
 
   * [14cee09] Imported Upstream version 1.13.0
