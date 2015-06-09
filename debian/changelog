@@ -1,8 +1,14 @@
-icinga-web (1.12.0-1~debmon70+1) debmon-wheezy; urgency=medium
+icinga-web (1.13.0-1~debmon70+1) debmon-wheezy; urgency=medium
 
   * Rebuild for debmon-wheezy
 
- -- Markus Frosch <lazyfrosch@debian.org>  Wed, 11 Mar 2015 15:33:52 +0100
+ -- Alexander Wirt <formorer@debian.org>  Tue, 09 Jun 2015 11:19:41 +0200
+
+icinga-web (1.13.0-1) unstable; urgency=medium
+
+  * [14cee09] Imported Upstream version 1.13.0
+
+ -- Alexander Wirt <formorer@debian.org>  Tue, 09 Jun 2015 10:37:25 +0200
 
 icinga-web (1.12.0-1) unstable; urgency=medium
 

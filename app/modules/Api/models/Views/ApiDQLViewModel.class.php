@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 // This file is part of icinga-web.
 // 
-// Copyright (c) 2009-2014 Icinga Developer Team.
+// Copyright (c) 2009-2015 Icinga Developer Team.
 // All rights reserved.
 // 
 // icinga-web is free software: you can redistribute it and/or modify
@@ -23,10 +23,10 @@
 
 
 class API_Views_ApiDQLViewModel extends IcingaBaseModel {
-    private $dqlViews;
-    private $view;
-    private $viewParameters;
-    private $defaultConnection = "icinga";
+    private     $dqlViews;
+    protected   $view;
+    private     $viewParameters;
+    private     $defaultConnection = "icinga";
 
     /**
      *
@@ -80,6 +80,7 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
         $this->user = $this->getContext()->getUser()->getNsmUser();
 
         $this->parseBaseDQL();
+        $this->parseCustomVariables();
         $this->parseDQLExtensions();
         $this->parseDependencies();
        
@@ -193,6 +194,58 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
 
     }
 
+    /**
+     * Append customvariables to query
+     */
+    private function parseCustomVariables() {
+        if (! empty($this->view['customvariables'])) {
+            foreach ($this->view['customvariables'] as $customvariable) {
+                $params = $customvariable['params'];
+                $variables = AppKitArrayUtil::trimSplit($params['list']);
+
+                if (! isset($params['leftJoin'])) {
+                    continue;
+                }
+
+                $leftJoin = $params['leftJoin'];
+                $prefix = 'cv_';
+
+                if (isset($params['prefix'])) {
+                    $prefix = $params['prefix'];
+                }
+
+                foreach ($variables as $variable) {
+                    $canonicalName = strtolower($variable);
+                    $safeName = $prefix . $canonicalName;
+                    $this->currentQuery->leftJoin(
+                        $leftJoin
+                        . ' AS '
+                        . $safeName
+                        . ' WITH '
+                        . $safeName
+                        . '.varname=?',
+                        $variable
+                    );
+
+                    $this->currentQuery->addSelect(
+                        $safeName . '.varvalue AS value'
+                    );
+                    $filterName = $canonicalName . '_value';
+                    $this->view['filter'][$filterName] = array(
+                        'name'  => $filterName,
+                        'type'  => 'dql',
+                        'calls' => array(
+                            array(
+                                'type'  => 'resolve',
+                                'arg'   => $safeName . '.varvalue'
+                            )
+                        )
+                    );
+                }
+            }
+        }
+    }
+
     private function createDQL($dql) {
         $query = IcingaDoctrine_Query::create();
         $query->setConnection($this->connection);
@@ -205,7 +258,7 @@ class API_Views_ApiDQLViewModel extends IcingaBaseModel {
         
     }
 
-    private function applyCredentials(IcingaDoctrine_Query &$query) {
+    protected function applyCredentials(IcingaDoctrine_Query &$query) {
         AppKitLogger::verbose("Parsing credentials: %s",$this->view["credentials"]);
 
         foreach(array("host", "service") as $affects) {
