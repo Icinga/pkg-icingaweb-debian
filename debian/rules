@@ -16,6 +16,7 @@ b := $(shell pwd)/debian
 
 override_dh_auto_clean:
 	dh_auto_clean
+	rm -f app/modules/Cronks/config/module.xml
 
 override_dh_auto_configure:
 	./configure --prefix=/usr/share/icinga-web \
