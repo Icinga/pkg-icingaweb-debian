@@ -1,3 +1,10 @@
+icinga-web (1.13.1-1) unstable; urgency=medium
+
+  * [495cb9e] Imported Upstream version 1.13.1
+  * [ac6701d] Update copyright and lintian
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Thu, 06 Aug 2015 15:56:56 +0200
+
 icinga-web (1.13.0-1~debmon80+1) debmon-jessie; urgency=medium
 
   * Rebuild for debmon-jessie
