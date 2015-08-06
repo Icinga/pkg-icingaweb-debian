@@ -5,70 +5,15 @@ Source: http://sourceforge.net/projects/icinga/files/icinga-web/
 Files: *
 Copyright: Copyright 2009-2014, Icinga Development Team <info@icinga.org>
 License: GPL-3+
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the
- .
- Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
- A 02110-1301, USA.
- .
- On Debian systems, the full text of the GNU General Public
- License version 3 can be found in the file
- `/usr/share/common-licenses/GPL-3'.
 
 Files: debian/*
 Copyright: Copyright 2012-2014, Markus Frosch <markus@lazyfrosch.de>
 License: GPL-3+
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the
- .
- Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
- A 02110-1301, USA.
- .
- On Debian systems, the full text of the GNU General Public
- License version 3 can be found in the file
- `/usr/share/common-licenses/GPL-3'.
 
 Files: lib/agavi/*
 Copyright: Copyright Sean Kerr <skerr@mojavi.org>
            Copyright Agavi Project Team <info@agavi.org>
 License: LGPL-2.1+
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
- .
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
- .
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, A 02110-1301, USA.
- .
- On Debian systems, the full text of the GNU Lesser General Public
- License version 2.1 can be found in the file
- `/usr/share/common-licenses/LGPL-2.1'.
 
 Files: lib/agavi/src/config/schematron/*
 Copyright: Copyright (c) 2000-2010 Rick Jelliffe and Academia Sinica Computing Center, Taiwan
@@ -94,7 +39,7 @@ License: ZLIB
 Files: lib/agavi/src/date/*
 Copyright: Copyright 1995-2006, International Business Machines Corporation and others
            Copyright, The Agavi Project
-License: MIT
+License: MIT-IBM
  Permission is hereby granted, free of charge, to any person obtaining a copy of this
  software and associated documentation files (the "Software"), to deal in the Software without
  restriction, including without limitation the rights to use, copy, modify, merge, publish,
@@ -119,7 +64,7 @@ License: MIT
 
 Files: lib/agavi/src/translation/data/*
 Copyright: Copyright 1991-2006, Unicode, Inc.
-License: MIT
+License: MIT-Unicode
  Permission is hereby granted, free of charge, to any person obtaining a copy of this
  software and associated documentation files (the "Software"), to deal in the Software without
  restriction, including without limitation the rights to use, copy, modify, merge, publish,
@@ -147,75 +92,35 @@ License: MIT
 Files: lib/doctrine/*
 Copyright: 2006-2009 Jonathan H. Wage <jonwage@gmail.com>
            2005-2007 Konsta Vesterinen <kvesteri@cc.hut.fi>
-License: LGPL-2.1
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
- .
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
- .
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
- MA 02110-1301, USA.
- .
- On Debian systems, the full text of the GNU Lesser General Public
- License version 2.1 can be found in the file
- `/usr/share/common-licenses/LGPL-2.1'.
+License: LGPL-2.1+
 
 Files: lib/doctrine/lib/vendor/*
 Copyright: Fabien Potencier <fabien.potencier@symfony-project.com>
 License: MIT
- Please see http://www.opensource.org/licenses/mit-license.html
 
 Files: lib/doctrine/lib/vendor/sfYaml/sfYaml.php
 Copyright: 2004-2006  Fabien Potencier <fabien.potencier@symfony-project.com>
 License: MIT
- Please see http://www.opensource.org/licenses/mit-license.html
 
 Files: lib/doctrine/lib/Doctrine/Parser/sfYaml/*
 Copyright: Fabien Potencier <fabien.potencier@symfony-project.com>
 License: MIT
- Please see http://www.opensource.org/licenses/mit-license.html
 
 Files: lib/doctrine/lib/Doctrine/Parser/sfYaml/sfYaml.php
 Copyright: 2004-2006  Fabien Potencier <fabien.potencier@symfony-project.com>
 License: MIT
- Please see http://www.opensource.org/licenses/mit-license.html
 
 Files: lib/doctrine/lib/Doctrine/Cli/AnsiColorFormatter.php
 Copyright: 2004-2006  Fabien Potencier <fabien.potencier@symfony-project.com>
 License: MIT
- Please see http://www.opensource.org/licenses/mit-license.html
 
 Files: lib/doctrine/lib/Doctrine/Cli/Formatter.php
 Copyright: Fabien Potencier <fabien.potencier@symfony-project.com>
 License: MIT
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is furnished
- to do so, subject to the following conditions:
- .
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
 
 Files: lib/doctrine/lib/Doctrine/Connection/Mssql.php
 Copyright: 2005-2008, Zend Technologies USA, Inc.
-License: BSD-3-clause
+License: BSD-3-clause-Zend
  Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
  .
@@ -244,50 +149,14 @@ License: BSD-3-clause
 Files: lib/ext3/*
 Copyright: Copyright, Ext JS LLC <licensing@extjs.com>
 License: GPL-3+
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the
- .
- Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
- A 02110-1301, USA.
- .
- On Debian systems, the full text of the GNU General Public
- License version 3 can be found in the file
- `/usr/share/common-licenses/GPL-3'.
 
 Files: lib/jsgettext/*
 Copyright: Copyright 2008, Joshua I. Miller <unrtst@cpan.org>
 License: LGPL-2.1+
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
- .
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
- .
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, A 02110-1301, USA.
- .
- On Debian systems, the full text of the GNU Lesser General Public
- License version 2.1 can be found in the file
- `/usr/share/common-licenses/LGPL-2.1'.
 
 Files: lib/jit/*
 Copyright: Copyright 2010, Nicolas Garcia Belmonte
-License: BSD-3-clause
+License: BSD-3-clause-Nicolas-Garcia-Belmonte
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
       * Redistributions of source code must retain the above copyright
@@ -313,33 +182,16 @@ License: BSD-3-clause
 Files: lib/phpseclib/Crypt/* lib/phpseclib/Math/* lib/phpseclib/Net/*
 Copyright: Copyright  MMVII, Jim Wigginton <terrafrost@php.net>
 License: MIT
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- .
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
 
 Files: lib/phpseclib/PHP/*
 Copyright: Copyright 2004-2007, Aidan Lister <aidan@php.net>
            Copyright 2004-2007, Arpad Ray <arpad@php.net>
 License: MIT
- Please see http://www.opensource.org/licenses/mit-license.html
- (as referenced by author)
 
 Files: lib/phing/*
 Copyright: Copyright, Phing Development Team
+License: GPL-3+
+
 License: GPL-3+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -360,3 +212,43 @@ License: GPL-3+
  On Debian systems, the full text of the GNU General Public
  License version 3 can be found in the file
  `/usr/share/common-licenses/GPL-3'.
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+ MA 02110-1301, USA.
+ .
+ On Debian systems, the full text of the GNU Lesser General Public
+ License version 2.1 can be found in the file
+ `/usr/share/common-licenses/LGPL-2.1'.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is furnished
+ to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+

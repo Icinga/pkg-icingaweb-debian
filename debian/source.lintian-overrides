@@ -43,3 +43,6 @@ source-is-missing lib/ext3/adapter/prototype/ext-prototype-adapter.js
 source-is-missing lib/ext3/adapter/yui/ext-yui-adapter.js
 source-is-missing lib/ext3/examples/calendar/calendar-all.js
 source-is-missing lib/ext3/examples/ux/ux-all.js
+
+# empty is good...
+license-problem-gfdl-invariants-empty lib/phing/docs/phing_guide/book/chapters/AboutThisBook.html
