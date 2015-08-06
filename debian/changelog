@@ -1,3 +1,9 @@
+icinga-web (1.13.1-1~debmon80+1) debmon-jessie; urgency=medium
+
+  * Rebuild for debmon-jessie.
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Thu, 06 Aug 2015 16:16:28 +0200
+
 icinga-web (1.13.1-1) unstable; urgency=medium
 
   * [495cb9e] Imported Upstream version 1.13.1
