@@ -12,7 +12,7 @@
 b := $(shell pwd)/debian
 
 %:
-	dh --buildsystem=autoconf $@
+	dh $@ --buildsystem=autoconf
 
 override_dh_auto_clean:
 	dh_auto_clean
