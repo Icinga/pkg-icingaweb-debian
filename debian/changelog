@@ -1,3 +1,12 @@
+icinga-web (1.13.1-2) UNRELEASED; urgency=medium
+
+  * [94f45ed] Fix dh argument invocation order
+  * [15e0ff9] Update package for PHP 7
+    (Closes: #821679, #821505, #821506, #821507)
+  * [37c5f29] Add patches 21_php7_doctrine and 22_php7_session for PHP 7
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Mon, 18 Jul 2016 15:50:29 +0200
+
 icinga-web (1.13.1-1) unstable; urgency=medium
 
   * [495cb9e] Imported Upstream version 1.13.1
