@@ -119,12 +119,12 @@ setpassword() {
     source /etc/dbconfig-common/icinga-web.conf
 
     # gen new salt
-    salt=$(php5 -r 'echo hash("sha256", uniqid("root_", mt_rand()));')
+    salt=$(php -r 'echo hash("sha256", uniqid("root_", mt_rand()));')
 
     # gen new pw hash
     export SALT="$salt"
     export PW="$password"
-    pwhash=$(php5 -r 'echo hash_hmac("sha256", getenv("PW"), getenv("SALT"));')
+    pwhash=$(php -r 'echo hash_hmac("sha256", getenv("PW"), getenv("SALT"));')
 
     salt_e=${salt/\'/\\\'}
     pwhash_e=${pwhash/\'/\\\'}

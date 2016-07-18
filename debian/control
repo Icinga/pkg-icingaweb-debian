@@ -3,7 +3,7 @@ Section: php
 Priority: extra
 Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Uploaders: Markus Frosch <lazyfrosch@debian.org>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
-Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php5-cli, php5-xsl, php5-json
+Build-Depends: autotools-dev, debhelper (>= 7.0.50~), po-debconf, php-cli, php-xsl, php-json
 Standards-Version: 3.9.6
 Homepage: http://www.icinga.org
 Vcs-Git: git://anonscm.debian.org/pkg-nagios/pkg-icinga-web.git
@@ -12,12 +12,12 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-nagios/pkg-icinga-web.git;a
 Package: icinga-web
 Architecture: all
 Depends: dbconfig-common,
-         php5,
-         php5-cli,
-         php5-gd,
-         php5-mysql | php5-mysqlnd | php5-pgsql,
-         php5-xsl,
-         php5-json,
+         php,
+         php-cli,
+         php-gd,
+         php-mysql | php-pgsql,
+         php-xsl,
+         php-json,
          ucf,
          ${misc:Depends}
 # Notice: this will prevent users from using icinga-web 1.11 with a
@@ -83,7 +83,7 @@ Architecture: all
 Depends:
     icinga-web (= ${source:Version}),
     icinga2-ido-mysql,
-    php5-mysql | php5-mysqlnd,
+    php-mysql,
     ucf,
     ${misc:Depends}
 Conflicts: icinga-web-config-icinga, icinga-web-config-icinga2-ido-pgsql
@@ -111,7 +111,7 @@ Architecture: all
 Depends:
     icinga-web (= ${source:Version}),
     icinga2-ido-pgsql,
-    php5-pgsql,
+    php-pgsql,
     ucf,
     ${misc:Depends}
 Conflicts: icinga-web-config-icinga, icinga-web-config-icinga2-ido-mysql
