@@ -3,3 +3,5 @@
 02_docs_urls
 03_access_include
 11_lintian_confusion
+21_php7_doctrine
+22_php7_session

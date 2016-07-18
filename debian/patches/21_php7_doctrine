@@ -1,0 +1,49 @@
+From e8dfebb9c9a6201413df0fccb6707d0a7453483d Mon Sep 17 00:00:00 2001
+From: Marius Hein <marius.hein@netways.de>
+Date: Fri, 8 Jan 2016 10:01:41 +0100
+Subject: [PATCH] Doctrine compatibillity with php 7
+
+fixes #10252
+---
+ lib/doctrine/lib/Doctrine/Collection.php     |    4 ++--
+ lib/doctrine/lib/Doctrine/Query/Abstract.php |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/doctrine/lib/Doctrine/Collection.php b/lib/doctrine/lib/Doctrine/Collection.php
+index 4f82c58..951097e 100644
+--- a/lib/doctrine/lib/Doctrine/Collection.php
++++ b/lib/doctrine/lib/Doctrine/Collection.php
+@@ -460,7 +460,7 @@ class Doctrine_Collection extends Doctrine_Access implements Countable, Iterator
+             $relations = $this->relation['table']->getRelations();
+             foreach ($relations as $relation) {
+                 if ($this->relation['class'] == $relation['localTable']->getOption('name') && $relation->getLocal() == $this->relation->getForeignFieldName()) {
+-                    $record->$relation['alias'] = $this->reference;
++                    $record->{$relation['alias']} = $this->reference;
+                     break;
+                 }
+             }
+@@ -1067,4 +1067,4 @@ class Doctrine_Collection extends Doctrine_Access implements Countable, Iterator
+         } 
+         return $dirty; 
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/lib/doctrine/lib/Doctrine/Query/Abstract.php b/lib/doctrine/lib/Doctrine/Query/Abstract.php
+index 26a0b61..8f6d833 100644
+--- a/lib/doctrine/lib/Doctrine/Query/Abstract.php
++++ b/lib/doctrine/lib/Doctrine/Query/Abstract.php
+@@ -1111,8 +1111,8 @@ abstract class Doctrine_Query_Abstract
+                 $params = array('component' => $component, 'alias' => $alias);
+                 $event = new Doctrine_Event($record, $callback['const'], $this, $params);
+ 
+-                $record->$callback['callback']($event);
+-                $table->getRecordListener()->$callback['callback']($event);
++                $record->{$callback['callback']}($event);
++                $table->getRecordListener()->{$callback['callback']}($event);
+             }
+         }
+ 
+-- 
+1.7.10.4
+

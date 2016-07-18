@@ -1,0 +1,52 @@
+Description: Fix problems with session_set_handler interfaces in PHP 7
+Author: Markus Frosch <lazyfrosch@debian.org>
+Bug: <URL to the upstream bug report if any, implies patch has been forwarded, optional>
+Last-Update: 2016-07-18
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/app/modules/AppKit/lib/storage/AppKitDoctrineSessionStorage.class.php
++++ b/app/modules/AppKit/lib/storage/AppKitDoctrineSessionStorage.class.php
+@@ -53,7 +53,7 @@
+ 
+     public function sessionClose() {
+         // Hm, the same as sessionOpen?!
+-
++        return true;
+     }
+ 
+     /**
+@@ -116,6 +116,7 @@
+      */
+     public function sessionOpen($path, $name) {
+         // Hm should we do anything here?
++        return true;
+     }
+ 
+     /**
+@@ -169,7 +170,7 @@
+      * @param string $id
+      * @param mixed $data
+      */
+-    public function sessionWrite($id, &$data) {
++    public function sessionWrite($id, $data) {
+         $max = ini_get('session.gc_maxlifetime');
+         $update = false;
+ 
+@@ -185,7 +186,7 @@
+         }
+ 
+         if (! $update && $this->NsmSession->session_checksum === $m) {
+-            return;
++            return true;
+         }
+ 
+         AppKitLogger::verbose("Writing new session information (checksum=%s)", $m);
+@@ -199,6 +200,8 @@
+         AppKitLogger::debug("Write session update: %s", $id);
+ 
+         AppKitLogger::verbose("Writing new session information successful");
++
++        return true;
+     }
+ 
+ }
