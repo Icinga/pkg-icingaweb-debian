@@ -1,6 +1,6 @@
 Description: Fix problems with session_set_handler interfaces in PHP 7
 Author: Markus Frosch <lazyfrosch@debian.org>
-Bug: <URL to the upstream bug report if any, implies patch has been forwarded, optional>
+Bug: https://dev.icinga.org/issues/12173
 Last-Update: 2016-07-18
 ---
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
