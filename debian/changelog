@@ -1,11 +1,21 @@
-icinga-web (1.13.1-2) UNRELEASED; urgency=medium
+icinga-web (1.13.1-2) unstable; urgency=medium
 
+  [ Markus Frosch ]
   * [94f45ed] Fix dh argument invocation order
   * [15e0ff9] Update package for PHP 7
     (Closes: #821679, #821505, #821506, #821507)
   * [37c5f29] Add patches 21_php7_doctrine and 22_php7_session for PHP 7
 
- -- Markus Frosch <lazyfrosch@debian.org>  Mon, 18 Jul 2016 15:50:29 +0200
+  [ Adriano Rafael Gomes ]
+  * [a41c0eb] [INTL:pt_BR] Brazilian Portuguese debconf templates translation
+    (Closes: #811531)
+
+  [ Markus Frosch ]
+  * [599ea38] Update lintian-overrides for source
+  * [ff9bd26] Update VCS URLs
+  * [d105b6c] Update Standards-Version to 3.9.8 (no changes)
+
+ -- Markus Frosch <lazyfrosch@debian.org>  Sun, 21 Aug 2016 18:21:09 +0200
 
 icinga-web (1.13.1-1) unstable; urgency=medium
 
