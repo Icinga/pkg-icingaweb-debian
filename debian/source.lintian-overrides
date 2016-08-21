@@ -1,48 +1,24 @@
-# see debian/missing-sources for all JS and CSS files
-source-is-missing lib/ext3/examples/docs/resources/prettify/prettify.js
+# source is in debian/missing-sources (ExtJS 3.2.1)
+source-is-missing lib/ext3/examples/docs/resources/ext-all.js line length is 32643 characters (>512)
+source-is-missing lib/ext3/examples/docs/resources/ext-base.js line length is 32643 characters (>512)
+source-is-missing lib/ext3/examples/docs/resources/prettify/prettify.js line length is 722 characters (>512)
 
 # these are really source files - just with very long lines
-source-is-missing lib/ext3-missing-sources/prettify/src/lang-xq.js
-source-is-missing lib/ext3-missing-sources/prettify/src/lang-matlab.js
-
-# source is in debian/missing-sources (ExtJS 3.2.1)
-source-is-missing lib/ext3/examples/docs/resources/ext-all.js
-source-is-missing lib/ext3/examples/docs/resources/ext-base.js
-
-# the source for the file is corresponding ...-debug.js file
-source-is-missing lib/ext3/ext-all.js
-source-is-missing lib/ext3/pkgs/cmp-foundation.js
-source-is-missing lib/ext3/pkgs/data-foundation.js
-source-is-missing lib/ext3/pkgs/data-grouping.js
-source-is-missing lib/ext3/pkgs/data-json.js
-source-is-missing lib/ext3/pkgs/data-list-views.js
-source-is-missing lib/ext3/pkgs/data-xml.js
-source-is-missing lib/ext3/pkgs/direct.js
-source-is-missing lib/ext3/pkgs/ext-core.js
-source-is-missing lib/ext3/pkgs/ext-dd.js
-source-is-missing lib/ext3/pkgs/ext-foundation.js
-source-is-missing lib/ext3/pkgs/pkg-buttons.js
-source-is-missing lib/ext3/pkgs/pkg-charts.js
-source-is-missing lib/ext3/pkgs/pkg-forms.js
-source-is-missing lib/ext3/pkgs/pkg-grid-editor.js
-source-is-missing lib/ext3/pkgs/pkg-grid-foundation.js
-source-is-missing lib/ext3/pkgs/pkg-grid-grouping.js
-source-is-missing lib/ext3/pkgs/pkg-grid-property.js
-source-is-missing lib/ext3/pkgs/pkg-history.js
-source-is-missing lib/ext3/pkgs/pkg-menu.js
-source-is-missing lib/ext3/pkgs/pkg-tabs.js
-source-is-missing lib/ext3/pkgs/pkg-tips.js
-source-is-missing lib/ext3/pkgs/pkg-toolbars.js
-source-is-missing lib/ext3/pkgs/pkg-tree.js
-source-is-missing lib/ext3/pkgs/resizable.js
-source-is-missing lib/ext3/pkgs/state.js
-source-is-missing lib/ext3/pkgs/window.js
-source-is-missing lib/ext3/adapter/ext/ext-base.js
-source-is-missing lib/ext3/adapter/jquery/ext-jquery-adapter.js
-source-is-missing lib/ext3/adapter/prototype/ext-prototype-adapter.js
-source-is-missing lib/ext3/adapter/yui/ext-yui-adapter.js
-source-is-missing lib/ext3/examples/calendar/calendar-all.js
-source-is-missing lib/ext3/examples/ux/ux-all.js
+source-is-missing lib/ext3/examples/init.js line length is 261 characters (>256)
+source-is-missing lib/ext3/pkgs/data-xml-debug.js line length is 444 characters (>256)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-clj.js line length is 631 characters (>512)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-matlab.js line length is 11730 characters (>512)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-ml.js line length is 626 characters (>512)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-sql.js line length is 1451 characters (>512)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-vb.js line length is 973 characters (>512)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-vhdl.js line length is 643 characters (>512)
+source-is-missing lib/ext3-missing-sources/prettify/src/lang-xq.js line length is 590 characters (>512)
+source-is-missing lib/ext3/examples/grid/grid-plugins.js line length is 743 characters (>512)
+source-is-missing lib/ext3/examples/grid/grouping.js line length is 743 characters (>512)
+source-is-missing lib/ext3/examples/shared/examples.js line length is 748 characters (>512)
+source-is-missing app/modules/AppKit/lib/js/AppKitErrorHandler.js line length is 291 characters (>256)
+source-is-missing app/modules/Cronks/lib/js/Icinga/Cronks/System/StatusOverall.js line length is 557 characters (>512)
+source-is-missing app/modules/Cronks/lib/js/Icinga/Cronks/Tackle/Information/Head.js line length is 1237 characters (>512)
 
 # empty is good...
 license-problem-gfdl-invariants-empty lib/phing/docs/phing_guide/book/chapters/AboutThisBook.html
